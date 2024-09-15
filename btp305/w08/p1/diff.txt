@@ -1,0 +1,14 @@
+In line number 70 of your output:
+The output should be:
+     C [176][  Leonardo  DiCaprio]
+    ^
+But your output is: 
+    CC [176][  Leonardo  DiCaprio] copy of [67]
+    ^
+
+Unmatched character details:
+The character in column 5 is supposed to be:
+  [Space] ASCII code(32)
+but you printed
+  [C] ASCII code(67)
+

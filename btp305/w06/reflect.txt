@@ -1,0 +1,28 @@
+// Mansoor Ahmad Zafar | mzafar15@myseneca.ca | 100503226 | October 30, 2023
+//
+// I have done all the coding myself and only copied the code
+// that my professor provided to complete my workshops and assignments.
+
+
+	Throughout this workshop (Workshop 06), I learnt about inclusion polymorphism, dynamic casting and std::vector. 
+	
+	Firstly, I learnt about inclusion polymorphsim, it was the reason why we had to use a resource pointer rather than being able to use
+a resource. The reason we used a Resource pointer for the vecotor type in the Directory Module is becuase the Resource interface is an interface. This means it's an incomplete class ergo it can only be initanitated through a pointer and cannot be initalized through non-pointer initalization. This class is an abstract class where it cannot exist by itself, rather it acts as a sort of 'generic'. It can store information and be used to inherit functions/overrride them, but cannot be initalized itself. So we had to use a Resource pointer rather than using the a instance of Resource. 
+
+	To call the Directory Objects stored in a Resource* I used the dynamic_cast. I referenced the notes to remeber how to actually implement it. But the idea is since Resource is the base class of the hiarchy and a Directory is a deriving object, you can go from a Resource to type Directory. so I used a Dynamic_cast to change the current index of the m_contents from a resource pointer to a directory.
+
+//Notes example:
+bool Cube::operator==(const Shape& s) const
+	{
+		const Cube* c = dynamic_cast<const Cube*>(&s);
+		return c ? len == c->len : false;
+	}
+
+//My Code:
+	if (resource->type() == NodeType::DIR)
+		return dynamic_cast<Directory*>(resource)->find(name, flag);
+//end of code
+
+	Because I dynamically casted my resource to a directory, I was able to use the find function which existed only in the directory module. Therefore, I was able to use the directory module from a resource through dynamic casting.
+
+	The reason we had to dynamically deallocate the resources from the std::vecotr was because the std::vector internally makes a pointer to the its type. It's used for managing the copying, destroying, re-sizing, adding ... and it manages the memory for that, however, since the type we set it to is a resource pointer (for reason mentioned at the start (in short it being an incomplete class ergo you need to make a pointer type and cannot initalize it without using a pointer)) it still is heap allocated. So the memory from our vector will not deallocate it since its a pointed-to-object type. Meaning we have to explicitly deallocate it. In short, because std::vector makes a pointer to its type internally, it manages that pointer ergo why you don't have to manage the memory when passing in fundemental types however, because we are passing in a built-in-type a pointer-to-object we still have to manage that memory since the vector will only manage its own pointer created internally.

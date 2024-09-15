@@ -1,0 +1,42 @@
+// Mansoor Ahmad Zafar | mzafar@myseneca.ca | 100503226 | September 13, 2023
+//
+// I have done all the coding myself and only copied the code
+// that my professor provided to complete my workshops and assignments.
+
+	Throughout this workshop (01) I have come to learn and understand the existance and difference between external and internal linkage, 
+what static variables are and their uses and a refreshment of the importance deep versus shallow copies. Firstly, I learned that external linkage is when you have global 
+variables or functions that are accessiable throughtout the scope of your entire program. Whereas internal linkage can only have their global variables and functions 
+accessiable within the scope of its own translation unit. Furthermore, by default, only a const and constexpr are internally linked whereas global variables and functions
+are externally linked. Also, to define a externally linked variable with a definition in either the same or another translation unit you'd use the keyword 'extern' and for 
+internal linkage you'd use the keyword 'static'.
+	This brings me to the first issue I ran into, "'double g_taxrate' (?g_taxrate@@3NA) already defined in RideRequest.obj) and the same thing for g_discount. 
+I thought I had declared the double's g_taxrate and g_discount in the headerfile for RideRequest but remebered that although global declarations seem like a 
+declaration it is a definition. So when I wrote:
+	double g_taxrate;
+	doulbe g_discount;
+these were definitions not declarations meaning these got defined twice once in the main and once in the RideRequest file.
+To combat this, I first tried making them static because then they'd only be accessiable within the RideRequest translation unit. 
+However, this failed to be effective since the main module also needs to be able to modify the values. While the main 'can' modify them, 
+it modifes a copy rather than the actual value. This is due to 2 reasons, firstly being due to the variable being static, it is inaccessiable 
+to main module and secondly since the headerfile was being #include'd in the main, the main made the same variables called g_taxrate and g_discount that were only 
+accessiable to the main module. So then I used the keyword extern. This keyword allowed me to have both g_taxrate and g_discount be modifiable and visible to the entire
+program whilst avoiding the linking issue. All I had to after was in a translation unit, define the values for g_taxrate and g_discount. So my code looked like:
+
+riderequest.h:
+extern double g_taxrate;  // declaration
+extern double g_discount; // declaration
+
+RideRequest.cpp:
+double g_taxrate = 0.0;  // definition
+double g_discount = 0.0; // definition
+	
+	Secondly, I learned about static, the error above helped me understand how it worked so I had no issue implementing a counter to count how many times the function was called 
+for the display method in RideRequest. The main idea was that since static is only visible in the translation unit it's defined in and in a function call it isn't redefined
+like a regular variable would be. I would just need to increment the static variable by 1 everytime the function was called since it would keep adding onto its own value 
+without being redefined to 0.	
+	Finally, I got a refresher of shallow vs deep copying. I kept running into an issue where my program would attempt the free an already freed pointer.
+I kept coming to this issue since in the main for this line: sdds::RideRequest copy = currentRide;
+This line kept bringing me issues since when the copy went out of scope it called the destructor and so because I didn't implement the copy constructor 
+and operator a copy wasn't being destroyed rather the original was since I had a pointer pointing to the original pointer. Which in turn deleted the original
+ pointer which kept causing my program to crash at the very end when the currentRide was going to be deleted. In order to fix this, I remembered that I needed to 
+implement the rule of thirds when it was mentioned in class and after implementing it, my program worked as intended.

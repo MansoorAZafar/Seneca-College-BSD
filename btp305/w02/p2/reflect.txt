@@ -1,0 +1,53 @@
+// Mansoor Ahmad Zafar | mzafar15@myseneca.ca | 100503226 | September 24, 2023
+//
+// I have done all the coding myself and only copied the code
+// that my professor provided to complete my workshops and assignments.
+
+	Throughout this workshop (02) I have come to learn and understand about the existance and practicalities of the move versus copy, measuring time, reopening/reseting files to 0 and the difference between using steady_clock versus system_clock.
+
+	Firstly, I learnt that the implementation of both move and copy constructors and operations is called the rule of 5. The rule of 5 will consist of the constructor and operator for copy and move. Then the last will be the implementation of the destructor. I leanred that the move operations were used to transfer data from an object reaching the end of its lifetime to a different object. Ontop of this, I also learned they are much faster than copy operations. For example, in our workshop we built a Timer class used to measure the time in nanoseconds and the time gap between a copy versus move operation is large.
+Output from 3 tests: {Done in Visual Studio}
+--- Test 1 ----
+.........Copy Constructor: ....653700 nanoseconds.
+.Copy Assignment Operator: ....522700 nanoseconds.
+.........Move Constructor: .......500 nanoseconds.
+.Move Assignment Operator: ......1100 nanoseconds.
+--- Test 2 ----
+.........Copy Constructor: ....461900 nanoseconds.
+.Copy Assignment Operator: ....664000 nanoseconds.
+.........Move Constructor: .......600 nanoseconds.
+.Move Assignment Operator: .......300 nanoseconds.
+--- Test 3 ----
+.........Copy Constructor: ....451800 nanoseconds.
+.Copy Assignment Operator: ....523700 nanoseconds.
+.........Move Constructor: .......500 nanoseconds.
+.Move Assignment Operator: .......300 nanoseconds.
+
+	As you can see, the move operator not only consistantly was faster but also it was significantly faster. Whereas the copy constructor was always much slower but in turn when you copy objects, the original object will still exist so it has its own uses. However, I did run into some problems with the move operators. The 2 problems I ran into was: poor implementation & wrong declaration + definition. Firstly, When I made the move operator, I kept getting the size wrong so when 
+line 205 from main.cpp:
+        std::cout << "Size of alog1 after move: " << size_t(alog1) << std::endl;
+	
+	executed, I kept getting an answer of 322 however, the answer I wanted was 0. To fix this, I remembered that I just had to set the value of the argument's count to 0:
+fix: {in move operator}
+	rhs.m_count = 0;
+
+	As for the 2nd error, it was a logical error that kept making me achive higher times than the copy constructor. This error was due to me forgetting to return a reference. My original declaration + definition returned a copy :
+old:
+sdds::AirportLog sdds::AirportLog::operator=(AirportLog&& rhs)
+	This is why it kept producing times longer than the copy assignment, because at the end of the code when I returned *this I called the copy assignment since this returned a copy and not a reference. To fix this I simply changed my code to return by reference and not copy.
+new:
+sdds::AirportLog& sdds::AirportLog::operator=(AirportLog&& rhs)
+
+	Secondly, I learnt about measuring time with Chrono. The first thing I learned about was time_point and why it was used. And in my findings I came to understand it was used to store the value of the current time. So I utilized this by creating a attribute to store the beginning time so I could calculate the total time taken.
+My class_member:
+std::chrono::time_point<std::chrono::steady_clock> begin{};
+
+	Then I came to understand the point of the now() function. This function is used to return the current point in time. Which means this function was used to store the time at the start and the time at the end. So my implementation/use of this function was to initalize the start and end. 
+Ex.
+this->begin = std::chrono::steady_clock::now(); // stores the time starting point
+const auto end = std::chrono::steady_clock::now(); // stores the time ending point
+
+	Afterwards, I learnt about duration_cast<>. To put it simply, this function was the one I used to actually get the time difference between the end and start. So in essence, it was used to get the amount of time taken. Then, to return the amount of time in nano seconds, all I did was return the function .count() which returned the time in nanoseconds since I casted it to std::nanoseconds. Finally, I learned about the difference between steady_clock and system_clock. The best explaination i've seen for it was a comparison of steady_clock to a stopwatch and system_clock to a watch. While you check how much time something took with a watch it's not as efficent or effective when compared to using a stopwatch.
+
+	Finally, I want to breify go over how I reopened/started from 0 for file reading. Last semester in BTP200 the readings entailed a function which could set a files position back to the start, that function was seekg(0); This function made it so the file after being read would go back to the start and could be read all over again. So I all did was implement this function after reading the file once to get the number of lines.
+

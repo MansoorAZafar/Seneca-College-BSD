@@ -1,0 +1,121 @@
+// Mansoor Ahmad Zafar | mzafar15@myseneca.ca | 100503226 | October 1, 2023
+//
+// I have done all the coding myself and only copied the code
+// that my professor provided to complete my workshops and assignments.
+
+	Throughout this workshop (03), I learnt and practiced a lot with templates and operators. Some things I learned were: template specialization, 
+	the reasoning behind seperating definitions from inside a class and about the [] operator. 
+
+	Firstly, I learnt about template specializations, initalizations and functions. When creating the Collection class 
+	we were instructed to make a m_smallestItem and m_largestItem of type T. And for this type, we had to initalize it outside of
+ 	the class definiton with the values 9999 and -9999 respectively as seen below:
+//code 
+template <class T, unsigned C>
+class Collection{
+	//... unimportant code
+	private:
+	T m_smallestItem{};
+	T m_largestItem{};	
+	//... unimportant code
+};
+
+template <class T, unsigned C>
+Collection<T, C>::Collection() : m_smallestItem(9999), m_largestItem(-9999)
+{}
+//end
+	We were instructed to do so outside of the class definition since this could've been problematic if the user
+	passes a type that has no casting/operation to an integer. For instance, The book class has no operator to integer 
+	meaning m_smallestItem of Book Type could NOT be converted to an integer thus leading to an error. So we initalized it 
+	outside of the class. However, if they just initalized the collection this would still cause trouble since the initalization 
+	would go to this definition. But that's were specializations can come into play. Specializations are denoted with <> and used
+	to create an exception for a certain type. So we created an 'exception' for the Book type by creating a specialization for it 
+	and initalized it with a book instead. The code looked like this:
+//code
+template<>
+Collection<Book, 10>::Collection()
+{
+	this->setSmallestItem(Book("", 1, 10000));
+	this->setLargestItem(Book("", 10000, 1));
+}
+//end
+	Now, the question may arise of why should I seperate the definitions from inside the class to outside of it? The answer is 
+	because you cannot make specializations inside of the class definiton since the compiler cannot understand which function 
+	to choose from. Take for instance, the default constructor and one of our specialized ones.
+//code
+//Default:
+template<class T, unsigned C>
+Collection<T, C>::Collection() : m_smallestItem(9999), m_smallestItem(-9999)
+{}
+
+//Special:
+Collection<Book, 10>::Collection()
+{
+	this->setSmallestItem(Book("", 1, 10000));
+	this->setLargestItem(Book("", 10000, 1));
+}
+//end
+	When both of these definitions exist in the definition of the class, then the compiler itself will not be 
+	able to differiate firstly, which constructor will construct the class and templates specializations will give an 
+	error inside the class defintion. So exceptions cannot exist there either. Also, it just makes the code less organized 
+	and less readable so it's better to also just avoid it in terms of readability and debugging.
+
+	Then, I would like to talk about the operator[]. When overloading the operator[] for the Collection class, I came to understand you can make it a query by doing :
+
+//code
+const T& operator[](const unsigned& index) const;
+//end
+
+	however doing this, will make it so you cannot modify the value so code like:
+
+//code
+T tmp = this->operator[](i);
+this->operator[](i) = this->operator[](j);
+this->operator[](j) = tmp;
+//end
+
+	Will not work since it cannot be used for modifying. Yet, if you get rid of all the const' and made:
+
+//code
+T& operator[](unsigned index);
+//emd
+
+	It will be able to work in the code above^. So, if you knew you had an unmodifable class or index's then yes you could make it a 
+	query however, if you were using it for the purpose of reading and writing then you wouldn't use it as a query.
+
+	Finally, I would like to talk about the issues I ran into while doing this workshop. Firstly, ordering the collections. This didn't take too long to 
+	fix but stumped me for a few minutes since when I was comparing to find the larger and smaller items, I based my code off of :
+
+//code
+return this->m_numPages > rhs.m_numPages;
+//end
+
+	I based my code off of the number of pages without realizing that to determine a book's index, it was based on the Average Page Per Chapter. 
+	Then I want to briefly talk about the operator+= in Collections. On my first attempt I had gotten it to work almost perfectly however, what I had 
+	noticed was the smallestItem always returned 0 and never the smallest item. So after debugging I learnt that because I had used the universal safe state in my initalization:
+
+//code
+m_smallestItem{};
+//end
+
+	in the class for  m_smallestItem, it was being set to the lowest value which in the example where integers were used was 0. To fix this, 
+	I simply just made it so when you add an item and it's the very first item, both the smallest and largest item get set to the first item. 
+	Then every other item would be compared and changed as needed. This fix got rid of the error of the m_smallestItem showing 0. 
+	Finally the last error I ran into that I wanted to talk about was with strings. Specifically, making the entire book information fit into the field of 56 characters. 
+	When I first did this I kept getting outside the field since I added them individually to stream but 
+	I rememebered that during last weeks lab class, near the end my professor, Cornel, went over how to concat strings and numbers together. 
+	I remebered since I took a picture in class of his example and reffered to it and saw that to fix my format all I had to implement was the to_string method. 
+	In the example he gave, he mixed the word "hello" with a comma and the number 8, his code looked like:
+
+//code
+string resultToPrint;
+resultToPrint = "hello";
+resultToPrint += ",";
+resultToPrint += std::to_string(8);
+//end
+
+	And this code allowed for him to put all these characteristics into 1 field rather than having a bad/messed up format.
+	So I applied the same logic to my code and solved it the same way by using the to_string method;
+
+//code
+const std::string bookInfo = this->m_title + "," + std::to_string(this->m_numChapters) + "," + std::to_string(this->m_numPages);
+//end

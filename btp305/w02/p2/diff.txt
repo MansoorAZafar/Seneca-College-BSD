@@ -1,0 +1,14 @@
+In line number 28 of your output:
+The output should be:
+........Airport Code : ABE...........................
+^
+But your output is: 
+322[DEBUG :] INDEX: 320
+^
+
+Unmatched character details:
+The character in column 1 is supposed to be:
+  [.] ASCII code(46)
+but you printed
+  [3] ASCII code(51)
+

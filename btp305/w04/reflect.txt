@@ -1,0 +1,119 @@
+// Mansoor Ahmad Zafar | mzafar15@myseneca.ca | 100503226 | October 8, 2023
+//
+// I have done all the coding myself and only copied the code
+// that my professor provided to complete my workshops and assignments.
+
+
+	Throughout this workshop, (Workshop 04) I learnt about the diffeences between the implementation of 
+composition and aggregation and the use and implementation of ponter to pointers.
+
+	Firstly, I learnt about the learnt about the difference between Aggregation and Composition.
+Throught the lectures and notes, I learnt about the major difference and similarites. Composition, is a relation
+in which you have complete ownership over the Component and is incomplete without it. The Composer has to manage
+the lifetime of both the component and itself the composer. Whereas Aggregation is a relation in which the Aggregatee has semi-ownership.
+Meaning, it doesn't manage the life of the Aggregatee and rather is just manages its own life. In our workshop, both CheeseShop and CheeseParty
+implement a const Cheese**; however, they are different due to how they interact and use that pointer. 
+The way CheeseShop uses and interacts with it makes its relation a Composit relation whereas how 
+CheeseParty uses and interacts with the pointer of pointer makes it an Aggrege relation. In CheeseShop, this class manages
+the lifetime of both Cheese and itself, it deletes and manages them both whereas in CheeseParty, that class only
+manages its own life. For instance, the copy assignment (move is the same idea but just moving rather than deep copying). In CheeseParty,
+
+//Code : CheeseParty.cpp
+
+	delete[] this->m_ptr;
+
+	this->m_ptr = new const Cheese * [rhs.m_cnt];
+	for (auto i = 0u; i < rhs.m_cnt; ++i)
+	{
+		this->m_ptr[i] = rhs.m_ptr[i];
+	}
+
+
+//End of Code
+
+	this code as you can see only deletes the pointer for the CheeseParty. It does not deal or manage
+with the Cheese' life-time rather it's soley focused only itself. Whereas in the CheeseShop:
+
+//Code : CheeseShop.cpp
+
+	for (auto i = 0; i < this->m_cnt; ++i)
+	{
+		delete this->m_ptr[i];
+	}
+	delete[] this->m_ptr;
+
+	this->m_ptr = new Cheese const* [rhs.m_cnt];
+	for (auto i = 0u; i < rhs.m_cnt; ++i)
+	{
+		this->m_ptr[i] = new Cheese(*(rhs.m_ptr[i]));
+	}
+
+//End of Code
+
+	This code deletes the Cheeses so it manages the life of the Cheese, then proceeds to delete it's own life, ergo managing itself then for 
+the deep copy it copies a new instance of cheese and works with a Cheese and not a pointer to cheese. Then, I would like to talk about how they implement 
+the addCheese function. The addCheese functions are similar but their major difference is how they add the cheese. The CheeseParty adds the address so it 
+doesn't need to manage the Cheese, rather all it does is add the address of the parameter to its list.
+//Code
+
+	temp[this->m_cnt] = &rhs;
+
+//End of Code
+
+	This code, means that the Cheese's address is being added onto the array rather than the cheese. Compared to the CheeseShop:
+//Code
+
+	tmp[this->m_cnt] = new Cheese(rhs);
+
+//End of Code
+
+	This code means it's taking in a copy of the Cheese with that attribute. Not taking in the address rather it takes in the complete cheese.
+	Now, I would like to talk about how you would in theory implement the removeCheese() function into the CheeseShop class. Firstly, you would
+-> Create a count variable to store # of Cheese' with 0 weight
+-> Loop through the Current Cheese' and increment count on the condition that 
+	-> Current Cheese weight is 0 		yes? increment 	   |	no? no nothing
+-> Create temporary array of size m_count - #number of cheese with 0 weight
+-> Create an index variable to store the index for the temporary array, initalized at 0
+-> Loop through this instance of the m_pCheese array and at the condition of m_weight != 0
+-> Assign the temporary at the 'index' variable to the current element of current instance of m_pCheese
+-> Increment 'index' variable for each true instance of the condition
+-> After loop 
+-> cleanup current instance of m_pCheese
+-> Assign temporary to current instance of m_pCheese
+-> Assign *this m_count to the difference of the current instance's count (m_count) - the # of Cheese' with 0 weight
+-> Done
+
+	I also wanted to talk a bit about pointers of pointers. In this workshop we were expected to work with pointers of pointers and manage them. This was difficult at first but when I looked at
+the w2_p2.cpp file I got to understand more about how they work and how you'd implement them. Looking at the w2_p2.cpp allowed me to figure out for example how to Make a const array of pointers
+//Code : main.cpp
+
+	sdds::Cheese** cheeses = nullptr;
+//and
+	cheeses = new sdds::Cheese * [cnt];
+
+//My code in CheeseParty.cpp
+
+	const Cheese** tmp = new const Cheese * [this->m_cnt - cnt];
+
+//End of Code
+
+	Finally, I just briefly want to go over some issues I ran into being: Memory leaks at CheeseParty and poor implementation of copy/move assignment.
+Firstly, I wanted to talk a bit about the memory leaks I got a CheeseParty. This was because I didn't realize that it was an I did a Composition implementation in an Aggregation relation.
+So I had implemented in the addCheese() function the way you would add into the Composition.
+//Code
+	ptr[this->m_cnt] = new Cheese(rhs);
+//End of Code
+
+	However, since this is aggregation, my destructor and class didn't manage this, meaning it lead to memory leaks since this was never managed by my class. I fixed this when I ran into
+the issue through velgrind and notcied I was doing an Composition implementation of lifetime in an Aggregation implementation of management which lead to a memory leak.
+	Then, I want to talk a bit about just a quick error I ran into. While implementing the Copy assignment and Move Assignment's I ran into the issue the loop for managing/deleting the 
+old contents in the m_pCheese array crashing.
+//Code
+	for(auto i = 0u; i < this->m_cnt; ++i)
+		delete[] this->m_pCheeses[i];
+	delete[] this->m_pCheeses;
+//End of Code
+	This stumped me for a quite a bit of time but the solution was easy, I had wrote delete[] rather than delete in my loop. Which was causing the program to crash and made me debug for a while
+looking all through my program wondering where the issue was.
+
+

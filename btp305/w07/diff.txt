@@ -1,0 +1,14 @@
+In line number 344 of your output:
+The output should be:
+| Canada                | Ottawa          | Alpha                |   2021 |  500 | 400 | |  General |
+^
+But your output is: 
+----------------------------------------------------------------------------------------
+^
+
+Unmatched character details:
+The character in column 1 is supposed to be:
+  [|] ASCII code(124)
+but you printed
+  [-] ASCII code(45)
+

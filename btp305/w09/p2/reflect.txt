@@ -1,0 +1,74 @@
+	Throughout this workshop (09) I learnt about binary files, binding functions and threads. 
+
+	Firstly, about files. The file we were provided was provided in a .dat file rather than a .txt or csv file and contained 
+binary information rather than words. The file contained 500'001 integers, the first one being the number of remaining integers. 
+If this was a csv, or text file the size of the file would have been much larger due to the encoding that files have so one plus
+that is binary files take up less size compared to other file types. Binary files are also faster to read from and espeically 
+since there is a large amount of data in the files, the time saved from using a binary file is much more beneficial than using a 
+text file.
+
+	Secondly, binding a function to its arguments would be helpful only really because it made the code seem more readable 
+rather than practical. We bound a function to a thread by doing:
+
+//code
+auto func = std::bind(computeAvgFactor, this->data, this->p_indices[i], this->total_items, std::ref(avg));
+std::future<void> f2 = std::async(func);
+
+	However, this could also be achived by just manually entering the parameters to std::thread() i.e:
+
+//code
+std::future<void> f = std::async(computeAvgFactor, this->data, this->p_indices[i], this->total_items, std::ref(avg));
+
+	This would achive the same result however, this becomes harder to debug and is less readable than just binding a 
+function to the thread. Mainly, the importance of using std::bind or just passing it into the thread directly was being able to 
+use a reference by using std::ref or if you want std::reference_wrapper. This allowed for us to modify the original value of 
+i.e avg and not modify a copy, because normally with threads is that they will make a copy and work with that, you can bypass 
+that and send by reference by wrapping the argument with std::ref or std::reference_wrapper
+
+	The benefits of using multiple threads was performance up to a limit. When using ~2-4 threads, the time it took to 
+compute the average and variance was lower than using one thread. I.e:
+
+//Results from matrix:
+(1 thread)
+Time required to compute average and variance: 1455 milliseconds.
+
+(2 threads)
+Time required to compute average and variance: 1360 milliseconds.
+
+(3 threads)
+Time required to compute average and variance: 1455 milliseconds.
+
+(4 threads)
+Time required to compute average and variance: 1434 milliseconds.
+
+	As you can see by these results, using 2 and 4 threads was faster than using 1 thread and using 3 matched using 1 thread. 
+However, that doesn't mean 3 threads is slower or equal to using 1 thread, this is due to a variety of reasons such as the 
+system doing extra things in the background during that moment. Thats why this result I showed is only 1 of many results, 
+sometimes 3 threads is almost the same speed as 2 threads and sometimes 4 threads is longer than 1 thread. 
+The general notion is that roughly between 2-4 threads showed a performance increase meaning using x amount of threads in the 
+range of [2,4] would be more beneifical. However, you should note too many threads will always be worse for the program. That's 
+because threads have overhead, the results show that [2,4] threads the overhead is not large enough to cause an issue however, 
+when we get to things like i.e 7 or 8 threads the time it takes is much longer consistantly. Because the overhead from threads 
+catches up with the more and more we use. Example:
+
+
+7 threads:
+Time required to compute average and variance: 1646 milliseconds.
+
+8 threads:
+Time required to compute average and variance: 1744 milliseconds.
+
+	As you can imagine 9, 10 and more threads would consistantly take longer than just using 1 thread. Thats because at these 
+point, as I said, the overhead from threads catches up and in turn slows down the application rather than speeding it up.
+
+	The way I achieved multi-threading was by having 2 vectors of threads. I looped through for num_threads time, then I bound a the Avg or 
+Var function depending on the context, to the data + indicie so it starts at the certain index and then pushed it back into the thread. After I 
+pushed the num_threads I ran num_threads threads I synchronized them so the threading finished. So in essenance I achieved multi-threading by 
+having a vector of threads that would all run and before the function finished, they would syncronize.
+Ex.
+std::vector<std::thread> avgThreads, varThreads;
+for (int i = 0; i < this->num_threads; ++i)
+{
+	auto avgFunc = std::bind(computeAvgFactor, (this->data + this->p_indices[i]), this->p_indices[i + 1] - this->p_indices[i], this->total_items, std::ref(this->averages[i]));
+	avgThreads.push_back(std::thread(avgFunc));
+}

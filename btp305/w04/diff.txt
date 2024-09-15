@@ -1,0 +1,14 @@
+In line number 132 of your output:
+The output should be:
+This party is just getting started!
+     ^
+But your output is: 
+This shop is out of cheese!
+     ^
+
+Unmatched character details:
+The character in column 6 is supposed to be:
+  [p] ASCII code(112)
+but you printed
+  [s] ASCII code(115)
+

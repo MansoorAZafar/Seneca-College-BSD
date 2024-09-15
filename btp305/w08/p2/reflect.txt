@@ -1,0 +1,81 @@
+	Throughout this workshop (08), I have come to learn the use and purpose of smart pointers and the differences between a 
+smart vs raw pointer.
+
+	Firslty, I learnt about raw versus smart pointers. Raw pointers are the ones we used in our previous (and this) workshop, 
+they are explicitly declared as a pointer through the * character and mainly we as the programmer have to explicitly manage its 
+memory if we heap allocate it. So if we come across an potential exception, we have to write our code in a way that regardless 
+of the outcome of the potentially dangerous code, the pointer's memory is still managed. For example, in this workshop, we wrote:
+//Utilities.cpp:	//Raw pointer
+try
+{
+	//'current' is heap allocated
+	current->validateAddress(); // can throw exception
+	result.operator+=(current); 
+	delete current;
+}
+catch (...)
+{
+	delete current;
+	throw std::string("*** Invalid Address ***");
+}
+//End of code
+
+	We had to explicitly delete the pointer 'current' in both scenarios after calling the validateAddress function since 
+it may throw an exception. If we had left out the delete in the catch section of the try catch statement, then we would have a 
+memory leak since 'current' would never have been dealt with thus casuing memory leak. However, with smart pointers, we can 
+completely midigate this entire delete section since smart pointers act as a wrapper around a pointer where they will manage 
+the memory for us, so we don't have to explicitly call delete since the smart pointer implementation will automatically call 
+it for us. So, our code with smart pointers looked like:
+//Utilities.cpp:	//Smart pointer
+try
+{
+				currentProfile->validateAddress(); // can throw exception
+				result.operator+=(currentProfile);
+}
+catch (...)
+{
+				throw std::string("*** Invalid Address ***");
+}
+//End of code
+
+	In this version, we didn't have to call delete manually at all, the 'current' variable is now also stack allocated as 
+a std::unique_ptr meaning the memory will be dealt with automatically by the class std::unique_ptr and so we don't have to 
+manually call delete anymore. 
+
+	The main difference in syntax for allocating a smart pointer versus a raw pointer is that for a raw pointer since 
+they don't manage the lifetime, we have to manually allocate and deallocate it with with new and delete whereas smart 
+pointers use RAII (resource acquisition is initalization) which means that the pointer is given to an object to handle 
+and is now automatic management. 
+//Code
+
+//Smart pointer
+std::unique_ptr<Profile> currentProfile(new Profile(allProfiles[index].m_name, allProfiles[index].m_address, allProfiles[index].m_age));				
+
+//Raw Pointer
+Profile* current = new Profile(allProfiles[index].m_name, allProfiles[index].m_address, allProfiles[index].m_age);
+
+//End of code
+
+	For the smart pointer, we created a instance of a Profile with the neede information and heap allocated it using the 
+keyword new, we did this since a std::unique_ptr has to manage a heap allocated pointer meaning it needs to manage a pointer 
+that is heap allocated with the keyword 'new'. Whereas with the raw pointer, we manually heap allocate it by making the type a 
+Profile * meaning it is now heap allocted. 
+
+	In the output, there is a lot of copies and the reason for so is very simple. Its due to the operator+= in the database 
+module or more specifically because the the push_back function. The push_back will call a constructor with the passed in argument 
+of the parameter. The push_back function will call the copy constructor which is why we get a copy of the data rather than the 
+original. However, if we wanted to theoretically counteract this, I would suggest changing the type of DataBase vector to a type 
+of a std::unique_ptr(T*); If we use the address then we avoid the issue of calling the copy constructor since we would be just 
+managinag and dealing with the addresses rather than the actual values. We could use a raw pointer as well, it just deppends if 
+you want to explicitly manage the memory yourself, but if you don't want to manage the memory of deletion than using a smart 
+pointer would be better.
+
+
+	If you use std::move when adding to the collection, nothing changes. The moving isn't changed and the result is that the 
+copy operation is called. My guesse as to why this happens: is
+when you do std::move() it does call the std::move operation which if not explicitly made will just do the static_cast to 
+treat the parameter as a rvalue and not an lvalue so when the assignment operation is called in the push_back, we just 
+get the copy assignment called. Thats also why, when you just call std::move() without assigning it to anything, 
+i.e  std::move(obj)  
+the value is never modified since it was just casted to a rvalue.
+

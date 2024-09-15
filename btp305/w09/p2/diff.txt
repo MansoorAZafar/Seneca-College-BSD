@@ -1,0 +1,14 @@
+In line number 76 of your output:
+The output should be:
+ Average:       4915.392782
+                ^
+But your output is: 
+ Average:       3929.444724
+                ^
+
+Unmatched character details:
+The character in column 17 is supposed to be:
+  [4] ASCII code(52)
+but you printed
+  [3] ASCII code(51)
+

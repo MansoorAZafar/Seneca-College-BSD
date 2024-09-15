@@ -1,0 +1,14 @@
+In line number 30 of your output:
+The output should be:
+................City : Allentown.....................
+        ^
+But your output is: 
+........Airport City : Allentown.....................
+        ^
+
+Unmatched character details:
+The character in column 9 is supposed to be:
+  [.] ASCII code(46)
+but you printed
+  [A] ASCII code(65)
+

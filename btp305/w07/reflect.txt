@@ -1,0 +1,166 @@
+	Throughout this workshop (07) I learnt and used STL functions, collections, the algorithm
+library and more about lambda's.
+
+	In this workshop, we were required to not use manual loops for almost all the functions
+and rather use the functions within the Standard Template Library to loop through and perform an
+action(s) on the vector. Starting with the display function, I used one function from the
+algorithm library and one from the numeric library. When getting the total amount of deaths,
+cases and the amount of cases & deaths for certain countries I used the std::accumulate from the
+numeric library. The code looked as so:
+
+//CovidCollection.cpp Exampler for std::accumulate  display f(x)
+unsigned int totalDeaths = std::accumulate(this->m_covidInfo.begin(), this->m_covidInfo.end(), 0, [](const unsigned int& sumDeaths, const Covid& info)
+	{return sumDeaths + info.m_deaths; });
+//End of code
+
+	The accumlate function, goes from a range of [f,i) which means it takes the beginning argument 
+inclusively, the second argument exclusively, the third argument as the return type and the forth argument as
+the function condition to accumulate then the reutrn value is assigned to a unsigned integer. In short, the accumulate function
+loops through the beginning iterator until the end exclusively and calls the function object provided and returns the provided return type in this case
+a unsigned integer. The reason I chose std::accumlate was because it is specifcally used for getting the sum of the values in the range of [f,i) (explained above) 
+and to initalize that resulting value into another variable.
+
+	Then, the display function uses a std::for_each function to act as a traditional loop and loop through
+the entire collection while calling a function to each element. Similarly to the std::accumulate the first two arguments
+are in a [f, i) format where the first argument is the beginning iterator for the collection inclusively and the
+2nd argument is a end iterator for the collection which is exclusive. Then the third argument is a function,
+this function will be acted on each element, and in this case, I printed out the current element.
+I provided an example of my implementation for both if the country is specified and when it's not:
+
+//CovidCollection.cpp  display f(x),  exampler for std::for_each
+//Implementation for a specific country:
+std::for_each(this->m_covidInfo.begin(), this->m_covidInfo.end(), [=, &ostr](const Covid& item)
+	{
+		if (country == item.m_country)
+			ostr << item << "\n";
+	});
+	
+//Implementation for default countries:
+std::for_each(this->m_covidInfo.begin(), this->m_covidInfo.end(), [=, &ostr](const Covid& item)
+	{
+		ostr << item << "\n";
+	});
+
+//End of code.
+
+	The reason I chose std::for_each to display the elements from the collection was due to this
+function being the most logical and best choice to use. This function does not return any value, and is primaryly
+used for looping through the collection without modifying anything. 
+
+	For the sorting function, I used std::sort from the algorithm library, I used this function
+since it sorts based off a certain condition, whilst you could do this with a for_each for instance, it 
+would be more tedious since std::sort does the swapping for you and all you need to provide for std::sort is the basic
+[f, i) beginning and end and then the condition to swap off of. My implementation looked like:
+
+//CovidCollection.cpp sort f(x)
+std::sort(this->m_covidInfo.begin(), this->m_covidInfo.end(), [=](const Covid& first, const Covid& second)
+	{
+		if (field == "country")
+			//...
+		if (field == "variant")
+			//...
+		if (field == "city")
+			//..
+		if (field == "cases")
+			//...
+		if (field == "year")
+			//...
+		return first.m_deaths < second.m_deaths;
+	}); 
+//I didnt include the implementation of the if statements since that takes too much space
+//End of code
+	
+	
+	Then, for checking if a Specific column existed in the collection the inCollection function, I used the std::any_of function. 
+The reason I chose this function, was because it loops through the collection and checks if ANY of the elements corrospond with the 
+condition provided and then returns a boolean determining if the data specificed exists in the collection at all. While I could have done 
+different implementations such as, std::find_if and return the iterator being the end or not (if it doesn't exist its set as the collection.end()), 
+which would require an extra step and is less readable than just returning if it directly exists.
+
+//Code:
+return std::any_of(this->m_covidInfo.begin(), this->m_covidInfo.end(), [=](const Covid& info)
+	{
+		return info.m_country == country && info.m_variant == variant && info.m_deaths >= deaths;
+	});
+//End of code
+
+	
+	Then, for the getListForDeaths function, I used a count_if function to initalize the length of the list that will be 
+returned with the amount of deaths where the elements deaths would be greater or equal to the parameter 'deaths'. I used a
+count_if over count or any other function since I wanted to count under a certain condition and return the count into a variable,
+which fits count_if the best. Then, I used copy_if to copy all the elements which death count was higher than the parameter 
+'deaths'. I used copy_if rather than copy since I wanted to copy only under this condition meaning copy_if was the choice to 
+go since copy doesn't allow you to use a condition normally (you might be able to bypass that with a lambda that returns an 
+desired OutputIterator so I specifically mentioned normally). The main reason I chose copy_if over the other STL 
+functions is becasue it makes the most sense logically as well, i'm not trying to transform the newly created list, 
+that implies theres information already inside it, rather im trying to copy the information from one collection into another. 
+
+//STL codes used:
+
+auto size = std::count_if(this->m_covidInfo.begin(), this->m_covidInfo.end(), [=](const Covid& info) {return info.m_deaths >= deaths; });
+std::list<Covid> listOfDeaths(size);
+std::copy_if(this->m_covidInfo.begin(), this->m_covidInfo.end(), listOfDeaths.begin(), [=](const Covid& info) { return info.m_deaths >= deaths; });
+
+//end of STL codes used
+
+	Finally, I used std::transform for the updateStatus() function since I was now trying to update the information inside the collection. The main reason was mostly because 
+(I kinda couldn't use std::for_each) but because no other STL container really works with the intention of updating just the status and also logically transforming it makes sense
+rather than just using a for_each because it makes it more clear that the function does modify the collection.
+
+	The main advantage of using STL algorithms over manual implementation of loops by yourself would
+be optimization, less prone to errors and easier readability. For instance, the STL sort function, 
+it swaps the values for you, if you were to use a regular loop, you would have to manually swap the elements 
+which is more error prone when compared to the STL container and less readable. Also, if you look into the implementation of the std::sort function,
+then go into the implementation of "_Sort_unchecked(..." what'll you see is that they have conditions for different types of calling the provided function.
+I.e. there is a condition if(_Ideal <= 0) then you do:
+//algorithm.cpp
+if (_Last - _First <= _ISORT_MAX) { // small
+    _Insertion_sort_unchecked(_First, _Last, _Pred);
+    return;
+}
+
+if (_Ideal <= 0) { // heap sort if too many divisions
+    _Make_heap_unchecked(_First, _Last, _Pred);
+    _Sort_heap_unchecked(_First, _Last, _Pred);
+    return;
+}
+//end of code
+	
+	While I can't explain what the code does, I can expain that this code chooses the better sorting option
+to then loop through your data and sort by your sorting function. My understanding, is that if I did this:
+//Code ex.
+std::sort(col.begin(), col.end(), funcSort());
+//end of Code ex.
+
+	Then going into the std::sort, the function will find what implementation would be more optimal and choose
+to use for instance, heap sort to sort with you given condition (funcSort) rather than the default one.
+
+	To redesign the function to allow it to be less error prone, I would simply change the 
+paramter from being a std::string to a scoped enum. Then, if any misspells would be handled at compile time
+and by having it be an scoped enum class, you escape any issue of misspelling or invalid fields. 
+
+fixed function prototype:
+
+//just an example of what the enum would look like:
+enum class Sort
+{
+	Country, City, Variant, Year, Cases, Deaths
+}
+
+void sort(const Sort& sort = Sort::country);
+
+void CovidCollection::sort(const Sort& sort)
+{
+	std::sort(this->m_covidInfo.begin(), this->m_covidInfo.end(), [=](const Covid& a, const Covid& b)
+		{
+			switch (sort)
+			{
+			case Sort::Country: /...	break;
+			case Sort::City:    /...	break;
+			case Sort::Variant: /...	break;
+			case Sort::Year:    /...	break;
+			case Sort::Cases:   /...	break;
+			case Sort::Deaths:  /...	break;
+			}
+		});
+}

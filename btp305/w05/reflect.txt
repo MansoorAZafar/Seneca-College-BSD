@@ -1,0 +1,111 @@
+	Throughout this workshop (05), I learnt about the implementations & utilizations of functors and lambda expressions and error handling and a bit about std::out_of_range.
+
+	Even thought lambda's are functors, they're categorized separately for a reason. Functor's are objects that overload the operator(). 
+	Lambda's are function objects that can be nameless known as anonymous that allows you to define a function in a scope only visible in that set scope. 
+	While lambda's can be used to pass in a function from a set scope, act as a function in the host scope, the cannot really be used outside of that one scope 
+	they are defined in. Whereas, functors are not limited to one scope. For example an adder function object.
+
+//code
+class Adder
+{
+	public:
+	int operator()(const int& x, const int& y) { return x+y; }
+};
+void foo()
+{
+	adder add;
+	std::cout << add(7,10); // 17
+}
+
+	In this scenario, you could initalize adder anywhere and aren't limited to just initalizing it in foo, you could do it in another function and use 
+	it elsewhwere. Whereas in this case:
+
+//code
+void foo()
+{
+	auto add = [&](const int& x, const int& y){return x+y;};
+}
+
+	In this use case, the add lambda, is only limited to the function foo, it is inaccessable outside of this scope. However, as mentioned, 
+	lambda's are useful for using a function without the need to create a function outside of your current scope or even passing functions as arguments.
+	
+
+	In order to replicate the exception in the SpellChecker case without exceptions would just be with an if statement. In the current case,
+	we use a throw statement and try and catch in the main and looks rougly like this:
+
+//SpellChecker.cpp
+if(!ifstr)
+	throw "Bad file name!";
+//main.cpp
+for(auto i = 3; i < argc; ++i){
+	try{
+ 		sdds::SpellChecker sp(argv[i]);
+ 		...
+	}catch(const char* err) {...}
+}
+//End of Code
+
+	This code gets would catch a const char pointer and print it out as an error and continue without breaking. To replicate this without using 
+	exceptions and try-catches you woul do something like:
+
+//SpellChecker.cpp
+if(!ifstr)
+	setEmpty();
+else {...}
+//main.cpp
+for(auto i = 3; i < argc; ++i){
+	sdds::SpellChecker sp(argv[i]);
+	if(sp.empty)
+		std::cout << "error msg";
+	...
+}
+
+	This code rather than using exceptions, uses checking if the value is empty. If not, then continue printing whatever, else print 
+	out the error message. When compared, the exception is conceptually better since setting something to empty isn't always a good indication 
+	of an error for example, strings. Even when they're empty, they are not in an error state, so an exception is better since it would be better 
+	for more logicial and practical coding.
+
+
+	In order to redesign the Movie and Book class I would create a templated function inside the Collection module that takes in a string and number 
+	of properties, then repeat the process in the individual custom constructors (remove whitespace and set the values). 
+
+//Pseudo code: 
+//assume type T has a set(std::string* arr) function
+-> create a templated function of type T that takes in a string text and size_t n
+-> create an array of strings of size n. One for each property (i.e title = str[0], summary = str[1] ...)
+-> Create a loop that repeats n times
+-> Set a variable named position to the first position of ',' 
+-> Check if the current iteration is equal to n-1
+	-> if it is : set position to the first instance of "\n"
+-> set the value of the string array at the current iteration to the text substring from the start to the ',' pr '\n' with removed whitespace(s)
+-> Ater the loop call a "set" function from the respective type T m_array member. with the string array as a parameter 
+-> Done.
+
+	Instead of having the main class call the conversion from a std::stirng to the Type T implicitly i.e:
+
+//code
+movies[cnt] = line;
+//^ calls this function first:
+Movies(const std::string& strMovie) {...}
+//then calls
+Collection<T>& Collection<T>::operator+=(const T& item) {...}
+//end of code
+	
+	I would overload the templated operator+= from the Collection class to take in a std::string and then from there follow the steps 
+	from the psuedo code this avoiding writing the same type of code duplication.
+	
+
+	Despite both the Movie and Book class' being initalized through main from a customer constructor, a default constructor is still 
+	needed since it still called in other function(s). In the operator+= for the Collection class, you will need to call the default 
+	constructor for either the Movie or Book class depending on the context. When creating a temporary array to hold both the old an new 
+	information you call the default constructor,
+
+//code
+	T* arr = new T[this->m_cnt + 1];
+
+//end of code
+	
+	This code, will create an array of type T (Movie or Book depending on the context), and will call the default constructor 
+	to be initalized. You could get away with not having a default constructor only if it was never called in any function but it still better 
+	practice to have one. Without a default constructor, this code, will not run since when you create a customer constructor, the compiler 
+	will not automatically add the default constructor by default. So, you need to add the default constructor.

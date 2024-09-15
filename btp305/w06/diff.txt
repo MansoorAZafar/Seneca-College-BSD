@@ -1,0 +1,14 @@
+In line number 46 of your output:
+The output should be:
+/images/pngs/elephant.png was found in fileystem
+^
+But your output is: 
+images/pngs/elephant.png was found in fileystem
+^
+
+Unmatched character details:
+The character in column 1 is supposed to be:
+  [/] ASCII code(47)
+but you printed
+  [i] ASCII code(105)
+

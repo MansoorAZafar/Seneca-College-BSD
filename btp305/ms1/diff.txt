@@ -1,0 +1,14 @@
+In line number 28 of your output:
+The output should be:
+001 | Armchair       | 654321 |   10 | Upholstered Wing Chair
+                       ^
+But your output is: 
+001 | Armchair       |   10 | 654321 | Upholstered Wing Chair
+                       ^
+
+Unmatched character details:
+The character in column 24 is supposed to be:
+  [6] ASCII code(54)
+but you printed
+  [Space] ASCII code(32)
+

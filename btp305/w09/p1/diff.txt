@@ -1,0 +1,14 @@
+In line number 22 of your output:
+The output should be:
+Read [2000005] bytes from the files; the content is the same.
+^
+But your output is: 
+ERROR: The output file doesn't have the correct binary content as the input file.
+^
+
+Unmatched character details:
+The character in column 1 is supposed to be:
+  [R] ASCII code(82)
+but you printed
+  [E] ASCII code(69)
+

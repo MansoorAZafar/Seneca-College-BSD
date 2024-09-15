@@ -1,0 +1,14 @@
+In line number 69 of your output:
+The output should be:
+            teh: 4 replacements
+                 ^
+But your output is: 
+            teh: 5 replacements
+                 ^
+
+Unmatched character details:
+The character in column 18 is supposed to be:
+  [4] ASCII code(52)
+but you printed
+  [5] ASCII code(53)
+

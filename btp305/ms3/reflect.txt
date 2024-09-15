@@ -1,0 +1,5 @@
+Thank you so much for the great semester, your teaching was always effective and you were amazing so thank you so much. 
+The only feedback I really have is I would've really enjoyed making the 'main' file or having the 'main' file do less and allow 
+us to build the connections between functions. For instance, instead of directly initalizing the LineManager, It would've been
+easier to understand its purpose and use case if we were the ones populating it and dealing with the interactions. Thank you so much
+for this semester.
