@@ -1,0 +1,74 @@
+Script started on Mon 03 Jan 2022 08:13:56 PM EST
+Take a Break - Coffee Shop
+==========================
+
+Enter the coffee product information being sold today...
+
+COFFEE-1...
+Type ([L]ight,[B]lend): l
+Grind size ([C]ourse,[F]ine): c
+Bag weight (g): 250
+Best served with cream ([Y]es,[N]o): y
+Ideal serving temperature (Celsius): 65.7
+
+COFFEE-2...
+Type ([L]ight,[B]lend): B
+Grind size ([C]ourse,[F]ine): F
+Bag weight (g): 500
+Best served with cream ([Y]es,[N]o): N
+Ideal serving temperature (Celsius): 70.0
+
+COFFEE-3...
+Type ([L]ight,[B]lend): L
+Grind size ([C]ourse,[F]ine): f
+Bag weight (g): 1000
+Best served with cream ([Y]es,[N]o): n
+Ideal serving temperature (Celsius): 80.5
+
+---+---------------+---------------+---------------+-------+--------------
+   |    Coffee     |    Coffee     |   Packaged    | Best  |   Serving
+   |     Type      |  Grind Size   |  Bag Weight   | Served| Temperature
+   +---------------+---------------+---------------+ With  +--------------
+ID | Light | Blend | Course | Fine |  (G) | Lbs    | Cream |   (C) |   (F)
+---+---------------+---------------+---------------+-------+--------------
+ 1 |   1   |   0   |    1   |   0  |  250 |  0.551 |   1   |  65.7 | 150.3
+ 2 |   0   |   1   |    0   |   1  |  500 |  1.102 |   0   |  70.0 | 158.0
+ 3 |   1   |   0   |    0   |   1  | 1000 |  2.205 |   0   |  80.5 | 176.9
+
+Enter how you like your coffee and the coffee maker equipment you use...
+
+Coffee strength ([M]ild,[R]ich): m
+Do you like your coffee with cream ([Y]es,[N]o): y
+Typical number of daily servings: 6
+Maker ([R]esidential,[C]ommercial): c
+
+The below table shows how your preferences align to the available products:
+
+--------------------+--------------------+-------------+-------+--------------
+  |     Coffee      |       Coffee       |  Packaged   | With  |   Serving
+ID|      Type       |     Grind Size     | Bag Weight  | Cream | Temperature
+--+-----------------+--------------------+-------------+-------+--------------
+ 1|       1         |         0          |      0      |   1   |      0
+ 2|       0         |         1          |      1      |   0   |      1
+ 3|       1         |         1          |      0      |   0   |      1
+
+Enter how you like your coffee and the coffee maker equipment you use...
+
+Coffee strength ([M]ild,[R]ich): R
+Do you like your coffee with cream ([Y]es,[N]o): N
+Typical number of daily servings: 10
+Maker ([R]esidential,[C]ommercial): R
+
+The below table shows how your preferences align to the available products:
+
+--------------------+--------------------+-------------+-------+--------------
+  |     Coffee      |       Coffee       |  Packaged   | With  |   Serving
+ID|      Type       |     Grind Size     | Bag Weight  | Cream | Temperature
+--+-----------------+--------------------+-------------+-------+--------------
+ 1|       0         |         1          |      0      |   0   |      1
+ 2|       1         |         0          |      0      |   1   |      0
+ 3|       0         |         0          |      1      |   1   |      0
+
+Hope you found a product that suits your likes!
+
+Script done on Mon 03 Jan 2022 08:15:32 PM EST

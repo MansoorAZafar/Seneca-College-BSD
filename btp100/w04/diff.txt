@@ -1,0 +1,14 @@
+In line number 69 of your output:
+The output should be:
+Do another shopping? (0=NO): 1
+^
+But your output is: 
+do another shopping? (0=NO): 1
+^
+
+Unmatched character details:
+The character in column 1 is supposed to be:
+  [D] ASCII code(68)
+but you printed
+  [d] ASCII code(100)
+

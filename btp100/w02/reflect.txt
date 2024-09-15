@@ -1,0 +1,59 @@
+****************************************************************************
+                              Reflection
+                             Workshop - #1
+Full Name  : Mansoor Ahmad Zafar
+Student ID#: 100503226
+Email      : mzafar15@myseneca.ca
+Section    : NBB
+
+Authenticity Declaration:
+I declare this submission is the result of my own work and has not been
+shared with any other student or 3rd party content provider. This submitted
+piece of work is entirely of my own creation.
+****************************************************************************
+1) Briefly explain why the cents2 variable doesn't properly represent the total cents of price2
+
+The reason the cents2 variable cannot properly output the correct value of price2 is due to the fact that floating
+points cannot store the excat values rather appromixate the value. In this case, the value is appromoixated
+to ~10.119 it isn't actually valued at 10.12 so the integer value ends up returning 1011 since the 9 isn't rounded.
+Let N repersent the number for the price. The fix to this, would be to simly add rounding to the equation 
+within the brackets of (priceN * 100). So the final equation would be (priceN * 100 + 0.5); 
+
+2)  demonstrate how the $20 denomination would be calculated
+
+example: total cost = 135.65 (converted to an int in my program so 13565)
+coins = totalCost; // coins = 13565
+numOfTwenty = coins / 2000;
+balanceOfTwenty = (int)((total % 2000) + 0.5);
+
+The reason I would be using this code for my program is due to how I made the program run. I started off by
+converting the total cost into a full integer. So if the cost was 135.65$ it would've been converted to 13565.
+This results in the price being in pennies instead of dollars. Afterwords, I would then calculate the number of
+twenty dollars by deviding the total cost as a full int by the number of pennies needed to make 20$, so in this case
+2000 pennies are needed to make 20$. Finally, I would calculate the balance by similarly modulating the total
+by 2000 and add 0.5 to round.
+
+3) show three different ways to display the total cents as dollars + cents
+*******
+Casting:
+int coins = 7245;
+double total;
+
+total = (double)coins / 100;
+printf("The total is %.2lf:", total);
+
+*********
+Promotion:
+int coins = 7245;
+double total;
+
+total = coins; total = total / 100;
+printf("The total is %.2lf:", total);
+
+**********
+Narrowing
+double coins = 72.45;
+int total;
+
+total = coins * 100;
+printf("The total is %.2lf:", (float)total / 100);

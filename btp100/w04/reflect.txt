@@ -1,0 +1,82 @@
+*****************************************************************************
+                               Reflection
+                             Workshop - #4
+Full Name  : 
+Student ID#: 
+
+Authenticity Declaration:
+I declare this submission is the result of my own work and has not been
+shared with any other student or 3rd party content provider. This submitted
+piece of work is entirely of my own creation.
+*****************************************************************************
+
+1.
+I believe the reason why selection is such a cricual part of programming is due to the fact that it allows a specific 
+ouput dependant on the users input rather than a general ouput for user input. 
+
+ex 1. if (tomatoesNum > 0) {.... 
+This if statement was used to determie whether the "time to pick products!" would apply to that specific grocery.
+This is due to the fact that if  the number was equal or less than 0 then you wouldnt show this fruit in the picking 
+products.
+
+ex 2. if (appleNeed == 0 || appleNeed == applesPicked)...
+This if statement was used to determine if the correct number of apples was picked or if there are no remaining
+amount of apples that need to be collected to reach the correct amount.
+
+ex 3. else if (applesPicked <= 0)...
+This if statement was used to determine if they picked less or equal to 0 apples. Which would result in a specific output
+
+2.
+A nested construct is when a construct (i.e if, while, do while, etc) is put inside another construct. So for example,
+if(condition 1){
+    if(condition 2){
+    }
+}
+
+Ex 1. 
+while (done != -1) {
+		prompt();
+		int appleNum, orangeNum, pearNum, tomatoesNum, cabbageNum;
+		//apples
+		printf("How many APPLES do you need? : ");
+		scanf_s(" %d", &appleNum);
+		while (appleNum < 0) {
+
+The way this nested construct works is first it would check if the value of the variable "done" does not equal one
+then if the value is not equal to 1, you would then get the amount of apples needed and check if the number
+of apples chosen is less than 0. If the value is less than 0 you would make it so while they enter a value less than 0
+you keep making them pick a value until it is equal or greater than 0.
+
+Ex 2.
+while (finished != 0) {
+	if (appleNeed == 0 || appleNeed == applesPicked) {
+	finished = 0;
+	// if no apples are needed or if the apples needed are equal to the amount picked
+	}....
+
+The way this nested construct works is by first saying while "finished" is not 0 do this command. This command refers
+to whats inside the first pair of curley brackets. So while the construct is not finished, check if there are no apples
+needed or if the apples needed are equal to the amount of apples picked.
+
+3.
+My faviourate iteration consturct has to be the for loop. The reason being is due to the simplicity and ease of usage.
+For loops are easier to manage and make logical sense over while and do while loops alongside being easier to end
+without using "break;" in either of the while loops. for both do-while and while loops they run on until the condition
+is met while a for loop has a set amount of times to run and will not continue forever (not including speicifc scenarios).
+For instance, if you wanted to print out "Hello world" 5 times for while and do while loops you would need to initalize a
+variable outside of the loop for it to end, alongisde a if statement while a for loop could be all done within the loop.
+Example.
+for(int i = 0; i < 5; i++){
+     printf("Hello world!\n");
+}
+do & do-while
+int count = 0;
+int x = 0;
+while(x != 1){
+      printf("Hello world!\n");
+      count++;
+      if(count == 4){
+	x = 1;
+       }
+}
+My solutuion doesn't use for loop due to the fact that there isn't a set amount of times it repeats. It repeats until the user quits.

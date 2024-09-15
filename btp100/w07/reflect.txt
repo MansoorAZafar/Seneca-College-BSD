@@ -1,0 +1,42 @@
+****************************************************************************
+                              Reflection
+                             Workshop - #7
+Full Name  : Mansoor Ahmad Zafar
+Student ID#: 100503226
+Email      : mzafar15@myseneca.ca
+Section    : NBB
+
+Authenticity Declaration:
+I declare this submission is the result of my own work and has not been
+shared with any other student or 3rd party content provider. This submitted
+piece of work is entirely of my own creation.
+****************************************************************************
+
+1) benefits from using user defined types?
+
+The benefits from using user-defined structures would be that it enables me to have an easier time passing values
+through functions. Alongside this, it also allows for an easier time coding results due to lack of concern of specific
+values rather we only need to focus on general scenarios. For my first example, when I printed the "baseCase" I just
+had to pass in the GameInfo structure rather than passing in a multiude of variables to achieve the same result. 
+For my other example, I wrote the code "while (player.lives > 0)..." User input makes this easier since I don't have to
+worry about keeping the while loop going on for a either a too short or too long amount of time. Rather it is dependant
+on the user's input.
+
+2) How would you keep a history of games played and endgame results? 
+
+The first logical change I would make would have to be with firstly with the conditon to continue playing the game.
+Instead of having the only condition being while the player has lives greater than 0, I would have to add another
+while loop or loop to continue the game until the player chooses to quit. Alongside this, the second major logical
+change I would have is the addition of two arrays being, score and history. History would store the games played
+while the score array would keep in store the endgame results. Both of these arrays would go under the "GameInfo"
+structure due to them being directly influenced and resulted from the game. 
+
+3) What part was the most difficult? 
+
+The part that I had the most difficutly with, would have to be the result of landing on the same sport multiple times.
+I had kept running into the same logical error where the message prompt when landing on a duplicate spot wouldn't
+occur rather the default first time message would occur. The way I had overcome this logical error was by adding
+breaks and checkers in my code to see what would happen in certain scenarios and what was actually being
+reached in the program. I had figured out that my storing of moves was flawed, it kept reading the wrong move and
+resulted in the default return message, rather than checking all the past moves made and then returning the duplicate
+landing message. 

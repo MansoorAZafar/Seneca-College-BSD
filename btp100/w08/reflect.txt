@@ -1,0 +1,51 @@
+****************************************************************************
+                              Reflection
+                             Workshop - #8
+Full Name  : Mansoor Ahmad Zafar
+Student ID#: 100503226
+Email      : mzafar15@myseneca.ca
+Section    : NBB
+
+Authenticity Declaration:
+I declare this submission is the result of my own work and has not been
+shared with any other student or 3rd party content provider. This submitted
+piece of work is entirely of my own creation.
+****************************************************************************
+
+1) How would you optimize the bytes used in the ReportData structure?
+
+	Assuming that each integer takes 4 bytes, characters takes 1 byte and doubles takes 8 bytes, the total
+bytes used in the ReportData structure is 4+8+4+8+8+4+8+8+8 = 60 bytes. Now, if you were to remove the duplicate
+variables that is used in both CatFoodInfo and Report Data (so the sku, price, calories and lbs/weight in lbs) then, 
+you would effectively minimize the amount of bytes used. It would now only be 8+4+8+8+8 = 36 bytes rather than
+the 60 bytes used originally. 
+	As for the way we could imporve the passing of information, would be both the reportData stucture and
+the CatFoodInfo would be sent to the respective functions. For example, the displayReportData function. Instead of 
+only having the parameter of reportData structure, it would also have the CatFoodInfo structure. When displaying,
+instead of only calling on the report data, we would be calling on both the reportData and CatFoodInfo structure. For
+example, (Let cfi = CatFoodInfo & Let rp = ReportData)
+printf("%07d %10.2lf %10.1lf %10.4lf %9d %8d %8.1lf %7.2lf %7.5lf", cfi[i].sku, cfi[i].price, cfi[i].lbs, rp[i].kg,
+		rp[i].grams, cfi[i].calories, rp[i].totalServing, rp[i].pricePerServing, rp[i].pricePerCalories);
+
+2) How would you improve the ReportData structure and explain the modifcation to the code.
+
+	As mentioned in the last question, I would remove the duplicate members from the ReportData structure. 
+By removing the duplicate members not only would you save some bytes but also, you would have to declare and 
+initalize less variables. So for example, the ReportData structure would look like this,
+
+typedef struct{
+	double kg;
+	int grams;
+	double totalServing;
+	double pricePerServing;
+	double pricePerCalories;
+} ReportData;
+
+	Now, for this to be functional with the dsplayReportData function, I would firstly change the parameters
+to instead of only taking in the ReportData structural array, it would also take in the CatFoodInfo structural array.
+As for how I would change the print statement, would be the same as I mentioned earlier :
+
+(Let cfi = CatFoodInfo & Let rp = ReportData)
+printf("%07d %10.2lf %10.1lf %10.4lf %9d %8d %8.1lf %7.2lf %7.5lf", cfi[i].sku, cfi[i].price, cfi[i].lbs, rp[i].kg,
+		rp[i].grams, cfi[i].calories, rp[i].totalServing, rp[i].pricePerServing, rp[i].pricePerCalories);
+

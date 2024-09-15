@@ -1,0 +1,14 @@
+In line number 165 of your output:
+The output should be:
+No more LIVES remaining!
+^
+But your output is: 
+no more LIVES remaining!
+^
+
+Unmatched character details:
+The character in column 1 is supposed to be:
+  [N] ASCII code(78)
+but you printed
+  [n] ASCII code(110)
+

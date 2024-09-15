@@ -1,0 +1,36 @@
+*****************************************************************************
+                              Reflection
+                          Workshop - #3 (P2)
+Full Name  : Mansoor Ahmad Zafar
+Student ID#: 100503226
+Email      : mzafar15@myseneca.ca
+Section    : NBB
+
+Authenticity Declaration:
+I declare this submission is the result of my own work and has not been
+shared with any other student or 3rd party content provider. This submitted
+piece of work is entirely of my own creation.
+*****************************************************************************
+
+1. The most difficult line of code I had to write would have to be,
+((c_maker == 'r' || c_maker == 'R') && (c_1_temp >= 60.0 && c_1_temp <= 69.9)) || ((c_maker == 'c' || c_maker == 'C') && c_1_temp >= 70.0));
+/*
+c_maker = coffee maker 
+c_1_type = coffee #1 type
+*/
+The reasoning of why this line of code was the hardest to code has to be due to the range of the temperature values. The requirement was having the temperature between 60 - 69.9 degrees celsius, 
+with that information, I had to find a way to create a domain to check if the temperature was inbetween these values. This was the most difficult due to the thinking required of 
+what expression should be used to check if the temperature value is between these values. At first I had tried to use a or statement saying if c_1_temp >= 60 || c_1_temp <= 69.9 but had quickly realized
+that this wouldn't work. This is due to the statement being an or statement rather than an AND statement. It will pass as true if either condition is true whilst the goal was to have both conditions true.
+Upon coming at that conclusion, I had changed it to an AND statement making it have to be inbetween the range and not above or below.
+
+2. ( c_1_temp >= 60.0 && c_1_temp <= 69.9) 
+
+1st method : with demorgans law- !(c_1_temp < 60 || c_1_temp >= 70)   
+2nd method: !(c_1_temp < 60) && !(c_1_temp <70)
+
+
+3. The reason the value of average product price was stored while the conversion from celsius to Fahrenheit wasn't is due to how the conversion of both equations works. In order for for you to have a 
+variablethat converts celcius to fahrenheit you would need a method that returns an integer and convert that to an variable. Alongside this, there also is the fact that the average product 
+price is a unchanging number while the conversive number can change. I.e product price = 5 while the conversion can = 5 , 6 , 7 dependent on each of the products 1-3.
+

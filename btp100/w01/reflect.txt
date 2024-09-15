@@ -1,0 +1,30 @@
+****************************************************************************
+                              Reflection
+                             Workshop - #1
+Full Name  : Mansoor Ahmad Zafar
+Student ID#: 100503226
+Email      : mzafar15@myseneca.ca
+Section    : NBB
+
+Authenticity Declaration:
+I declare this submission is the result of my own work and has not been
+shared with any other student or 3rd party content provider. This submitted
+piece of work is entirely of my own creation.
+****************************************************************************
+1) What have you learned in completing this workshop (do not leave anything out!)
+
+Through the completation of the first workshop, I have learned how to use newline (\n), tabs (\t), printf and the creation of the structure for the main function.
+This first workshop asked us to print out both expressions/quotes, unique symbols and tabs. In order to complete this, I had to utilize the escape sequences 
+such as new line, tab, backslash or even the % sign in order to create the desired outcome. Alongside this, this also allowed for me to understand how to format 
+the main function. I had learned to use "void" as the parameters and precede the main with "int" in order for the program to run without any warning appearing.
+
+2) Briefly describe what SSH is and how you used it in this workshop
+
+Secured Socket Shell (SSH), is a program used to connect with the servers of linux for example, in this instance, we connected with the Seneca server through
+the "matrix" using the program PuTTy. This was used to not only connect to the "matrix" but mainly used to both test my code and submit my code.
+
+3) Briefly describe what SFTP is and how you used it in this workshop
+
+Secured File Transfer Protocol (SFTP), is a program used for transferring files, acessing files and slight altering for files. I had utilized WinSCP in this instance
+in order to transfer my source code file from my deivce to the "matrix". Alongside this, I had also used it to view the proper end result, slightly alter my code file
+and test my program.

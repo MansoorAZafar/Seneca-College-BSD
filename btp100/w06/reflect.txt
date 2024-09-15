@@ -1,0 +1,37 @@
+****************************************************************************
+                              Reflection
+                             Workshop - #6
+Full Name  : Mansoor Ahmad Zafar
+Student ID#: 100503226
+Email      : mzafar15@myseneca.ca
+Section    : NBB
+
+Authenticity Declaration:
+I declare this submission is the result of my own work and has not been
+shared with any other student or 3rd party content provider. This submitted
+piece of work is entirely of my own creation.
+****************************************************************************
+
+1) How did I link related data? What was they 'key' to accomplish this? 
+
+When creating the parallel arrays for storing the price, priority and financed of the products, I had to ensure that the
+the length of the array would be able to store up to the max amount of items this was the key to making it work. 
+So I decided to set the values of the array length to the max number of items of products that can be created. There 
+remains blank space in the array, however, I can simply just not acess it rather than having an array that has too 
+little amount of length to store the values. For instance, in my code, the initialization of the priority's 
+was done by doing int need[MAX_LENGTH]; *MAX_VALUE was defined at the start with the max value given of 10.*
+
+2) why is it common practice to inialize the iterator to 0?
+
+I believe it is common practice to do this since it allows if you were to add a value to it, you would be adding the
+value to essientially nothing. For instance, in my code, I do items[i] = itemCost; rather than doing items[i] = items[i]
++ itemCost; This is since I'd be adding the cost of the items to esseintally something that doesn't exist. 
+
+3) How would I describe an array to a child?
+
+I would describe it as a toy box. A toy box can 'store' their toys while the amount being dependant on the size. So
+I would say, an array acts as a toy box. You can put your toys inside the box or you can 'acess'/take some of the toys
+out of the box. However, you can't take toys from the box if there are no toys in the box. As well as your 'box' can 
+only hold a certain amount of toys. If you want more, you would have to make a larger box. 
+TLDR: 
+Bigger box means more toys and you can take and put inside the box at your want. 

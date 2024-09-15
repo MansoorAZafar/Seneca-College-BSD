@@ -1,0 +1,38 @@
+*****************************************************************************
+                              Reflection
+                          Workshop - #5
+Full Name  : Mansoor Ahmad Zafar
+Student ID#: 100503226
+
+Authenticity Declaration:
+I declare this submission is the result of my own work and has not been
+shared with any other student or 3rd party content provider. This submitted
+piece of work is entirely of my own creation.
+*****************************************************************************
+1)
+
+The two possible selection constructs that could've been used to map the month integer to the first 3 letters
+of the month would have been done with either a if statement or a case statement.
+if(month == 11){
+printf("NOV");
+}else if(month == 12){
+printf("DEC");
+}
+Or
+case(month){
+case 11: printf("Nov"); break;
+case 12: printf("Dec"); break;
+}
+
+2)
+
+The three types of iteration constructs are for, while and do-while loops. The one I used for validation of the values
+was the while loop. I chose the while loop since I didn't want to run the method first rather I wanted the condition
+to be checked first. This is since the while loop wouldn't have to run if the value was already valid.
+
+3)
+
+What I did to test and debug my program was first black box tests. If the code had any syntactic errors, visual
+studio would point them out and show where the error was. While for semantic errors, I would run the program and
+note at what section the program shows the wrong output. Upon finding where in the test run the issue lies in,
+I would refer back to my code and look at the section which deals with the specific part.

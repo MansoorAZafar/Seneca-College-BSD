@@ -1,0 +1,14 @@
+In line number 47 of your output:
+The output should be:
+Sales INCLUDING tax
+               ^
+But your output is: 
+Sales INCLUDING	tax
+               ^
+
+Unmatched character details:
+The character in column 16 is supposed to be:
+  [Space] ASCII code(32)
+but you printed
+  [Tab (\t)] ASCII code(9)
+

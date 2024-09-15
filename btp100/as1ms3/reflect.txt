@@ -1,0 +1,46 @@
+7****************************************************************************
+                              Reflection
+                             Assignment - #1
+Full Name  : Mansoor Ahmad Zafar
+Student ID#: 100503226
+Email      : mzafar15@myseneca.ca
+Section    : NBB
+
+Authenticity Declaration:
+I declare this submission is the result of my own work and has not been
+shared with any other student or 3rd party content provider. This submitted
+piece of work is entirely of my own creation.
+****************************************************************************
+1) 
+During this milestone I was required to make atleast 3 different functions that were not given, I had made
+the getDate, getTime and alreadyExists methods. Firstly, the getDate method was used to get the date for
+a specific patient. Inside the code it had validation points alongside contained the respective code and print
+statement for each of the 12 months. After getting the info, it would set the date for the specificed patient.
+Then, the getTime method similarly to the getDate method would set and get the times for the specific appointment.
+Inside the function there were similarly validation alongside the getting and setting of the hour and mnute. Finally,
+the alreadyExists method was used to determine if the appointment being set had already existed. In this
+method, it also allowed for the checking for if the appointment even exists. This was helpful for the removeAppointment
+method since I could check if it existed. Which allowed for me to determine wether a appointment could be deleted or not.
+
+2)
+My addAppointment method not including the comments is only made up of 17 lines. In this method
+I had started by creating a count variable to count how many appointments are actually existing. This was done
+with a for loop to check if they had a patient number that was not 0. Afterwords, I had used the two methods that I had created earlier
+the getDate and getTime method to set the date and time for the appointment. Afterwords, I checked if the apppointment
+already existed. I had checked this was my alreadyExists method. If the appointment already existed, they would 
+have to re-enter the date and time. The major pattern I had noticed was the fact that whenever the 
+appointments were displayed, they were displayed while being sorted. This meant I could have the newly
+created appointment be at the last existing appointment+1 if the count wasn't full
+
+3) breakdown of the development of coding.
+Throughout coding this milestone I had decided to break down my work into sections. Firstly, I had decided
+to get a full grasp and understand files, I had started by playing around and testing with the files given and
+creating files. This was done for my understanding of files, which allowed for me to work on the rest of the code
+since I understood how the file was being read and why certain outputs were being displayed. Afterwords,
+I had worked on first the viewAllAppointments method. For this method, the concept was similar to the previous
+displayAllPatient method. The idea more or less the same while the only thing to differ is the code written.
+I had used the same concepts I had used in displayAllPatients to enact the same idea for viewAllAppointments.
+Afterwords, the viewAppointmentSchedule was esstainly viewAllAppointments but only for a single case. So 
+turning the idea from viewAllAppointments to only viewing a certain amount was simple. Then, my time was
+spent on both addAppointment and removeAppointment. Both of these concepts are very similar in idea to
+the previous addPatient and removePatient. Therefore, I only spent a day modifying my code to match this scenario.
