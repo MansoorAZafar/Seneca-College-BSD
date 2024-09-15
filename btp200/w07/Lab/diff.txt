@@ -1,0 +1,14 @@
+In line number 111 of your output:
+The output should be:
+   Name: Scooby(C); 10 days old
+                    ^
+But your output is: 
+   Name: Scooby(C); 2 days old
+                    ^
+
+Unmatched character details:
+The character in column 21 is supposed to be:
+  [1] ASCII code(49)
+but you printed
+  [2] ASCII code(50)
+

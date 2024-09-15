@@ -1,0 +1,10 @@
+	Throughout this workshop (workshop 04), I have learned the different usages and interactions of constructors and destructors in c++. Firstly, I had seen the usage,
+creation and overload of a constructor. For example, from the lab section of this workshop, we had to create a constructor and an overloaded constructor for both the SoccerTeam
+and Tournenments class's respectively. Our first constrcutor always had no parameters and so would act as a setEmpty function meaning, it would set the default values of the
+class to an base state if called upon. In our DIY section, we had to call upon the the default constructor and so I learned that to call a default constructor you simply just had
+to have the identifer of the class followed by the name and just an empty pair of curly brackets ({}). Ontop of this, I had learned how to properly use and overload the constructor
+since we were required to do so in the workshop. Within the overloaded constructor rather, than setting all the values I realized that you can simply just call upon the other
+functions used to set relative data. Secondly, I learned of destructors. Unlike the constructor, destructors I learned cannot be overloaded and are simply used to 'delete' and
+clear out any excess memory/data. I would also like to mention, this is also the part that I had encountered the most difficulty in was trying to figure out how to set 
+the character arrays to certain name lengths and not having the buffer contain extra information. I solved this issue by using the getchar() function by reading all the 
+buffer but only storing up to 40 characters for the name.

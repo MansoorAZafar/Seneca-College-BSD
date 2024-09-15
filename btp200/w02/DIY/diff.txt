@@ -1,0 +1,14 @@
+In line number 17 of your output:
+The output should be:
+ Enter likes_count: 595
+                    ^
+But your output is: 
+ Enter likes_count: 
+                     ^
+
+Unmatched character details:
+The character in column 22 is supposed to be:
+  [5] ASCII code(53)
+but you printed
+  [Empty Line] ASCII code(0)
+

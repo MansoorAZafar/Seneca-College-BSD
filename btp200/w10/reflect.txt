@@ -1,0 +1,23 @@
+// Mansoor Ahmad Zafar | mzafar15@myseneca.ca | 100503226 | April 11th, 2023
+//
+// I have done all the coding myself and only copied the code
+// that my professor provided to complete my workshops and assignments.
+
+
+	Throughout this workshop (10) I got to learn about templates and about their syntax, usage and implementation. Firstly, I learnt about the concept of 
+templates in the first place. I learned of how templates can be used to reduce overloading functions and similar code written. For instance, if you had to create
+a sort function, it could be only be specific for one data-type not all types however, with templates, the type is interchangable and isn't type specific. Then
+I learnt about the syntax of templates and of how they use the greater and less than sign to encapsalate the 'type' that will be provided. It's like putting the
+paramaters for a regular function but rather than identifying the type and using round brackets you encapsalate it within <> and refer to types as "typename" [identifier name].
+I learnt of that when using templates you don't implement a cpp file rather, you only implement the header file and have the code be only written in the header file.
+Finally, I leanrt of how you implement the encapsalated 'typenames' into functions. After writing the syntax for making a template, you would write you function
+as you usually would but it would differ in the regard of having unknown/interchangable paramters with the type of of your typename identifier name. For example,
+in our validate function it went something like this: 
+template <typename A, typename B>
+bool validate(const A minVal, const B* arr, ...){
+~~~~
+}
+
+This started with the syntax for defining a template as you can see, I made two identifiers since a single typename can only be 1 same value. What I mean is,
+if your 'A' is an int you cannot re-use it to define something other than type A. If you do, (A x, A y). whatever type x is, y has to be the same type as x it cannot
+be of a different type. To get a different type, you need to create a new typename identifier. Then, you just write the function as you normally would. 

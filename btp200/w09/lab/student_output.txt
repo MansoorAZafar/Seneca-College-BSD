@@ -1,0 +1,85 @@
+Script started on Fri 31 Mar 2023 11:47:12 AM EDT
+==81446== Memcheck, a memory error detector
+==81446== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==81446== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==81446== Command: ws.exe
+==81446== 
+Empty Contact: ><
+Copy and paste the following data entries...
+Enter the following (Correct Data Entry):
+Homer,Jay,Simpson
+70 the pond road,North York,ON,M3J3M6
+
+Name and address
+> Homer,Jay,Simpson
+70 the pond road,North York,ON,M3J3M6
+OK!
+Contact:
+Homer Jay Simpson
+70 the pond road
+North York ON
+M3J 3M6
+
+
+Enter the following (With Bad Province):
+Homer,Jay,Simpson
+70 the pond road,North York,ONT,M3J3M6
+
+Name and address
+> Homer,Jay,Simpson
+70 the pond road,North York,ONT,M3J3M6
+Empty Contact: ><
+
+Enter the following (With Bad Postal Code):
+Homer,Jay,Simpson
+70 the pond road,North York,ON,M3J 3M6
+
+Name and address
+> Homer,Jay,Simpson
+70 the pond road,North York,ON,M3J 3M6
+Empty Contact: ><
+
+Enter the following (With Bad City):
+Homer,Jay,Simpson
+70 the pond road,,ON,M3J3M6
+
+Name and address
+> Homer,Jay,Simpson
+70 the pond road,,ON,M3J3M6
+Empty Contact: ><
+
+Enter the following (With Bad Street Address):
+Homer,Jay,Simpson
+,North York,ON,M3J3M6
+
+Name and address
+> Homer,Jay,Simpson
+,North York,ON,M3J3M6
+Empty Contact: ><
+
+Name and addresses in file: 
+Homer Jay Simpson
+70 the pond road
+North York ON
+M3J 3M6
+
+Fred Soley
+1 York Gate Blvd
+North York ON
+M3N 3A1
+
+John Al Doe
+1750 Finch Ave E
+North York ON
+M2J 2X5
+
+==81446== 
+==81446== HEAP SUMMARY:
+==81446==     in use at exit: 0 bytes in 0 blocks
+==81446==   total heap usage: 166 allocs, 166 frees, 85,188 bytes allocated
+==81446== 
+==81446== All heap blocks were freed -- no leaks are possible
+==81446== 
+==81446== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+Script done on Fri 31 Mar 2023 11:47:50 AM EDT

@@ -1,0 +1,26 @@
+// Mansoor Ahmad Zafar | mzafar15@myseneca.ca | 100503226 | March 20th, 2023
+//
+// I have done all the coding myself and only copied the code
+// that my professor provided to complete my workshops and assignments.
+
+
+	Throughout this workshop (07) I have come to a understanding of inheritance and its use alongside,
+the interactions it has between classes. Firstly, I learned about the differnet types of inheritance's: public,
+private and protected. Whenever inheriting a class, if you want access to the base class's public members
+and or the protected members you would assign the derivied class with the tag of ": public 'base class'".
+Whereas the protected tag will only give you access to the protected members and where the least used
+one the private will just have it so the derivied class has those members but cannot do anything major with them.
+Secondly, I learned about calling a base class's constructor. When I made the constructor for "Fish" the
+properties that were derivived from pet like name and age and were taken from the constructor could be passed
+from the Fish constructor to the Pet constructor. Thirdly, I learned about accessing the member functions
+from the base class. All the functions from the base class are relative from the relative class that calls it,
+I saw this from both the constructor and other bits of code. For example, whenever walking the dog, you
+would have to check if it was alive first, so you would just call the isAlive() function from the base class and 
+that function would be relative to the current Dog object. Finally, I learned about helper function interactions.
+I learned that each class needs its own set of helper functions since while each class is connected to their base class
+the helper functions are not relative towards everything rather they are only relative towards their own class. Also, I would like to add
+that the function I had encountered the largest amount of difficulty with would've been the operater++ for Dog.cpp.
+I kept encountering an issue where the health would be wrong which lead to the wrong values in other parts but, this all
+happened this I hadn't accounted for number of walks correctly. I had originally made it so whenever the animal is dead you set the
+number of walks to 0 however this still lead to issues. To resolve this and fix the entire program, I simply just made it so after each day
+the number of walks is set to 0.

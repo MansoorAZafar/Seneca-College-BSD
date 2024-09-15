@@ -1,0 +1,21 @@
+// Mansoor Ahmad Zafar | mzafar15@myseneca.ca | 100503226 | March 12th, 2023
+//
+// I have done all the coding myself and only copied the code
+// that my professor provided to complete my workshops and assignments.
+
+	Throughout this workshop (06) I have come to a better understanding of dynamic memory, checking for self assessments, the copying procedure
+and'of' and or 'if' streams. Firstly, in my code I had encountered a memory leak within the load function. In this function even though I had written 
+the procedure correctly for deallocating and reallocating the memory for an object, I had my set-empty function incorrect which led to a memory leak. 
+Within my set-empty function, I had written a standard set-empty whereas all the members get set to an 'empty' state; however, the issue was within 
+the context of my load function if a certain condition failed it would call the set-empty. The issue was that my set-empty never deleted the pointer
+ called collection rather just set it to nullptr meaning if the condition failed I would get a memory leak. Secondly, I had learned and used the
+ concept of checking for a self assignment. This is when the client is trying to copy the data values from object a to itself (object a). In order 
+to check for a self assessment I learnt you just have to do a check ensuring that your lhs isn't not equal to your rhs and if it is, you just return
+ the current object. Thirdly, I learnt and used the copy procedure. Within this procedure you deallocate the current memory for the collection then 
+followed by re allocating the memory with the size of the collection size from the rhs. Then followed by setting the values from the rhs to the 
+current object. Finally, I have come to a better understanding of if and os streams. For example, within the helper >> operator after calling display,
+ you also need to have the parameter of the current os stream or you will have an improper output since if you didn't, you're sending a stream with 
+nothing but cout rather than with information. Alongside this, I learnt to use the if stream and os stream to both read and write into a file to load
+ information and save information into respective files. Also, I would like to mention that the problems I had encountered such as the memory leak and
+ improper output from not inputting the os stream were also the challenges that I faced in this workshop. These challenges were resolved with the help
+ of my professor Dr. Cornel.

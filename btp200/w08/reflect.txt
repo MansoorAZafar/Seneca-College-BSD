@@ -1,0 +1,18 @@
+// Mansoor Ahmad Zafar | mzafar15@myseneca.ca | 100503226 | March 27th, 2023
+//
+// I have done all the coding myself and only copied the code
+// that my professor provided to complete my workshops and assignments.
+
+	Throughout this workshop (08) I have come to a better understanding of virtual functions, abstract class's, inheritance and 
+streams. Firstly, I learnt about virutal functions. I leanrt to declare a virtual function, you have to add the virtual keyword before the function return type and identifer.
+Then, I learned of how this is actually the easiest way of achiving polymorphism, to get polymorphism, you have to have a virtual function in the base class and the easiest function to make
+virtual would be the destructor. Afterwords, I learned of a pure virtual function also known as an abstract function. By adding the equals sign
+followed by the number 0 you would have a function that would exist in the derivied class's but not need any implementation for the base class.
+After, I learned of how to delete/prevent a function from happening. I learned that by adding the equals sign followed by the keyword 'delete'
+would result in a function being inaccessiable/unable to be ran. Next, I learned about the class interactions with multiple inheritance. For example,
+the VRVideo class was a derived class from the Video class which was derived from the Media class, which meant, the constructor for video class was created first then the 
+constructor for the vrvideo class was made. However, for the destructor, it went in the opposite order, whereas, vrvideo called its destructor first and then video called its destructor after.
+followed by A callings its destructor. Finally, I learned about streams better. I learned of how to better read until a new line by having a character array of x length slowly take in
+all the data up to its length -1 from the input stream and copy and add it onto the m_equipment. Also, I would like to mention, the part I had encountered the largest amount of difficulty in 
+was the reading the vrvideo name. I had no problem of reading the data from the stream however, I kept encountering problems regarding putting it together into m_equipment. I had solved this by cross
+referencing the code taught by our professor, Dr Cornel on the topic of using a character array to slowly go through a stream and read the data from the stream and store it onto a dynamically allocated pointer. 

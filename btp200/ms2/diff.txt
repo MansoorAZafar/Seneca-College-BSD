@@ -1,0 +1,14 @@
+In line number 101 of your output:
+The output should be:
+Read From file:  Cannot read hour entry(2020/10/11, 00:00)
+                 ^
+But your output is: 
+Read From file:  2020/10/11, 00:00
+                 ^
+
+Unmatched character details:
+The character in column 18 is supposed to be:
+  [C] ASCII code(67)
+but you printed
+  [2] ASCII code(50)
+

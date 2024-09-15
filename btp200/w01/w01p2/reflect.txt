@@ -1,0 +1,12 @@
+	Throughout this workshop I had learned of many different concepts and practices. Firstly, I had learnt proper
+placement of variables/data in different scopes. For instance, in part 1, you had to place the FILE* fp
+initalization in the correct spot or else you'd run into errors. Then, I had come to learn about better usage of
+references. In my DIY part, all the parameters where apprioprate are references rather than just sending
+a regular copy of the data. For example, my sort function, takes the reference of the variable "length" rather
+than making and using a copy of the variable length. Alongside this, I have come to a better understanding
+of the namespaces. In both workshops, the code you write will be contained in a namespace called "sdds".
+And in the main, you will have the using namespace "sdds". I have come to understand more of how they work
+alongside the implementation. Finally, I have learned the importance and usage of header gaurds. I have
+learned the implementation alongside errors that can accour if not added. Also, I would like to mention,
+the issue that I had struggled most with was figuring out where to place the code and which c plus plus
+files and header files would have which respective functions and data.

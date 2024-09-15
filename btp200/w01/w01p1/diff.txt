@@ -1,0 +1,14 @@
+In line number 9 of your output:
+The output should be:
+Enter the movie genre to start the search: Anim
+                                           ^
+But your output is: 
+Enter the movie genre to start the search: anim
+                                           ^
+
+Unmatched character details:
+The character in column 44 is supposed to be:
+  [A] ASCII code(65)
+but you printed
+  [a] ASCII code(97)
+

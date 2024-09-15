@@ -1,0 +1,46 @@
+Script started on Sun 19 Mar 2023 02:32:57 PM EDT
+==94582== Memcheck, a memory error detector
+==94582== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==94582== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==94582== Command: ws.exe
+==94582== 
+Nothing should be printed between these two lines
+------------------------------------
+------------------------------------
+Valid Videos: 
+------------------------------------
+VRVideo requires Head set
+Video Length = 200
+Animation is in 3-D
+Video Length = 100
+------------------------------------
+Enter the following:
+>120,Oculus Quest 2
+>120,Oculus Quest 2
+The following outputs should be the same
+The correct output:
+VRVideo requires Oculus Quest 2
+Video Length = 120
+Your output:
+VRVideo requires Oculus Quest 2
+Video Length = 120
+Enter the following:
+>500,3
+>500,3
+The following outputs should be the same
+The correct output:
+Animation is in 3-D
+Video length = 500
+Your output:
+Animation is in 3-D
+Video Length = 500
+==94582== 
+==94582== HEAP SUMMARY:
+==94582==     in use at exit: 0 bytes in 0 blocks
+==94582==   total heap usage: 9 allocs, 9 frees, 72,848 bytes allocated
+==94582== 
+==94582== All heap blocks were freed -- no leaks are possible
+==94582== 
+==94582== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+Script done on Sun 19 Mar 2023 02:33:18 PM EDT

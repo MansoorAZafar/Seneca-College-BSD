@@ -1,0 +1,24 @@
+// Mansoor Ahmad Zafar | mzafar15@myseneca.ca | 100503226 | April 16, 2023
+//
+// I have done all the coding myself and only copied the code
+// that my professor provided to complete my workshops and assignments.
+
+I felt as if the milestones as a whole were fine. None of them took too much time and weren't that difficult to understand but the only feedback I would have to give
+is just a nitpick but for submitting milestone 5 parts 1-5 the output should also include what we need to type. In milestones 1-4 they all have the text that we
+need to type so we don't have to look back at the correct_output.txt but can just stay on the code. I.E
+MS4
+Enter the following:
+Sku
+> 1111
+Name
+> Milk
+Price
+> 3.99
+Taxed ?
+(Y)es / (N)o : n
+Quantity
+> 10
+Expiry date(YYYY/MM/DD)
+> 2023/04/10
+
+This text of telling you what to enter isn't here for ms5 but thats about it.

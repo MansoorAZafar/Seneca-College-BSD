@@ -1,0 +1,52 @@
+Script started on Fri 03 Feb 2023 11:06:35 AM EST
+==69978== Memcheck, a memory error detector
+==69978== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==69978== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==69978== Command: ws
+==69978== 
+**********Create Department TEST START**********
+Department School of Software development details:
+Budget: 15347 and the number of projects in progress is: 1
+Below are the details of the projects we are currently working on: 
+Project Base will cost a total of 551.55 C$.
+**********Create Department TEST END**********
+
+**********Update Name TEST Start**********
+Department School of Software development and design details:
+Budget: 15347 and the number of projects in progress is: 1
+Below are the details of the projects we are currently working on: 
+Project Base will cost a total of 551.55 C$.
+**********Update Name TEST END**********
+
+**********Update Budget TEST Start**********
+Department School of Software development and design details:
+Budget: 20903 and the number of projects in progress is: 1
+Below are the details of the projects we are currently working on: 
+Project Base will cost a total of 551.55 C$.
+**********Update Budget TEST END**********
+
+**********Expenses and Remaining Budget TEST Start**********
+Our current total Expenses are: 551.55
+Our remaining budget is: 20351.4
+**********Expenses and Remaining Budget TEST END**********
+
+**********Add Project TEST START**********
+Department School of Software development and design details:
+Budget: 20903 and the number of projects in progress is: 5
+Below are the details of the projects we are currently working on: 
+Project Base will cost a total of 551.55 C$.
+Project Synergy will cost a total of 5041.55 C$.
+Project Mecha will cost a total of 2925.99 C$.
+Project Chroma will cost a total of 3995.45 C$.
+Project Force will cost a total of 6988.45 C$.
+**********Add Project TEST END**********
+==69978== 
+==69978== HEAP SUMMARY:
+==69978==     in use at exit: 0 bytes in 0 blocks
+==69978==   total heap usage: 8 allocs, 8 frees, 73,377 bytes allocated
+==69978== 
+==69978== All heap blocks were freed -- no leaks are possible
+==69978== 
+==69978== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+Script done on Fri 03 Feb 2023 11:06:36 AM EST

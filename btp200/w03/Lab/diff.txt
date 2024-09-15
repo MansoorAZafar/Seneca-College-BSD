@@ -1,0 +1,14 @@
+In line number 35 of your output:
+The output should be:
+Budget: 20903 and the number of projects in progress is: 5
+                                                         ^
+But your output is: 
+Budget: 20903 and the number of projects in progress is: 6
+                                                         ^
+
+Unmatched character details:
+The character in column 58 is supposed to be:
+  [5] ASCII code(53)
+but you printed
+  [6] ASCII code(54)
+

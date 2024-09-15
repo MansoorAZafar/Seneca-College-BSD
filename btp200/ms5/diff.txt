@@ -1,0 +1,14 @@
+In line number 66 of your output:
+The output should be:
+>>>> DONE!...................................................................
+                                                                           ^
+But your output is: 
+>>>> DONE!.................................................................
+                                                                            ^
+
+Unmatched character details:
+The character in column 77 is supposed to be:
+  [.] ASCII code(46)
+but you printed
+  [Empty Line] ASCII code(0)
+

@@ -1,0 +1,16 @@
+	Throughout this workshop (workshop 02), I have learned the different and interesting effects and uses
+of dynamic memory allocation, scopes and arrays. Firstly, I had learned that to 'empty' an array, you just have
+to set the '0'th element to '\0'. For example, in my EmptyRecord that took the customers, to set the user_name
+to empty, all I did was set the 0(first)th element equal to the null terminator(\0). Secondly, I had learned the 
+importance of setting data variables to 0. When empting the data memebers of Customers and CustomersRecord
+if I had forgotten to even set one of the dataMembers to 0/null then the code I wrote wouldn't work. However, 
+when I had set the variables to 0/Null the code had started to work. Thirdly, I had learned the importance of references 
+and having an overloaded constructer. For example, with the display that takes in the CustomersRecord paramter,
+you cannot just do a cout of the record at i'th element. It'll give an error saying cout is incompataible with
+that type however, if you use the display overloaded function that takes a reference of one of the elements at a time
+cout works. Also, I would like to mention, that the part that I had encountered the most amount of difficulty 
+was with figuring out the logic of how to add a customer without either having a loss of memory or to invalid read sizes.
+When I had tried to put in the delete command to rid of access memory, I had run into the issue of
+having invalid read sizes. Then, when I tried to put the memory after the creation of my new array and commands
+I had ran into the issue of invalid reading sizes. After some help from our professor Dr. Cornel, I had managed to 
+figure and learn how to solve this issue. 

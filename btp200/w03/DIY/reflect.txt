@@ -1,0 +1,12 @@
+	Throughout this workshop (workshop 03), I have learned of the creation and usages of classes in c++. Firstly, I had seen the innate difference between a structure and a 
+class. From the lab section of this workshop, the display function that takes in a Project reference, calls the class member directly whilst the display function that takes
+in the class reference, calls a function query instead of the data member directly. This also shows of how a structure is innately public whereas the claas is innately private.
+Secondly, I have better learned the usage of the cout memeber functions more specifically, the width, fill and setfixed functions. In the DIY section, we have to design 
+the output and fill certain areas with a specific character so, instead of typing in a load of spaces or characters, I used the width function in combination with the fill function
+to automatically create either spaces or fill with a specific character. Similarly, when needing to format the price to show only 2 decimal places rather than 3, I used a 
+combination of the setfixed and setprecision functions. The setprecision function on it's own, would get rid of the deciamls by rounding so in order to fix that I added the 
+setfixed function to allow for the addition of the decimals and have only 2 decimals. Finally, I learned the importance of labeling the functions in respect to each class.
+Whenever creating a function that is belonging to a set class, you need to add the class name followed by two colons to let the program identify that the function you're making
+is apart of that set class. I would also like the mention, that the part that I had encountered the largest amount of difficulty in was with the display functions in the Toys 
+c++ file. According to the correct solution, in the first set, both toys should have an "Invalid Toy" being returned however, I kept wondering on how to set the 2nd toy to invalid.
+This was since, the 2nd toy had all possible inputs. Howevever, to solve this, I set the condition of being displayed to not only being a valid name but also to have a proper SKU.

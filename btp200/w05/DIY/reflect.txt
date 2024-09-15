@@ -1,0 +1,12 @@
+	Throughout this workshop (workshop 05), I have learned the different usages and interactions of the different types of
+operators. Firstly, I learned of the differnet operators being types, unary, binary and helpers alongside overloading them. For the 
+DIY section, there exists a part where a variable b3 is able to be selected as the bool int or double operator and to prevent that
+you just had to make the bool and double operator explicit so b3 wouldn't have the choice of being automatically set to them.
+Secondly, the Unary operators I learned had two parts, a prefix and a postfix. The main difference being that a postfix has the datatype
+int in their parameter whilst the prefix has nothing. Thirdly, I learned about the Binary operators. We used the = += and == operations 
+to set a value equal to another, add ontop of an old value and check if equal with the binary operations. Then, we used the helper binary operators
+mainly being the operator+. It was used to get the total value of a set amount without being from the class. I leanred that the helper operators
+aren't placed inside rather outside the scope of the class. Also, I learned about the syntax of how to use the operators and how to call each of the
+operators without needing to use an arrow or . to call the respective function. Finally, the issue I had encountered the largest amount of difficulty in
+is the type operator overloadings. I had gotten help from my Professor, Dr Cornel, and he helped me understand when and how to use explicit and
+when to not use it.

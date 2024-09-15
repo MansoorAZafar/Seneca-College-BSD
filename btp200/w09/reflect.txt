@@ -1,0 +1,11 @@
+	Throughout the workshop (09) I have come to better understand buffers, virtual functions and the difference between get() and getline(). 
+Firstly, I learned about of how the istream will stay in a failed state but can still 'take input'. As in it won't instantly break the buffer but rather the rest of the 
+inputs become invalid, but it won't crash the program. For instance, in our code, we had to take input for an address, city province and postal code. If any one of these
+had a failure with the buffer, it wouldn't crash the program rather the remaining values would be unset. Afterwords, I learnt more about virtual functions. More specifically, about
+of how they will actually call on the derivied class's instructions rather than their owns. I saw this with the person Class. Whenever the person object had any of the 
+virtual methods called, it went to the Contact class and used it's functions instead of the persons own methods first. Then, I learnt about the difference with get and
+getline. Whilst both of the functions are similar, when I tried to use get it kept breaking. This was because while they are similar, the difference is that get leaves
+the delimiter in the buffer whereas getline actuallly takes the delimiter out of the buffer and discards it. This also leads to the issue that I faced. I kept running into
+an issue of my values not being properly read. I would have the first value be correct but then the others would display incorrect/random values. I faced this issue since
+I was using get rather than getline. As mentioned earlier, the difference between the two is that getline drops the delimiter whilst get keeps it, this is excatly what
+lead to the issues. The buffer stil had the delimiter to be read which lead to the issues I ran into.
