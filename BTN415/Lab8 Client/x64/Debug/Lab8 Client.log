@@ -1,0 +1,8 @@
+﻿  serialClient.cpp
+  socket.cpp
+C:\Users\imsor\source\repos\Lab8 Client\socket.cpp(182,69): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\imsor\source\repos\Lab8 Client\socket.cpp(230,69): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\imsor\source\repos\Lab8 Client\socket.cpp(264,71): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\imsor\source\repos\Lab8 Client\socket.cpp(309,71): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
+  Lab8 Client.vcxproj -> C:\Users\imsor\source\repos\Lab8 Client\x64\Debug\Lab8 Client.exe
