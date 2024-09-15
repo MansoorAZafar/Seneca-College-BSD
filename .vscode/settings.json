@@ -7,8 +7,5 @@
         "**/.DS_Store": true,
         "**/Thumbs.db": true
     },
-    "hide-files.files": [
-        "BTP405/.vscode",
-        "BTP405/.vscode/settings.json"
-    ]
+    "hide-files.files": []
 }
