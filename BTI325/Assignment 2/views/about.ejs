@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    
+     <!-- Navigation Bar -->
+    <%- include('partials/navbar', {page: '/about'}) %>
+    
+    <div class="container mx-auto">
+        <div class="hero bg-base-200 rounded-lg p-6">
+          <div class="hero-content text-center">
+            <div class="max-w-md">
+              <h1 class="text-5xl font-bold">About</h1>
+              <p class="py-6">Everything you want to know about me - the designer &
+                developer.
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <div class="card bg-base-100 shadow-xl">
+                <figure>
+                  <img class="w-full" src="https://www.pokemongoplusplus.com/img/img-2.jpg" alt="aboutMe">
+                </figure>
+                
+              </div>
+            </div>
+            <div>
+      
+                <div class="chat chat-start">
+                    <div class="chat-bubble">What's your name and how old are you?</div>
+                </div>
+                <div class="chat chat-end">
+                    <div class="chat-bubble">My name's Mansoor Ahmad Zafar <br>and i'm 19 years old</div>
+                </div>
+                  
+                <div class="chat chat-start">
+                    <div class="chat-bubble">Where and what are you currently studying?</div>
+                </div>
+                <div class="chat chat-end">
+                    <div class="chat-bubble">I'm studying at Seneca College the Newnham Campus <br> and enrolled in the Bachelor of Software Development (BSD) program.</div>
+                </div>
+
+                <div class="chat chat-start">
+                    <div class="chat-bubble">What courses are you taking?</div>
+                </div>
+                <div class="chat chat-end">
+                    <div class="chat-bubble">For this semester I've got: <br>Database (BTD315)<br>Business (BTS330)<br>Film and Philsophy (LSO310)<br> C++ (BTP305)<br>Presentations (LSP400) <br>and Web (BTI325).</div>
+                </div>
+
+                <div class="chat chat-start">
+                    <div class="chat-bubble">Nice to meet you!</div>
+                </div>
+                <div class="chat chat-end">
+                    <div class="chat-bubble">wait.. who are you??? am I supposed to know you????.</div>
+                </div>
+
+            </div>
+          </div>
+
+    </div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <%- include('partials/navbar', {page: '' }) %>
+
+        <div class="container mx-auto">
+            <div class="hero bg-base-200 rounded-lg p-6">
+                <div class="hero-content text-center">
+                    <div class="max-w-md">
+                        <h1 class="text-5xl font-bold">
+                            <%= set.name %>
+                        </h1>
+                        <p class="py-6"> Below, you will find detailed information about the set: <%= set.name%>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <div class="card bg-base-100 shadow-xl">
+                        <figure>
+                            <img class="w-full" src="<%=set.img_url%>" alt="setImage">
+                        </figure>
+
+                    </div>
+                </div>
+                <div>
+                    <br>
+                    <p>
+                        <b>Set Name: </b>
+                        <%=set.name%> <br>
+                            <b>Year Released: </b>
+                            <%=set.year%> <br>
+                                <b>Theme: </b>
+                                <%=set.Theme.name%> <br>
+                                    <b>Number of Parts: </b>
+                                    <%=set.num_parts%> <br> <br>
+                    </p>
+                    <p id="message">
+                        <script>document.addEventListener("DOMContentLoaded", () => {
+                                /* TODO: "fetch" the data at: https://quotable.io/random and update an element in the DOM with the"content" and "author" */
+                                fetch("https://quotable.io/random").then(res => {
+                                    return res.json()
+                                }).then(returnedData => {
+                                    console.log(returnedData.content)
+                                    console.log(returnedData.author)
+
+                                    var p = document.querySelector('#message')
+                                    p.innerHTML = returnedData.content + " - " + returnedData.author
+                                })
+
+                            });</script>
+                    </p>
+                    <br>
+                    <a class="btn btn-success btn" href="/lego/editSet/<%=set.set_num%>">EDIT SET: <%= set.name %></a>
+                    <a href="#" onclick="history.back();" return false; class="btn">Return</a>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+</body>
+
+</html>
