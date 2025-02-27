@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mailHackathonText"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DCBABA"
+    tools:context=".ExploreFragment">
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:fontFamily="monospace"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="@string/exploreFragment_title"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- 1st Section (Mail Hackathon) -->
+    <LinearLayout
+        android:id="@+id/horizontal_layout1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/titleText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="15dp"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/mailHackathon"
+            android:layout_width="90dp"
+            android:layout_height="80dp"
+            android:src="@android:drawable/ic_dialog_email"
+            android:contentDescription="@string/exploreFragment_mailHackathon" />
+
+        <TextView
+            android:id="@+id/mailHackText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/exploreFragment_mailHackathon_TEXT"
+            android:paddingStart="10dp"
+            android:layout_gravity="center_vertical" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/mailHackMoreInfoButton"
+        android:layout_width="129dp"
+        android:layout_height="48dp"
+        android:background="#000000"
+        android:text="@string/learn_more_button"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/horizontal_layout1" />
+
+    <!-- 2nd Section (SSD Hackathon) -->
+    <LinearLayout
+        android:id="@+id/horizontal_layout2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/mailHackMoreInfoButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/ssdHackathon"
+            android:layout_width="90dp"
+            android:layout_height="80dp"
+            android:src="@android:drawable/stat_notify_sdcard_prepare"
+            android:contentDescription="@string/exploreFragment_ssdHackathon" />
+
+        <TextView
+            android:id="@+id/SSDHackText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/exploreFragment_ssdHackathon_TEXT"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:layout_gravity="center_vertical" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/ssdHackMoreInfoButton"
+        android:layout_width="129dp"
+        android:layout_height="48dp"
+        android:background="#000000"
+        android:text="@string/learn_more_button"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/horizontal_layout2" />
+
+    <!-- 3rd Section (Android OS Hackathon) -->
+    <LinearLayout
+        android:id="@+id/horizontal_layout3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/ssdHackMoreInfoButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/androidOSHackMoreInfoButton"
+        android:layout_marginTop="8dp"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/androidOSHackathon"
+            android:layout_width="90dp"
+            android:layout_height="80dp"
+            android:src="@android:drawable/sym_def_app_icon"
+            android:contentDescription="@string/exploreFragment_androidOSHackathon" />
+
+        <TextView
+            android:id="@+id/AndroidOSHackText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/exploreFragment_androidOSHackathon_TEXT"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:layout_gravity="center_vertical" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/androidOSHackMoreInfoButton"
+        android:layout_width="133dp"
+        android:layout_height="48dp"
+        android:background="#000000"
+        android:text="@string/learn_more_button"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/horizontal_layout3"
+        app:layout_constraintBottom_toTopOf="@id/horizontal_layout4"/>
+
+    <!-- 4th Section (CTF Hackathon) -->
+    <LinearLayout
+        android:id="@+id/horizontal_layout4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/androidOSHackMoreInfoButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/ctfHackMoreInfoButton"
+        android:layout_marginTop="8dp"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/ctfHackathon"
+            android:layout_width="90dp"
+            android:layout_height="80dp"
+            android:src="@android:drawable/ic_menu_myplaces"
+            android:contentDescription="@string/exploreFragment_ctfHackathon" />
+
+        <TextView
+            android:id="@+id/ctfHackText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/exploreFragment_ctfHackathon_TEXT"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:layout_gravity="center_vertical" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/ctfHackMoreInfoButton"
+        android:layout_width="127dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:background="#000000"
+        android:text="@string/learn_more_button"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/horizontal_layout4"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

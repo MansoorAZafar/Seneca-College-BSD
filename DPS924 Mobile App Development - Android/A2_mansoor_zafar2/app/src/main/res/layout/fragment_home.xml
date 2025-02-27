@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
+    tools:context=".HomeFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/welcome_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Welcome"
+            android:textAlignment="center"
+            android:textSize="40sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/home_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            android:src="@drawable/cartoon_cook_chef"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/welcome_message"
+            android:paddingBottom="15dp"
+            />
+
+        <TextView
+            android:id="@+id/instructions_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Instructions"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/home_icon"
+            android:paddingBottom="10dp"
+            android:layout_marginStart="5dp"
+            />
+
+
+
+        <TextView
+            android:id="@+id/instructions_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/instructions_label"
+            android:text="Step 1. Go to the Recipe page and select any recipe\nStep 2. Initiate the cooking timer\nStep 3. After the timer go to the feedback page\nStep 4. Send Feedback!\n"
+            android:layout_marginStart="15dp"
+            />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="wrap_content"
+            android:layout_height="2.5dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/instructions_label"
+            />
+
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="wrap_content"
+            android:layout_height="4dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/instructions_text"
+            />
+
+        <TextView
+            android:id="@+id/featured_recipes_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="! Featured Recipes !"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider3"
+            android:layout_marginTop="10dp"
+            android:textSize="17sp"
+            android:paddingBottom="15dp"
+            />
+
+        <ImageView
+            android:id="@+id/ramen_icon"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:src="@drawable/baseline_ramen_dining_24"
+            app:layout_constraintTop_toBottomOf="@id/featured_recipes_label"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/ramen_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Try this all new Ramen Xha! A brand new recipe that's taking the world by storm! Use unique healthy ingredients and tastes out of this world!"
+            app:layout_constraintStart_toStartOf="@id/ramen_icon"
+            app:layout_constraintTop_toBottomOf="@id/featured_recipes_label"
+            android:layout_marginStart="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:paddingBottom="20dp"
+            android:layout_marginEnd="5dp"
+            />
+
+        <ImageView
+            android:id="@+id/cake_icon"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:src="@drawable/baseline_cake_24"
+            app:layout_constraintTop_toBottomOf="@id/ramen_icon"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/cake_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Try this all new Cake Ral! A quick and easy to make Cake that tastes out of this world! Made with home-made ingredients and takes less than 10 minutes!"
+            app:layout_constraintStart_toStartOf="@id/cake_icon"
+            app:layout_constraintTop_toBottomOf="@id/ramen_label"
+            android:layout_marginStart="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:paddingBottom="20dp"
+            android:layout_marginEnd="5dp"
+            />
+
+
+        <ImageView
+            android:id="@+id/rice_bowl_icon"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:src="@drawable/baseline_rice_bowl_24"
+            app:layout_constraintTop_toBottomOf="@id/cake_label"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/rice_bowl_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Indulge in our flavorful Rice Bowl! Packed with vegetables, protein, and a tangy sauce to brighten your day!"
+            app:layout_constraintStart_toStartOf="@id/rice_bowl_icon"
+            app:layout_constraintTop_toBottomOf="@id/cake_label"
+            android:layout_marginStart="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:paddingBottom="20dp"
+            android:layout_marginEnd="5dp"
+            />
+
+        <!-- Local Pizza Icon and Description -->
+        <ImageView
+            android:id="@+id/local_pizza_icon"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:src="@drawable/baseline_local_pizza_24"
+            app:layout_constraintTop_toBottomOf="@id/rice_bowl_label"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/local_pizza_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Savor our Local Pizza special! Fresh toppings, melty cheese, and a perfectly crispy crust baked to perfection!"
+            app:layout_constraintStart_toStartOf="@id/local_pizza_icon"
+            app:layout_constraintTop_toBottomOf="@id/rice_bowl_label"
+            android:layout_marginStart="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:paddingBottom="20dp"
+            android:layout_marginEnd="5dp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

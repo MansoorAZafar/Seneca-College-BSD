@@ -1,0 +1,19 @@
+1) Student
+
+	i)
+	
+		Joe is a busy father from a rural town in northern Canada. He now lives in North York Toronto as he works full-time as a real-estate agent and has started taking a software development course at Seneca Polytechnic part-time. As Joe is from a rural town and north of Canada, his technical skills aren't the greatest. So he wants a simple, intuitive, easy system that lets him quickly check his academic progress with minimal effort on his half whilst still getting all detailed information. He needs a user-friendly interface that's easy to navigate and doesn't take up too much of his time as he's very busy and doesn't have too much free time. 
+
+	ii)
+	
+		Goo is a very meticulous and rigorous 18 year old who is about to start their very first semester at Seneca Polytechnic. He is very thorough in his work and always follows the instructions to a max, minimizing any leeway. He was born into a family of 4 and is the oldest sibling. He worked in a family restaurant through his early teen years and still works there now. To ensure he's doing his tasks right, he has a list of instructions that detail everything he needs to do and how to do them in great detail. He wants to be able to follow all the details about his academic career and have access to his reports, grades, files and even instructions all in great detail.
+
+2) Faculty 
+
+	iii)
+		
+		James is a senior educator who has been teaching since the 1980's and will be teaching an online asynchronous class for Seneca Polytechnic. James is a strong advocate for teaching with pen and paper and hasn't really used technology to educate but rather just pen and paper. He was always the top of his class and spent the majority of his time in the library to constantly try to access and learn as much as he could. He always found it a bit difficult though to keep track of all the students and learn about their previous academic progress purely through person to person so, he's interested in learning about an application that can help him keep track and follow through easily with his students.
+	
+	iv) 
+		
+		Celestus, a 40 year old, researcher works at Seneca Polytechnic as a professor. He teaches 2nd and 3rd year students whilst also taking part in a large research and projects about potentially faster matrix multiplication algorithms. He was born downtown in Toronto where his father worked as an accountant and often took Celestus with him to let him learn more about how accounting worked. He has a degree in Software Engineering from MIT and currently is an active researcher and professor. He is proficient with all sorts of technologies and is particularly interested with an application that lets him more easily monitor the progress of his students the same way his father used to monitor interns or clients at the accounting firm.

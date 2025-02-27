@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAE1E1"
+    tools:context=".HomeFragment">
+
+    <ImageView
+        android:id="@+id/hackathonLogoHome"
+        android:layout_width="wrap_content"
+        android:layout_height="125dp"
+        android:contentDescription="@string/main_popup_background"
+        android:src="@drawable/hackathon_e1458920518278"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/aboutHackathon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingStart="30dp"
+        android:paddingEnd="20dp"
+        android:text="@string/about_hackathon"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hackathonLogoHome" />
+
+    <ImageView
+        android:id="@+id/robotProject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/homeFragment_robot"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:src="@android:mipmap/sym_def_app_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recentProjText" />
+
+    <TextView
+        android:id="@+id/recentProjText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:text="@string/recent_projects_hackathon_home"
+        android:textColor="@color/design_default_color_primary"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aboutHackathon" />
+
+    <ImageView
+        android:id="@+id/webBrowserProject"
+        android:layout_width="80dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="30dp"
+        android:contentDescription="@string/homeFragment_webBrowser"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:src="@drawable/googleg_standard_color_18"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/garbageCollectorProject"
+        app:layout_constraintTop_toBottomOf="@id/robotProject" />
+
+    <ImageView
+        android:id="@+id/garbageCollectorProject"
+        android:layout_width="80dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="5dp"
+        android:contentDescription="@string/homeFragment_garbageCollector"
+        android:src="@android:drawable/ic_menu_delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/webBrowserProject" />
+
+    <TextView
+        android:id="@+id/robotTextProject"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/homeFragment_robot_TEXT"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/robotProject"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/robotProject"
+        />
+
+    <TextView
+        android:id="@+id/webBrowserTextProject"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/homeFragment_webBrowser_TEXT"
+        app:layout_constraintStart_toEndOf="@id/webBrowserProject"
+        app:layout_constraintTop_toTopOf="@id/webBrowserProject"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        />
+
+    <TextView
+        android:id="@+id/garbageCollectorTextProject"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/homeFragment_garbageCollector_TEXT"
+        app:layout_constraintStart_toEndOf="@id/garbageCollectorProject"
+        app:layout_constraintTop_toTopOf="@id/garbageCollectorProject"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Application</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+
+        let locations = [];
+        let len = 0;
+        function getCities(location)
+        {
+            const MAX_LOCATIONS = 50;
+            let URL = `http://api.openweathermap.org/data/2.5/find?q=${location}&units=metric&cnt=${MAX_LOCATIONS}&appid=70b92e58e676788891b68e4c2913235e`
+            fetch(URL)
+            .then(response => response.json())
+            .then(data => 
+                {
+                    len = data.list.length;
+                    if(len == 0) throw "err";
+                    for(let i = 0; i < data.list.length; ++i)
+                    {
+                        let singleURL = `https://api.openweathermap.org/data/2.5/weather?lat=${data.list[i].coord.lat}&lon=${data.list[i].coord.lon}&units=metric&appid=70b92e58e676788891b68e4c2913235e`
+                        getURLInformation(singleURL);
+                        dividePages();
+                    }
+                })
+            .catch(err => document.querySelector("#table").innerHTML = "Nothing found")
+        }
+
+        function getURLInformation(URL)
+        {
+            fetch(URL)
+            .then(response => response.json())
+            .then(data =>{
+                locations.push(data);    
+                dividePages();            
+            }).catch(err => console.log(err))
+        }
+
+        //This function will divide the cities into length/3 amount of pages
+        //This function ensures that each pages has 3 items 
+        async function dividePages()
+        {
+            if(len != locations.length) return;
+            else
+            {
+                console.log("I am on Divide Pages!")
+                getContent(0, locations); // by default, have the content of page 1
+                length = locations.length / 3;
+                let pagnation = `<ul class="pagination">`;
+                for(var i = 0; i < length; ++i)
+                {
+                    pagnation += `
+                    <li class="page-item" style="padding-right: 10px">
+                        <button onclick="getContent(${i*3})" class="page-link">${i + 1}</button>
+                    </li>`;
+                }
+                pagnation += `</ul>`;
+                document.querySelector("#Pages").innerHTML = pagnation;
+            }
+           
+        }
+
+        async function getContent(index)
+        {
+            const MAX_CONTENT = index+3 > locations.length ? locations.length : index+3; // Can only show 3 items per page
+            let flagURL = `https://openweathermap.org/images/flags/`;
+            let iconURL = `https://openweathermap.org/img/wn/`
+            //01d@2x.png
+            let content = `
+            <div>
+                <div class="row">
+                    <div class="col">
+                        <table class="table table-hover" id="postsTable">
+                            <tbody>
+            `;
+            for(let i = index; i < MAX_CONTENT; ++i)
+            {
+                //Variables
+                let sunrise     = new Date(locations[i].sys.sunrise * 1000);
+                let sunset      = new Date(locations[i].sys.sunset * 1000);
+                let icon        = `${iconURL}${locations[i].weather[0].icon}@2x.png`;
+                let nameCountry = `${locations[i].name}, ${locations[i].sys.country}`;
+                let flag        = `${flagURL}${(locations[i].sys.country).toLowerCase()}.png`;
+                let weatherDesc = `${locations[i].weather[0].description}`;
+                let temp        = `${locations[i].main.temp}`;
+                let maxTemp     = `${locations[i].main.temp_max}`;
+                let minTemp     = `${locations[i].main.temp_min}`;
+                content += `
+                <tr>
+                    <td><img src="${icon}"</td>
+                    <td>
+                        <b>${nameCountry}</b>
+                        <img src="${flag}">
+                        <b>${weatherDesc}</b>  <br>
+                        Currently it is: <b>${temp}</b> &deg;C
+                        The temperatures range from ${maxTemp}&deg;C to ${minTemp}&deg;C
+                        <br>wind: ${locations[i].wind.speed}m/s, clouds ${locations[i].clouds.all} %, ${locations[i].main.pressure} hpa</br>
+                        humidity: ${locations[i].main.humidity}, <br>sunset: ${sunset}</br>sunrise: ${sunrise}
+                        <br>Geo Coords [${locations[i].coord.lat}, ${locations[i].coord.lon}]</br>
+                    </td>
+                </tr>
+                `
+            }
+            content += `
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            `
+            document.querySelector("#table").innerHTML = content;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => 
+        {
+            document.querySelector("#searchForm").addEventListener('submit', event => 
+            {
+                event.preventDefault();
+                getCities(document.querySelector("#loc").value)
+            })
+        })
+
+
+
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <h1 style="padding-top: 10px; padding-left: 15px; color: rgb(235, 126, 10);">Weather in your city</h1>
+    <hr>
+
+    <div class="d-flex justify-content-end" style="background-color: rgb(240, 140, 18); padding: 70px">
+        <form class="d-flex" id="searchForm">
+            <input class="form-control me-2" type="search" id="loc" placeholder="Enter a City/Country"
+                aria-label="Search">
+            <button class="btn btn-primary" type="submit">Search</button>
+        </form>
+    </div>
+
+    <hr>
+    <div id="table" class="container"></div>
+
+    <div id="Pages" class="container"></div>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 4</title>
+
+    <script>
+
+        function fillDocument()
+        {
+            let url = `https://dummy.restapiexample.com/api/v1/employees`;
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+
+                    let content = 
+                    `<table>
+                        <tbody>`;
+                    console.log(data)
+                    data.data.forEach(element => {
+                        content +=
+                        `
+                            <tr>
+                                <td>${element.id}</td>
+                                <td>${element.employee_name}</td>
+                                <td>${element.employee_salary}</td>
+                                <td>${element.employee_age}</td>
+                            </tr>
+                        `
+                    });
+                    content += '</tbody></table>'
+                    document.querySelector("#table").innerHTML = content;
+
+                }).catch(err => console.log(err))
+        }
+
+        document.addEventListener('DOMContentLoaded', () => 
+        {
+            fillDocument();
+        })
+    </script>
+</head>
+<body>
+    <div id="table"></div>
+</body>
+</html>

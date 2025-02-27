@@ -1,0 +1,3 @@
+C:/Users/imsor/Documents/BTH545/WS2/build/Desktop_x86_windows_msys_pe_64bit-Debug/CMakeFiles/CMakeScratch/TryCompile-tcljsd/CMakeFiles/cmTC_e6faf.dir
+C:/Users/imsor/Documents/BTH545/WS2/build/Desktop_x86_windows_msys_pe_64bit-Debug/CMakeFiles/CMakeScratch/TryCompile-tcljsd/CMakeFiles/edit_cache.dir
+C:/Users/imsor/Documents/BTH545/WS2/build/Desktop_x86_windows_msys_pe_64bit-Debug/CMakeFiles/CMakeScratch/TryCompile-tcljsd/CMakeFiles/rebuild_cache.dir
