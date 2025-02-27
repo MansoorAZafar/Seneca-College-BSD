@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/recipe_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_launcher_background"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Title of the recipe -->
+    <TextView
+        android:id="@+id/recipe_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Recipe Title"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@+id/recipe_image"
+        app:layout_constraintStart_toEndOf="@+id/recipe_image"
+        android:layout_marginStart="10dp" />
+
+    <!-- Description of the recipe -->
+    <TextView
+        android:id="@+id/recipe_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Recipe description goes here..."
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/recipe_title"
+        app:layout_constraintStart_toStartOf="@id/recipe_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp" />
+
+    <!-- Button to interact with the recipe -->
+    <Button
+        android:id="@+id/recipe_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="More Details"
+        app:layout_constraintTop_toBottomOf="@+id/recipe_description"
+        app:layout_constraintStart_toStartOf="@id/recipe_title"
+        android:layout_marginTop="8dp"
+        />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintTop_toBottomOf="@id/recipe_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="15dp"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

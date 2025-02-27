@@ -1,0 +1,84 @@
+<resources>
+    <string name="app_name">A1_mansoor_zafar</string>
+    <string name="main_popup_background">Main Hackathon Background</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="Sign_in_or_up">Sign in/up</string>
+
+    <!-- Home Fragment Stuff -->
+    <string name="about_hackathon">A hackathon, also known as a codefest, is a social coding event that brings
+        computer programmers and other interested people together to improve upon or build a new software program.
+        The concept of the hackathon, also called a hack day or hack fest, was born out of the open source community.
+        The first event labeled a hackathon was the OpenBSD Hackathon, in Calgary, Canada, on June 4, 1999
+    </string>
+
+    <string name="recent_projects_hackathon_home">Recent Projects</string>
+
+    <!--    Project Icons Home Fragment-->
+    <string name="homeFragment_robot">Robot</string>
+    <string name="homeFragment_webBrowser">Web Browser</string>
+    <string name="homeFragment_garbageCollector">Garbage Collector</string>
+
+    <!--    Icons Project Descriptions Home Fragment-->
+    <string name="homeFragment_robot_TEXT">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consectetur eaque expedita illo,
+        mollitia natus non pariatur sed? Animi atque corporis debitis deserunt. Lorem ipsum dolor sit amet, consectetur
+        adipisicing elit.
+    </string>
+
+    <string name="homeFragment_webBrowser_TEXT">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi assumenda autemsdasddelectus deleniti eaque fuga.
+        Lorem ipsum dolor sit amet, elit. Cum, repellat.
+    </string>
+
+    <string name="homeFragment_garbageCollector_TEXT">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus assumenda dignissimos.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, sunt.
+    </string>
+
+    <!-- Explore Fragment Stuff -->
+    <!--    Regular Text Strings -->
+    <string name="exploreFragment_title">Explore Hackathons</string>
+    <string name="learn_more_button">Register</string>
+    <string name="yes_slider">Yes</string>
+    <string name="no_slider">No</string>
+    <string name="exploreFragment_sliderText">Join?</string>
+
+
+    <!--    Project Icons Home Fragment-->
+    <string name="exploreFragment_mailHackathon">Mail Application</string>
+    <string name="exploreFragment_ssdHackathon">SSD</string>
+    <string name="exploreFragment_androidOSHackathon">Android OS</string>
+    <string name="exploreFragment_ctfHackathon">Capture The Flag</string>
+
+    <!--    Icons Project Descriptions Home Fragment-->
+    <string name="exploreFragment_mailHackathon_TEXT">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi cumque doloremque et excepturi iusto non
+            quasi quia quisquam saepe voluptas. adipisicing elit. Ipsum, saepe?
+        </string>
+
+    <string name="exploreFragment_ssdHackathon_TEXT">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Ab aliquid doloribus dolorum eaque eum fuga inventore laboriosam quisquam quod sed.
+            Lorem ipsum dolor sit amet.
+        </string>
+
+    <string name="exploreFragment_androidOSHackathon_TEXT">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Aut consectetur earum error exercitationem impedit ipsa modi!
+        </string>
+
+    <string name="exploreFragment_ctfHackathon_TEXT">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A minus neque quia quo voluptates?
+            Consectetur distinctio repellat sed ullam voluptatibus?
+        </string>
+
+    <string name="placeholder_hackathon_title">Hackathon</string>
+    <string name="tos_error_message">Please accept the TOS and ensure all info is filled out</string>
+    <string name="history_icon">History</string>
+</resources>

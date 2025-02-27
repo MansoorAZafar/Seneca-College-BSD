@@ -1,0 +1,19 @@
+# ninja log v6
+6	822	7475205328000057	WS1_autogen/timestamp	1be9d3b635f3634b
+6	822	7475205328000057	WS1_autogen/mocs_compilation.cpp	1be9d3b635f3634b
+6	822	7475205328000057	C:/Users/imsor/Documents/BTH545/WS1/build/Desktop_Qt_6_7_2_MinGW_64_bit-Release/WS1_autogen/timestamp	1be9d3b635f3634b
+6	822	7475205328000057	C:/Users/imsor/Documents/BTH545/WS1/build/Desktop_Qt_6_7_2_MinGW_64_bit-Release/WS1_autogen/mocs_compilation.cpp	1be9d3b635f3634b
+827	2285	7475205328990057	CMakeFiles/WS1.dir/WS1_autogen/mocs_compilation.cpp.obj	2a2c1ce799bd68b9
+831	2326	7475205329020064	CMakeFiles/WS1.dir/main.cpp.obj	d6656109c59903cd
+837	2413	7475205329080115	CMakeFiles/WS1.dir/mainwindow.cpp.obj	9f730d841a1c7c1f
+2413	2544	7475205344851041	WS1.exe	dad4ec7a4815947b
+7	98	7475206548711788	CMakeFiles/clean.additional	321391b2684b2653
+98	125	7475206549620987	clean	577b940aee94fbd7
+37	850	7475206558581057	WS1_autogen/timestamp	1be9d3b635f3634b
+37	850	7475206558581057	WS1_autogen/mocs_compilation.cpp	1be9d3b635f3634b
+37	850	7475206558581057	C:/Users/imsor/Documents/BTH545/WS1/build/Desktop_Qt_6_7_2_MinGW_64_bit-Release/WS1_autogen/timestamp	1be9d3b635f3634b
+37	850	7475206558581057	C:/Users/imsor/Documents/BTH545/WS1/build/Desktop_Qt_6_7_2_MinGW_64_bit-Release/WS1_autogen/mocs_compilation.cpp	1be9d3b635f3634b
+855	2255	7475206559955786	CMakeFiles/WS1.dir/main.cpp.obj	d6656109c59903cd
+851	2295	7475206559921830	CMakeFiles/WS1.dir/WS1_autogen/mocs_compilation.cpp.obj	2a2c1ce799bd68b9
+859	2393	7475206559995717	CMakeFiles/WS1.dir/mainwindow.cpp.obj	9f730d841a1c7c1f
+2393	2519	7475206575336176	WS1.exe	dad4ec7a4815947b

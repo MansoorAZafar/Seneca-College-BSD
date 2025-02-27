@@ -1,0 +1,9 @@
+C:/Users/imsor/Documents/BTH545/WS3/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/CMakeFiles/WS3.dir
+C:/Users/imsor/Documents/BTH545/WS3/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
+C:/Users/imsor/Documents/BTH545/WS3/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
+C:/Users/imsor/Documents/BTH545/WS3/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/CMakeFiles/list_install_components.dir
+C:/Users/imsor/Documents/BTH545/WS3/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/CMakeFiles/install.dir
+C:/Users/imsor/Documents/BTH545/WS3/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/CMakeFiles/install/local.dir
+C:/Users/imsor/Documents/BTH545/WS3/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/CMakeFiles/install/strip.dir
+C:/Users/imsor/Documents/BTH545/WS3/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/CMakeFiles/WS3_autogen_timestamp_deps.dir
+C:/Users/imsor/Documents/BTH545/WS3/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/CMakeFiles/WS3_autogen.dir

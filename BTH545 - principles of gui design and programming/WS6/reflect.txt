@@ -1,0 +1,23 @@
+Mansoor Zafar
+100503226
+mzafar15@myseneca.ca
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+1.
+	The use cases I chose were, checking grades for a course, viewing academic records, getting help and quick messaging a student. I chose these use cases as they both pertain to both the student and faculty and play a major role for both. A lot of the student's requirements are either based on viewing something with their course or viewing a record of sorts (i.e academic, PLA, reports ...). Whereas, the facultieis usually were the same as the students but with more power and management capabilities (managing student grades, viewing students academic records and so forth). So, I chose these since they overlap with both the student and faculty requirements and they relate the majority of the requirements.   
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+2.
+	I identified my alternative flows by seeing the different routes that a user could take in the main flow. For instance, my 2nd use case is about viewing academic records and within it, there are multiple options the user can select. I ensured that each selection had its own alternative flow so that if they choose a different path, it was covered. I can be reasonably certain I did not miss any because I went through each step and examined each way that someone could fail or take a seperate path. For example, for my use case for when a student is booking help from an advisor, I had a alternative scenario for when all the adivsors are fully booked. 
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+3.
+	I knew I had enough detail in my steps for my use cases because I could read them through and easily follow the logic of how to do each task. For instance, for my fourth use-case, quickly sending a message to a student, the first steps are clear and easy to follow; as in: 
+		// A high overview of the text 
+		
+		1. the system loads the search screen which has a search input bar 
+		2. the faculty member writes the student id in the search input bar
+		3. if its valid -> return information of the student and a button that allows for contacting 
+		...
+
+	All the steps make sense as to why they exist and they outline the exact process of what you'd do in order to accomplish that specific task. 
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+

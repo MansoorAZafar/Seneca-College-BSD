@@ -1,0 +1,20 @@
+Mansoor Zafar
+100503226
+mzafar15@myseneca.ca
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+1.
+	I identified my types of users for the student information system based on the needs of details and in depth information that the requirements mentioned. Generally, the user wants all wanted specific information, be able to control it and be given direct instructions / all information. For instance, the 3rd user requirement from the Students perspective wanted to be able to see a list of all the documents needed and learn if something needs their attention. This told me that some of the students like having all the information being presented to them upfront rather than being inquired about it later. Or take for instance, number 16 from the students perspective, being able to see PLA reports. It shows that some of the users want to see all the details about their accounts and want to be able to control when and how they see said details. 
+	
+	In terms of the teachers, one thing I looked at was how all the teachers' requirements wanted to be able to quickly get important information about the student so they could either contact them, or get overall pictures of their students. For example, number 4 and 5 from the teachers perspective are about being able to 'quickly' email students and easily get their information. It shows that they need to be able to get that information fast and easily without having to spend so much time. Which means, a user may be busy and a need they have, is to get information fast and act on it quickly. 
+	
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+2. 
+	As I mentioned previously, a the requirements that were implied by the stories were that both students and professors needed to get a detailed view of all the information and be able to act on the information is a fast pace. For instance, numbers 4 and 5 for the teachers' stories mention how the teachers need to be able to quickly respond and get the students information. This implies that they can be busy and need an easy and quick way to get student information and act upon it. Majority of the students and professors' stories are based around just viewing their own personal data, so the implied requirement is that they must be able to view, act and easily view and respond to their respective available information.
+	
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+3.
+	My personas reflected the implied requirements of speed, available and understandable information. For Joe, I made it so he's a busy father who works a full time job but still attends as a part time student. He needs to be able to track his progress is a fast, real-time and efficient way without having to spend too much time on the system as he isn't too tech savvy either. Or for Goo, I mention how he's extremely detail oriented and keeps track of all minor details. He needs to be able to see all the information in depth as he makes reports for himself and likes keeping a meticulous track on himself. Or look at Celestus. I mention how similarly to Joe, he's busy and needs a way to interact and inform his students without spending so much time doing so. Rather, they all need a fast, efficient and simple way to act and get information.
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+
+

@@ -1,0 +1,24 @@
+# ninja log v6
+14	213	7491744531166649	WS3_autogen/timestamp	d480fb449d6e27ce
+257	392	7491586365358525	C:/Users/imsor/Documents/BTH545/WS3/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/WS3_autogen/EWIEGA46WW/qrc_background.cpp	223ff69989b37219
+14	213	7491744531166649	WS3_autogen/mocs_compilation.cpp	d480fb449d6e27ce
+14	213	7491744531166649	C:/Users/imsor/Documents/BTH545/WS3/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/WS3_autogen/timestamp	d480fb449d6e27ce
+215	2026	7491744533177070	CMakeFiles/WS3.dir/mainwindow.cpp.obj	149f035826976566
+14	213	7491744531166649	C:/Users/imsor/Documents/BTH545/WS3/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/WS3_autogen/mocs_compilation.cpp	d480fb449d6e27ce
+920	3742	7491739051490810	CMakeFiles/WS3.dir/WS3_autogen/mocs_compilation.cpp.obj	77ab05a3049c3212
+2026	2305	7491744551284792	WS3.exe	595b81be1f085f94
+926	3704	7491739051550824	CMakeFiles/WS3.dir/main.cpp.obj	54e1a26d1a87b515
+257	392	7491586365358525	WS3_autogen/EWIEGA46WW/qrc_background.cpp	223ff69989b37219
+397	2455	7491586365468547	CMakeFiles/WS3.dir/WS3_autogen/EWIEGA46WW/qrc_background.cpp.obj	8f019af7311df413
+42	289	7491745912892608	WS3_autogen/timestamp	d480fb449d6e27ce
+42	289	7491745912892608	WS3_autogen/mocs_compilation.cpp	d480fb449d6e27ce
+42	289	7491745912892608	C:/Users/imsor/Documents/BTH545/WS3/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/WS3_autogen/timestamp	d480fb449d6e27ce
+42	289	7491745912892608	C:/Users/imsor/Documents/BTH545/WS3/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/WS3_autogen/mocs_compilation.cpp	d480fb449d6e27ce
+291	3005	7491745915377821	CMakeFiles/WS3.dir/mainwindow.cpp.obj	149f035826976566
+3005	3364	7491745942521969	WS3.exe	595b81be1f085f94
+50	241	7491746504588154	WS3_autogen/timestamp	d480fb449d6e27ce
+50	241	7491746504588154	WS3_autogen/mocs_compilation.cpp	d480fb449d6e27ce
+50	241	7491746504588154	C:/Users/imsor/Documents/BTH545/WS3/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/WS3_autogen/timestamp	d480fb449d6e27ce
+50	241	7491746504588154	C:/Users/imsor/Documents/BTH545/WS3/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/WS3_autogen/mocs_compilation.cpp	d480fb449d6e27ce
+242	2256	7491746506514633	CMakeFiles/WS3.dir/mainwindow.cpp.obj	149f035826976566
+2256	2560	7491746526651798	WS3.exe	595b81be1f085f94

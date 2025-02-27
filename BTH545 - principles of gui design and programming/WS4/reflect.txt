@@ -1,0 +1,24 @@
+Mansoor Zafar
+100503226
+mzafar15@myseneca.ca
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+1.
+	My interface helps prevent users from making mistakes by clearly labeling which icons belong to which items, each being unique and having clear and understanding names. I implemented these usability heuristics from Nielsens: Consistency and Standards, Match Between System and Real time World, User Control and Freedom, Recognition rather than Recall, Aesthetics and Minimalist Design and Help and Documentation. Firstly, with consistency and standards, all the wording follows the exact symbols and is clear cut, they will never have a different meaning and are consistent with the basic and general usage of the words. For example, the "Shape" icon will give you access to shapes. In all applications that provide this, give this exact use and meaning. 
+	
+	Then comes matching between systems and the real time world. All the symbols and text used are easy to understand and recognizable. All of them are common symbols shown in different applications that have very clear cut and understandable meanings.
+	
+	Next, we have the Use COntrol and Freedom heuristic. When confirming a layout, the user has a clear option to back out and exit by simply choosing the option 'No'.
+	
+	Afterwards, we have the Recognition rather than Recall heuristic. I followed this by having my icons separated by usage and logic and by also following the "Aesthetics and Minimalist Design". By making my design aesthetic and not too over the top and more simple, it's easier to follow and remember. 
+	
+	Finally, with the help and documentation, there is a clear area where the users can access the help if they require it. It stands out and is easy to locate and understand where to find and how to find it.
+	
+	All of these together make it so the interface is easy to navigate and follow and harder to make a mistake with.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+2.
+	I broke my toolbars into 3 different areas, the top, left-most side and right-most side. I had it so all the information related to managing the toolbar and extra information like settings and profile would be at the top where users would expect them to be. Then at the left-most side, I had items related to editing or modifying objects. Such as, locking, shapes, layers, cutting and so forth. I chose to put these to the left as this is the most standard area where modifying items belongs. The standard is to put modifications to the left as it's easier to follow and understand. Then, I chose all external interactions, extra content, task-bar ish content to be at the right-most side. This includes icons and features ranging from light mode to things like sharing, packaging and so on. 
+	
+	This allows for all of the tools to be easily determined where they belong and by separating them into different sections, it's easily learnable and followable. This also helps with the consistency. As it's consistent with the standards and always consistent throughout the app. Finally, it helps with ease of use as all the major functionalities are right in-front of the user and easy to follow. 
+
+
