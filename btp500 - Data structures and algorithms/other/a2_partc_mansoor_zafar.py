@@ -1,4 +1,4 @@
-# Main Author: Mansoor & Kosta 
+# Main Author: Mansoor
 # Main Reviewer:
 
 from a1_partd import overflow
