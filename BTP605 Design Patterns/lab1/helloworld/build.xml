@@ -1,0 +1,18 @@
+<project name="helloworld" default="compile">
+	<target name="clean">
+		<delete dir="build"/>
+	</target>
+
+	<target name="compile">
+		<mkdir name="build"/>
+		<javac srcdir="src" destdir="build" includeantruntime="false"/>
+	</target>
+
+	<target name="run">
+		<java classname="src.Main" fork="true">
+			<classpath>
+				<pathelement path="build"/>
+			<classpath/>
+		</java>
+	</target>
+</project>
