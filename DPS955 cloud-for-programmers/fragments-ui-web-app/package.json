@@ -1,0 +1,32 @@
+{
+  "dependencies": {
+    "fragments-ui": "file:",
+    "oidc-client-ts": "^3.2.0",
+    "parcel": "^2.13.3",
+    "postcss": "^8.5.3",
+    "tough-cookie": "^5.1.2"
+  },
+  "name": "fragments-ui",
+  "version": "1.0.0",
+  "source": "./src/index.html",
+  "description": "The frontend that will consume/use the fragments backend",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint \"./src/**/*.js\"",
+    "start": "parcel",
+    "build": "parcel build src/index.html --dist-dir dist --public-url ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MansoorAZafar/fragments-ui.git"
+  },
+  "keywords": [],
+  "author": "Mansoor Zafar",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@eslint/js": "^9.22.0",
+    "eslint": "^9.22.0",
+    "globals": "^16.0.0",
+    "prettier": "3.5.3"
+  }
+}
