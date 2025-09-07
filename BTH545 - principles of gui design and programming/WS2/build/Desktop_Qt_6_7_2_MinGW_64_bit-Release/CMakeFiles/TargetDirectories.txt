@@ -1,9 +1,0 @@
-C:/Users/imsor/Documents/BTH545/WS2/build/Desktop_Qt_6_7_2_MinGW_64_bit-Release/CMakeFiles/WS2.dir
-C:/Users/imsor/Documents/BTH545/WS2/build/Desktop_Qt_6_7_2_MinGW_64_bit-Release/CMakeFiles/edit_cache.dir
-C:/Users/imsor/Documents/BTH545/WS2/build/Desktop_Qt_6_7_2_MinGW_64_bit-Release/CMakeFiles/rebuild_cache.dir
-C:/Users/imsor/Documents/BTH545/WS2/build/Desktop_Qt_6_7_2_MinGW_64_bit-Release/CMakeFiles/list_install_components.dir
-C:/Users/imsor/Documents/BTH545/WS2/build/Desktop_Qt_6_7_2_MinGW_64_bit-Release/CMakeFiles/install.dir
-C:/Users/imsor/Documents/BTH545/WS2/build/Desktop_Qt_6_7_2_MinGW_64_bit-Release/CMakeFiles/install/local.dir
-C:/Users/imsor/Documents/BTH545/WS2/build/Desktop_Qt_6_7_2_MinGW_64_bit-Release/CMakeFiles/install/strip.dir
-C:/Users/imsor/Documents/BTH545/WS2/build/Desktop_Qt_6_7_2_MinGW_64_bit-Release/CMakeFiles/WS2_autogen_timestamp_deps.dir
-C:/Users/imsor/Documents/BTH545/WS2/build/Desktop_Qt_6_7_2_MinGW_64_bit-Release/CMakeFiles/WS2_autogen.dir

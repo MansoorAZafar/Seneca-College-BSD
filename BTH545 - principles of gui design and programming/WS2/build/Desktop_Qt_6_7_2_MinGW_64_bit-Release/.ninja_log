@@ -1,9 +1,0 @@
-# ninja log v6
-9	653	7485589936345994	WS2_autogen/timestamp	5a3cafd3920e21a8
-9	653	7485589936345994	WS2_autogen/mocs_compilation.cpp	5a3cafd3920e21a8
-9	653	7485589936345994	C:/Users/imsor/Documents/BTH545/WS2/build/Desktop_Qt_6_7_2_MinGW_64_bit-Release/WS2_autogen/timestamp	5a3cafd3920e21a8
-9	653	7485589936345994	C:/Users/imsor/Documents/BTH545/WS2/build/Desktop_Qt_6_7_2_MinGW_64_bit-Release/WS2_autogen/mocs_compilation.cpp	5a3cafd3920e21a8
-666	2257	7485589937385894	CMakeFiles/WS2.dir/main.cpp.obj	aa864b6522cd01dd
-662	2297	7485589937346280	CMakeFiles/WS2.dir/WS2_autogen/mocs_compilation.cpp.obj	50520adeb9f0c15d
-671	2397	7485589937435965	CMakeFiles/WS2.dir/mainwindow.cpp.obj	88bfd759dfcd6d88
-2397	2530	7485589954696431	WS2.exe	a1471d3aff80b04
