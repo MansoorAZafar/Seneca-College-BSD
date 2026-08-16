@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/>
+		<title>Camera + Cornell Box (WebGPU)</title>
+		<style>
+			:root {
+				color-scheme: light dark;
+			}
+			html,
+			body {
+				margin: 0; /* remove default margin */
+				height: 100%; /* make body fill the browser window */
+				overflow: hidden; /* the full-bleed canvas shouldn't cause scrollbars */
+			}
+			/* The canvas now fills the entire visible window. */
+			canvas {
+				width: 100vw;
+				height: 100vh;
+				display: block;
+			}
+
+			/* ------------------------------------------------------------------ */
+			/* Friendlier styling for the dat.GUI control panel.                  */
+			/* `friendly-gui` is added to the panel element in main.ts.           */
+			/* ------------------------------------------------------------------ */
+			.dg.ac {
+				z-index: 100; /* keep the panel above the canvas */
+			}
+			.friendly-gui {
+				margin: 14px 14px 0 0;
+				border-radius: 12px;
+				overflow: hidden;
+				box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+				font-family:
+					system-ui,
+					-apple-system,
+					'Segoe UI',
+					Roboto,
+					sans-serif;
+			}
+			/* Taller, more legible controller rows. */
+			.friendly-gui li:not(.folder):not(.title) {
+				height: 34px;
+				line-height: 34px;
+			}
+			.friendly-gui .cr .property-name {
+				font-size: 12px;
+				letter-spacing: 0.02em;
+			}
+			/* Accent the folder headers with a colored bar (keep the arrow icon). */
+			.friendly-gui li.title {
+				font-weight: 600;
+				font-size: 12.5px;
+				letter-spacing: 0.04em;
+				border-left: 3px solid #6c7bff;
+			}
+			/* Indigo sliders + readable numeric values. */
+			.friendly-gui .cr.number .slider-fg {
+				background: #6c7bff;
+			}
+			.friendly-gui .cr.number input {
+				color: #aeb9ff;
+			}
+			/* Friendlier bottom "close" bar. */
+			.friendly-gui .close-button {
+				background: #6c7bff;
+				color: #fff;
+				height: 30px;
+				line-height: 30px;
+				font-weight: 600;
+			}
+			.friendly-gui .close-button:hover {
+				background: #5968f0;
+			}
+
+			/* ------------------------------------------------------------------ */
+			/* Diagnostics / stats panel (top-left), built in diagnostics.ts.     */
+			/* ------------------------------------------------------------------ */
+			.diagnostics {
+				position: fixed;
+				top: 14px;
+				left: 14px;
+				z-index: 100;
+				width: 244px;
+				padding: 10px 12px;
+				box-sizing: border-box;
+				border-radius: 12px;
+				background: rgba(24, 24, 30, 0.82);
+				color: #e7e9f3;
+				font-family:
+					ui-monospace, 'SF Mono', 'Cascadia Code', Consolas,
+					monospace;
+				font-size: 11.5px;
+				line-height: 1.5;
+				box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+				backdrop-filter: blur(6px);
+				user-select: none;
+			}
+			.diagnostics-title {
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				font-size: 10.5px;
+				color: #aeb9ff;
+				margin-bottom: 6px;
+			}
+			.diagnostics-spark {
+				display: block;
+				width: 100%;
+				height: 40px;
+				margin-bottom: 8px;
+				border-radius: 6px;
+				background: rgba(0, 0, 0, 0.3);
+			}
+			.diagnostics-row {
+				display: flex;
+				justify-content: space-between;
+				gap: 8px;
+			}
+			.diagnostics-label {
+				color: #8b90a6;
+			}
+			.diagnostics-value {
+				text-align: right;
+				color: #e7e9f3;
+			}
+
+			/* ------------------------------------------------------------------ */
+			/* CPU sequential render overlay (drawn over the live WebGPU canvas).  */
+			/* ------------------------------------------------------------------ */
+			.cpu-overlay {
+				position: fixed;
+				inset: 0;
+				width: 100vw;
+				height: 100vh;
+				z-index: 50; /* above the canvas, below the GUI/diagnostics */
+				pointer-events: none; /* dismissed via a window listener instead */
+			}
+		</style>
+	</head>
+	<body>
+		<canvas></canvas>
+		<!-- Vite compiles and serves the TypeScript entry point. -->
+		<script type="module" src="/src/main.ts"></script>
+	</body>
+</html>

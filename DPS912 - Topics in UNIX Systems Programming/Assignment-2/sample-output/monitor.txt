@@ -1,0 +1,6 @@
+Beginning Monitor
+
+/tmp/ticket_notifications_foo.fifo
+[NOTIFY] Ticket 2826648297531773228 created by foo, priority: high
+
+[NOTIFY] Server Shutting Down

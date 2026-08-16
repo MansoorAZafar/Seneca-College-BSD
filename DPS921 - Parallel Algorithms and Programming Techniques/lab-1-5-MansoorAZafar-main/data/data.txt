@@ -1,0 +1,417 @@
+MinGW: My Machine No Optimizations 
+
+Running with n = 100000000 
+
+Hello from the GNU compiler: 14:2 version 
+
+- allocation and initialization - took - 263 milliseconds 
+
+- magnitude calculation - took - 215 milliseconds 
+
+Magnitude of a[100000000] = 10000 
+
+  
+
+  
+
+Running with n = 200000000 
+
+Hello from the GNU compiler: 14:2 version 
+
+- allocation and initialization - took - 520 milliseconds 
+
+- magnitude calculation - took - 438 milliseconds 
+
+Magnitude of a[200000000] = 14142.1 
+
+  
+
+  
+
+Running with n = 300000000 
+
+Hello from the GNU compiler: 14:2 version 
+
+- allocation and initialization - took - 745 milliseconds 
+
+- magnitude calculation - took - 621 milliseconds 
+
+Magnitude of a[300000000] = 17320.5 
+
+  
+
+  
+
+Running with n = 400000000 
+
+Hello from the GNU compiler: 14:2 version 
+
+- allocation and initialization - took - 983 milliseconds 
+
+- magnitude calculation - took - 841 milliseconds 
+
+Magnitude of a[400000000] = 20000 
+
+  
+
+  
+
+Running with n = 500000000 
+
+Hello from the GNU compiler: 14:2 version 
+
+- allocation and initialization - took - 1261 milliseconds 
+
+- magnitude calculation - took - 1041 milliseconds 
+
+Magnitude of a[500000000] = 22360.7 
+
+  
+
+  
+
+Running with n = 600000000 
+
+Hello from the GNU compiler: 14:2 version 
+
+- allocation and initialization - took - 1429 milliseconds 
+
+- magnitude calculation - took - 1270 milliseconds 
+
+Magnitude of a[600000000] = 24494.9 
+
+  
+
+  
+
+Running with n = 700000000 
+
+Hello from the GNU compiler: 14:2 version 
+
+- allocation and initialization - took - 1732 milliseconds 
+
+- magnitude calculation - took - 1505 milliseconds 
+
+Magnitude of a[700000000] = 26457.5 
+
+  
+
+  
+
+Running with n = 800000000 
+
+Hello from the GNU compiler: 14:2 version 
+
+- allocation and initialization - took - 2075 milliseconds 
+
+- magnitude calculation - took - 1739 milliseconds 
+
+Magnitude of a[800000000] = 28284.3 
+
+  
+
+  
+
+Running with n = 900000000 
+
+Hello from the GNU compiler: 14:2 version 
+
+- allocation and initialization - took - 2268 milliseconds 
+
+- magnitude calculation - took - 1963 milliseconds 
+
+Magnitude of a[900000000] = 30000 
+
+  
+
+  
+
+Running with n = 1000000000 
+
+Hello from the GNU compiler: 14:2 version 
+
+- allocation and initialization - took - 2658 milliseconds 
+
+- magnitude calculation - took - 2315 milliseconds 
+
+Magnitude of a[1000000000] = 31622.8 
+
+ 
+
+MinGW: My Machine Basic Optimizations O1 
+
+Running with n = 100000000 
+
+Hello from the GNU compiler: 14:2 version 
+
+- allocation and initialization - took - 139 milliseconds 
+
+- magnitude calculation - took - 79 milliseconds 
+
+Magnitude of a[100000000] = 10000 
+
+  
+
+  
+
+Running with n = 200000000 
+
+Hello from the GNU compiler: 14:2 version 
+
+- allocation and initialization - took - 273 milliseconds 
+
+- magnitude calculation - took - 157 milliseconds 
+
+Magnitude of a[200000000] = 14142.1 
+
+  
+
+  
+
+Running with n = 300000000 
+
+Hello from the GNU compiler: 14:2 version 
+
+- allocation and initialization - took - 389 milliseconds 
+
+- magnitude calculation - took - 202 milliseconds 
+
+Magnitude of a[300000000] = 17320.5 
+
+  
+
+  
+
+Running with n = 400000000 
+
+Hello from the GNU compiler: 14:2 version 
+
+- allocation and initialization - took - 538 milliseconds 
+
+- magnitude calculation - took - 258 milliseconds 
+
+Magnitude of a[400000000] = 20000 
+
+  
+
+  
+
+Running with n = 500000000 
+
+Hello from the GNU compiler: 14:2 version 
+
+- allocation and initialization - took - 647 milliseconds 
+
+- magnitude calculation - took - 311 milliseconds 
+
+Magnitude of a[500000000] = 22360.7 
+
+  
+
+  
+
+Running with n = 600000000 
+
+Hello from the GNU compiler: 14:2 version 
+
+- allocation and initialization - took - 825 milliseconds 
+
+- magnitude calculation - took - 403 milliseconds 
+
+Magnitude of a[600000000] = 24494.9 
+
+  
+
+  
+
+Running with n = 700000000 
+
+Hello from the GNU compiler: 14:2 version 
+
+- allocation and initialization - took - 913 milliseconds 
+
+- magnitude calculation - took - 453 milliseconds 
+
+Magnitude of a[700000000] = 26457.5 
+
+  
+
+  
+
+Running with n = 800000000 
+
+Hello from the GNU compiler: 14:2 version 
+
+- allocation and initialization - took - 1151 milliseconds 
+
+- magnitude calculation - took - 502 milliseconds 
+
+Magnitude of a[800000000] = 28284.3 
+
+  
+
+  
+
+Running with n = 900000000 
+
+Hello from the GNU compiler: 14:2 version 
+
+- allocation and initialization - took - 1281 milliseconds 
+
+- magnitude calculation - took - 581 milliseconds 
+
+Magnitude of a[900000000] = 30000 
+
+  
+
+  
+
+Running with n = 1000000000 
+
+Hello from the GNU compiler: 14:2 version 
+
+- allocation and initialization - took - 1572 milliseconds 
+
+- magnitude calculation - took - 648 milliseconds 
+
+Magnitude of a[1000000000] = 31622.8 
+
+ 
+
+MinGW: My Machine Optimizations O3 
+
+Running with n = 100000000 
+
+Hello from the GNU compiler: 14:2 version 
+
+- allocation and initialization - took - 142 milliseconds 
+
+- magnitude calculation - took - 67 milliseconds 
+
+Magnitude of a[100000000] = 10000 
+
+  
+
+  
+
+Running with n = 200000000 
+
+Hello from the GNU compiler: 14:2 version 
+
+- allocation and initialization - took - 274 milliseconds 
+
+- magnitude calculation - took - 130 milliseconds 
+
+Magnitude of a[200000000] = 14142.1 
+
+  
+
+  
+
+Running with n = 300000000 
+
+Hello from the GNU compiler: 14:2 version 
+
+- allocation and initialization - took - 408 milliseconds 
+
+- magnitude calculation - took - 232 milliseconds 
+
+Magnitude of a[300000000] = 17320.5 
+
+  
+
+  
+
+Running with n = 400000000 
+
+Hello from the GNU compiler: 14:2 version 
+
+- allocation and initialization - took - 543 milliseconds 
+
+- magnitude calculation - took - 302 milliseconds 
+
+Magnitude of a[400000000] = 20000 
+
+  
+
+  
+
+Running with n = 500000000 
+
+Hello from the GNU compiler: 14:2 version 
+
+- allocation and initialization - took - 698 milliseconds 
+
+- magnitude calculation - took - 383 milliseconds 
+
+Magnitude of a[500000000] = 22360.7 
+
+  
+
+  
+
+Running with n = 600000000 
+
+Hello from the GNU compiler: 14:2 version 
+
+- allocation and initialization - took - 821 milliseconds 
+
+- magnitude calculation - took - 438 milliseconds 
+
+Magnitude of a[600000000] = 24494.9 
+
+  
+
+  
+
+Running with n = 700000000 
+
+Hello from the GNU compiler: 14:2 version 
+
+- allocation and initialization - took - 968 milliseconds 
+
+- magnitude calculation - took - 437 milliseconds 
+
+Magnitude of a[700000000] = 26457.5 
+
+  
+
+  
+
+Running with n = 800000000 
+
+Hello from the GNU compiler: 14:2 version 
+
+- allocation and initialization - took - 1187 milliseconds 
+
+- magnitude calculation - took - 508 milliseconds 
+
+Magnitude of a[800000000] = 28284.3 
+
+  
+
+  
+
+Running with n = 900000000 
+
+Hello from the GNU compiler: 14:2 version 
+
+- allocation and initialization - took - 1347 milliseconds 
+
+- magnitude calculation - took - 546 milliseconds 
+
+Magnitude of a[900000000] = 30000 
+
+  
+
+  
+
+Running with n = 1000000000 
+
+Hello from the GNU compiler: 14:2 version 
+
+- allocation and initialization - took - 1476 milliseconds 
+
+- magnitude calculation - took - 600 milliseconds 
+
+Magnitude of a[1000000000] = 31622.8 

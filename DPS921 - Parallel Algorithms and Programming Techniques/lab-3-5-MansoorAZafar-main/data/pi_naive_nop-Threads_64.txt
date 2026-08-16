@@ -1,0 +1,64 @@
+
+
+************** pi_naive -O0   Threads=64 **************
+
+n = 1000000000
+pi(exact)   = 3.141592653589793
+pi(calcd)   = 3.141592653589770
+Integration took 721 milliseconds
+
+
+n = 1000000000
+pi(exact)   = 3.141592653589793
+pi(calcd)   = 3.141592653589770
+Integration took 667 milliseconds
+
+
+n = 1000000000
+pi(exact)   = 3.141592653589793
+pi(calcd)   = 3.141592653589770
+Integration took 638 milliseconds
+
+
+n = 1000000000
+pi(exact)   = 3.141592653589793
+pi(calcd)   = 3.141592653589770
+Integration took 705 milliseconds
+
+
+n = 1000000000
+pi(exact)   = 3.141592653589793
+pi(calcd)   = 3.141592653589770
+Integration took 680 milliseconds
+
+
+n = 1000000000
+pi(exact)   = 3.141592653589793
+pi(calcd)   = 3.141592653589770
+Integration took 616 milliseconds
+
+
+n = 1000000000
+pi(exact)   = 3.141592653589793
+pi(calcd)   = 3.141592653589770
+Integration took 680 milliseconds
+
+
+n = 1000000000
+pi(exact)   = 3.141592653589793
+pi(calcd)   = 3.141592653589770
+Integration took 676 milliseconds
+
+
+n = 1000000000
+pi(exact)   = 3.141592653589793
+pi(calcd)   = 3.141592653589770
+Integration took 715 milliseconds
+
+
+n = 1000000000
+pi(exact)   = 3.141592653589793
+pi(calcd)   = 3.141592653589770
+Integration took 651 milliseconds
+
+

@@ -1,0 +1,29 @@
+
+
+************** Q2 Sequential RUNNING WITH n = 100  **************
+
+allocation and initialization - took - 0 millisecs
+matrix-matrix multiplication - took - 1 millisecs
+done
+
+
+allocation and initialization - took - 0 millisecs
+matrix-matrix multiplication - took - 1 millisecs
+done
+
+
+allocation and initialization - took - 0 millisecs
+matrix-matrix multiplication - took - 1 millisecs
+done
+
+
+allocation and initialization - took - 0 millisecs
+matrix-matrix multiplication - took - 1 millisecs
+done
+
+
+allocation and initialization - took - 0 millisecs
+matrix-matrix multiplication - took - 1 millisecs
+done
+
+

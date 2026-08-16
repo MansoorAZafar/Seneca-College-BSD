@@ -1,0 +1,57 @@
+***************************
+Welcome to the Ticketing System!
+
+        Here you can submit, list, detail
+        close or get the stats of tickts!
+
+Please delimit arguments with |
+
+Examples:
+        SUBMIT|Ali|NETWORK|HIGH|Cannot access Linux VM
+        LIST|OPEN or LIST|ALL
+        DETAIL|3
+        CLOSE|3
+        STATS
+        QUIT
+
+***************************
+
+Enter your Command:
+SUBMIT ( Creates a new Ticket      )
+LIST   ( Lists Tickets by Status   )
+DETAIL ( Displays one Ticket by ID )
+CLOSE  ( Close an Existing Ticket  )
+STATS  ( Show Ticket Statistics    )
+QUIT   ( Disconnects this Client   )
+> SUBMIT|Foo|NETWORK|HIGH|No WIFI access
+
+Server: Successfully Added Ticket
+
+Press Enter to continue
+***************************
+Welcome to the Ticketing System!
+
+        Here you can submit, list, detail
+        close or get the stats of tickts!
+
+Please delimit arguments with |
+
+Examples:
+        SUBMIT|Ali|NETWORK|HIGH|Cannot access Linux VM
+        LIST|OPEN or LIST|ALL
+        DETAIL|3
+        CLOSE|3
+        STATS
+        QUIT
+
+***************************
+
+Enter your Command:
+SUBMIT ( Creates a new Ticket      )
+LIST   ( Lists Tickets by Status   )
+DETAIL ( Displays one Ticket by ID )
+CLOSE  ( Close an Existing Ticket  )
+STATS  ( Show Ticket Statistics    )
+QUIT   ( Disconnects this Client   )
+> quit
+

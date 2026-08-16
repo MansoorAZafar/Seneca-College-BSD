@@ -1,0 +1,55 @@
+CPU
+
+	13th Gen Intel(R) Core(TM) i7-13700
+
+	Base speed:	2.10 GHz
+	Sockets:	1
+	Cores:	16
+	Logical processors:	24
+	Virtualization:	Enabled
+	L1 cache:	1.4 MB
+	L2 cache:	24.0 MB
+	L3 cache:	30.0 MB
+
+	Utilization	2%
+	Speed	2.88 GHz
+	Up time	0:03:05:53
+	Processes	326
+	Threads	5631
+	Handles	144229
+
+
+
+
+Memory
+
+	32.0 GB
+
+	Speed:	4800 MT/s
+	Slots used:	2 of 2
+	Form factor:	SODIMM
+	Hardware reserved:	311 MB
+
+	Available	12.1 GB
+	Cached	7.5 GB
+	Committed	27.1/36.4 GB
+	Paged pool	746 MB
+	Non-paged pool	1.0 GB
+	In use (Compressed)	19.2 GB (1.1 GB)
+
+
+
+GPU 0 (EXTERNAL)
+
+	NVIDIA RTX A2000 12GB
+
+	Driver version:	32.0.15.8142
+	Driver date:	9/22/2025
+	DirectX version:	12 (FL 12.2)
+	Physical location:	PCI bus 1, device 0, function 0
+
+	Utilization	16%
+	Dedicated GPU memory	1.1/12.0 GB
+	Shared GPU memory	0.1/15.8 GB
+	GPU Memory	1.2/27.8 GB
+

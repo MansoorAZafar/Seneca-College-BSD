@@ -1,0 +1,29 @@
+PS C:\Users\mzafar15\Downloads\lab-2-5-MansoorAZafar-main\lab-2-5-MansoorAZafar-main> .\q2parallel.exe 1600
+allocation and initialization - took - 12 millisecs
+matrix-matrix multiplication - took - 219 millisecs
+correctness test ...
+done
+
+PS C:\Users\mzafar15\Downloads\lab-2-5-MansoorAZafar-main\lab-2-5-MansoorAZafar-main> .\q2parallel.exe 1600
+allocation and initialization - took - 12 millisecs
+matrix-matrix multiplication - took - 218 millisecs
+correctness test ...
+done
+
+PS C:\Users\mzafar15\Downloads\lab-2-5-MansoorAZafar-main\lab-2-5-MansoorAZafar-main> .\q2parallel.exe 1600
+allocation and initialization - took - 12 millisecs
+matrix-matrix multiplication - took - 202 millisecs
+correctness test ...
+done
+
+PS C:\Users\mzafar15\Downloads\lab-2-5-MansoorAZafar-main\lab-2-5-MansoorAZafar-main> .\q2parallel.exe 1600
+allocation and initialization - took - 12 millisecs
+matrix-matrix multiplication - took - 219 millisecs
+correctness test ...
+done
+
+PS C:\Users\mzafar15\Downloads\lab-2-5-MansoorAZafar-main\lab-2-5-MansoorAZafar-main> .\q2parallel.exe 1600
+allocation and initialization - took - 12 millisecs
+matrix-matrix multiplication - took - 228 millisecs
+correctness test ...
+done

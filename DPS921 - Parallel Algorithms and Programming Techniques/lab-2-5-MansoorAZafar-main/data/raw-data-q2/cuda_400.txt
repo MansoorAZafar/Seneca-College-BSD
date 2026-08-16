@@ -1,0 +1,34 @@
+
+
+************** Q2 CUDA RUNNING WITH n = 400  **************
+
+allocation and initialization - took - 0 millisecs
+matrix-matrix multiplication - took - 133 millisecs
+correctness test ...
+done
+
+
+allocation and initialization - took - 0 millisecs
+matrix-matrix multiplication - took - 135 millisecs
+correctness test ...
+done
+
+
+allocation and initialization - took - 0 millisecs
+matrix-matrix multiplication - took - 136 millisecs
+correctness test ...
+done
+
+
+allocation and initialization - took - 0 millisecs
+matrix-matrix multiplication - took - 130 millisecs
+correctness test ...
+done
+
+
+allocation and initialization - took - 0 millisecs
+matrix-matrix multiplication - took - 126 millisecs
+correctness test ...
+done
+
+

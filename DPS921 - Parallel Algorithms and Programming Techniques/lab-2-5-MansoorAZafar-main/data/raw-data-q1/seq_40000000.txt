@@ -1,0 +1,29 @@
+
+
+**************  RUNNING WITH n = 40000000  **************
+
+Initialization took  0.1310 seconds
+Conversion     took  2.4350 seconds
+40000000 = 17276457 0s + 22723543 1s
+
+
+Initialization took  0.1330 seconds
+Conversion     took  2.4350 seconds
+40000000 = 17276457 0s + 22723543 1s
+
+
+Initialization took  0.1330 seconds
+Conversion     took  2.4330 seconds
+40000000 = 17276457 0s + 22723543 1s
+
+
+Initialization took  0.1310 seconds
+Conversion     took  2.4360 seconds
+40000000 = 17276457 0s + 22723543 1s
+
+
+Initialization took  0.1310 seconds
+Conversion     took  2.4380 seconds
+40000000 = 17276457 0s + 22723543 1s
+
+

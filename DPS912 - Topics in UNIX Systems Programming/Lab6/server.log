@@ -1,0 +1,48 @@
+[INFO] 
+************************
+Thu Jul  9 14:33:07 2026
+************************
+
+[INFO] Using AF_UNIX Sock
+[INFO] [Socket] Binding Socket
+[INFO] [Listener] listening
+[INFO] [Listener] Accepting Client
+[INFO] [Listener] Client Accepted, client fd: 5
+[INFO] [Connection] creating a new connection
+[INFO] Using Command: Pid
+[INFO] Using Command: Sleep
+[INFO] Using Command: Quit
+[INFO] 
+************************
+Thu Jul  9 14:33:45 2026
+************************
+
+[INFO] Using AF_INET Sock
+[INFO] [Socket] Binding Socket
+[INFO] [Listener] listening
+[INFO] [Listener] Accepting Client
+[INFO] [Listener] Client Accepted, client fd: 5
+[INFO] [Connection] creating a new connection
+[INFO] Using Command: Pid
+[INFO] Using Command: Sleep
+[INFO] Using Command: Quit
+[INFO] 
+************************
+Thu Jul  9 14:34:06 2026
+************************
+
+[INFO] Using AF_INET DGRAM
+[INFO] [Socket] Binding Socket
+[INFO] Using Command: Pid
+[INFO] Using Command: Sleep
+[INFO] Using Command: Quit
+[INFO] 
+************************
+Thu Jul  9 14:34:26 2026
+************************
+
+[INFO] Using AF_UNIX DGRAM
+[INFO] [Socket] Binding Socket
+[INFO] Using Command: Pid
+[INFO] Using Command: Sleep
+[INFO] Using Command: Quit

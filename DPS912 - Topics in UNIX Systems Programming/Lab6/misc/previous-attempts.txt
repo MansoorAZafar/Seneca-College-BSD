@@ -1,0 +1,1364 @@
+/**
+* A collection of my previous attetmps
+*/
+
+
+
+/**
+ * SOCKET.HPP
+ */
+
+
+template <class Address>
+struct Socket {
+    static_assert( 
+        std::is_same_v<Address, struct sockaddr_un>,
+        || std::is_same_v<Address, struct sockaddr_in>,
+        "\033[31m[ERROR]\033[0m: L6::Socket Struct only accepts [ sockaddr_un ] currently" 
+    );
+
+    int socket_file_descriptor;
+    SocketRole role;
+    Address address;
+};
+
+template <class T>
+Socket<T> initializeSocket(int domain, int type, int protocol = 0, const SocketRole& role) {
+    const int socket_file_descriptor { socket(domain, type, protocol) };
+    if(socket_file_descriptor < 0) {
+        throw std::runtime_error("\033[31m\033[ERROR][0m: failed to open socket file descriptor\n");
+    }
+
+    return { socket_file_descriptor, role };
+}
+
+Socket<sockaddr_un> UnixSocketSetup(Socket<sockaddr_un>& socket);
+
+template<class Address>
+void startServer(Socket<Address>& socket, const int backlog) {        
+    const struct sockaddr* address = reinterpret_cast<sockaddr*>(socket.address);
+    if(bind(socket.socket_file_descriptor, address, sizeof(Address))) {
+        throw std::runtime_error("\033[31m[ERROR]\033[31m: failed to bind socket port\n");
+    }
+
+    if(listen(socket.socket_file_descriptor, backlog)) {
+        throw std::runtime_error("\033[31m[ERROR]\033[31m: failed to listen on socket\n")
+    }
+}
+
+SocketReadNode read() const {
+    constexpr int MAX_BUFFER_SIZE { 1024 };
+
+    std::array<char, MAX_BUFFER_SIZE> rawBuffer {};
+    std::string buffer {};
+
+    SocketReadNode response;
+    bool error { false };
+
+    // pre-allocate some size
+    buffer.reserve(MAX_BUFFER_SIZE);
+
+    while(true) {
+        const ssize_t bytesRead { ::read(this->file_descriptor, rawBuffer.data(), rawBuffer.size()) };
+
+        if(bytesRead == 0) {
+            std::cout << "Ending Connection\n";
+            break;
+        } else if (bytesRead == -1) {
+            std::cerr << this->errorPrefix << "reading stream message\n";
+
+            error = true;
+            return { error, "" };
+        } else {
+            std::cout << "-->" << rawBuffer.data() << "\n";
+            
+            // Append to final string
+            if(buffer.size() + bytesRead > buffer.capacity()) {
+                buffer.reserve(buffer.capacity() * 2 + bytesRead);
+            }
+
+            buffer.append(rawBuffer.data(), bytesRead);
+        }
+    }
+
+    return { error, buffer };
+}
+
+// Attempt 2:
+template <class Address>
+class Socket {
+static_assert( 
+    std::is_same_v<Address, struct sockaddr_un>
+    || std::is_same_v<Address, struct sockaddr_in>,
+    "\033[31m[ERROR]\033[0m: L6::Socket Struct only accepts [ sockaddr_un ] currently" 
+);
+
+private:
+    const std::string errorPrefix { "\033[31m\033[ERROR][0m: " };
+
+    struct SocketReadNode {
+        bool error;
+        std::string data;
+    };
+protected:
+    int file_descriptor;
+    const SocketRole role;
+    Address address;
+
+    virtual void initializeAddress() = 0;
+public:
+    inline void ensureSocketTypeIntegrity(const SocketRole& acceptedType) {
+        if(this->role != acceptedType) throw std::runtime_error(this->errorPrefix + " Socket Type is not allowed\n");
+    }
+
+    Socket(int domain, int type, int protocol = 0, const SocketRole& _role = SocketRole::UNSET) : role(_role) {
+        if(role == SocketRole::UNSET) throw std::runtime_error(this->errorPrefix + "SocketRole::UNSET\n");
+        
+        const int socket_file_descriptor { ::socket(domain, type, protocol) };
+        if(socket_file_descriptor < 0) {
+            throw std::runtime_error(this->errorPrefix + "failed to open socket file descriptor\n");
+        }
+
+        this->file_descriptor = socket_file_descriptor;
+    }
+
+    void startServer(const int backlog) {
+        // if(socket.role != SocketRole::SERVER) throw std::runtime_error(this->errorPrefix + "Clients cannot start a server\n");
+        this->ensureSocketTypeIntegrity(SocketRole::SERVER);
+
+        const struct sockaddr* raw_address = reinterpret_cast<sockaddr*>(this->address);
+        if(::bind(this->file_descriptor, raw_address, sizeof(Address))) {
+            throw std::runtime_error(this->errorPrefix + "failed to bind socket port\n");
+        }
+
+        if(::listen(this->file_descriptor, backlog)) {
+            throw std::runtime_error(this->errorPrefix + "failed to listen on socket\n");
+        }
+    }
+
+    void processClients() const {
+        this->ensureSocketTypeIntegrity(SocketRole::SERVER);
+
+        constexpr int MAX_BUFFER_SIZE { 1024 };
+        std::array<char, MAX_BUFFER_SIZE> buffer { };
+
+        while(true) {
+            const int messageSocket { ::accept(this->active_file_descriptor, 0, 0) };
+
+            if(messageSocket == -1) {
+            std::cerr << this->errorPrefix << "Could not accept incoming socket\n";
+                continue;
+            }
+
+            while(true) {
+                const ssize_t bytesRead { ::read(this->active_file_descriptor, buffer.data(), buffer.size()) };
+
+                if(bytesRead == 0) {
+                    std::cout << "Ending Connection\n";
+                    break;
+                } else if (bytesRead == -1) {
+                    std::cerr << this->errorPrefix << "reading stream message\n";
+                } else {
+                    std::cout << "-->" << buffer.data() << "\n";
+                }
+            }
+        }
+    }
+
+    SocketReadNode read() const {
+        constexpr int MAX_BUFFER_SIZE { 1024 };
+
+        std::array<char, MAX_BUFFER_SIZE> rawBuffer {};
+        std::string buffer {};
+
+        SocketReadNode response;
+        bool error { false };
+
+        // pre-allocate some size
+        buffer.reserve(MAX_BUFFER_SIZE);
+
+        while(true) {
+            const ssize_t bytesRead { ::read(this->file_descriptor, rawBuffer.data(), rawBuffer.size()) };
+
+            if(bytesRead == 0) {
+                std::cout << "Ending Connection\n";
+                break;
+            } else if (bytesRead == -1) {
+                std::cerr << this->errorPrefix << "reading stream message\n";
+
+                error = true;
+                return { error, "" };
+            } else {
+                std::cout << "-->" << rawBuffer.data() << "\n";
+                
+                // Append to final string
+                if(buffer.size() + bytesRead > buffer.capacity()) {
+                    buffer.reserve(buffer.capacity() * 2 + bytesRead);
+                }
+
+                buffer.append(rawBuffer.data(), bytesRead);
+            }
+        }
+
+        return { error, buffer };
+    }
+
+    bool write(const std::string_view& message) {
+        const ssize_t writtenBytes { ::write(this->file_descriptor, message.data(), message.size()) };
+        
+        return writtenBytes == message.size();
+    }
+};
+
+class UnixSocket : public Socket<struct sockaddr_un> {
+protected:
+    void initializeAddress() override;
+public:
+    UnixSocket(const int domain, const int type, const int protocol = 0);
+};
+
+
+// Attempt 3
+namespace L6 {
+    enum class SocketRole {
+        UNSET = -1,
+        SERVER,
+        CLIENT
+    };    
+    
+    template <class Address>
+    class Socket {
+    // No shenanigans
+    static_assert( 
+        std::is_same_v<Address, struct sockaddr_un>
+        || std::is_same_v<Address, struct sockaddr_in>,
+        "\033[31m[ERROR]\033[0m: L6::Socket Struct only accepts [ sockaddr_un ] currently" 
+    );
+
+    protected:
+        const std::string errorPrefix { "\033[31m\033[ERROR][0m: " };    
+        inline void printError(const char* message) const {
+            std::cerr << this->errorPrefix << message << "\n";
+        }
+    
+    public:
+        const SocketRole role;
+        int file_descriptor;
+        Address address;
+
+        Socket(
+            const int domain, 
+            const int type, 
+            const int protocol = 0, 
+            const SocketRole& _role = SocketRole::UNSET
+        ) : role(_role) {
+            if(_role == SocketRole::UNSET) {
+                throw std::runtime_error("SocketRole::UNSET\n");
+            }
+
+            const int socket_file_descriptor { ::socket(domain, type, protocol) };
+            if(socket_file_descriptor == -1) this->printError("failed to create socket file descriptor");
+
+            this->file_descriptor = socket_file_descriptor;
+        }
+
+        inline virtual ssize_t read(char* rawBuffer, const int size) const {
+            return ::read(this->file_descriptor, rawBuffer, size);
+        }
+
+        inline virtual ssize_t write(const std::string_view& message) const {
+            return ::write(this->file_descriptor, message.data(), message.size());
+        }
+
+        sockaddr* get_raw_address(Address& _address) {
+            return reinterpret_cast<sockaddr*>(&_address);
+        }
+
+        const sockaddr* get_raw_address_const(const Address& _address) {
+            return reinterpret_cast<const sockaddr*>(&_address);
+        }
+
+        virtual ~Socket() = default;
+    
+        // virtual void initializeAddress() = 0;
+    };
+
+    template <class Address>
+    class Server : public Socket<Address> {
+    protected:
+    Address client_address;
+    socklen_t client_address_length { sizeof(Address) };
+    public:
+        int client_file_descriptor;
+        void start(const int& backlog) const {
+            if(this->role != SocketRole::SERVER) {
+                throw std::runtime_error("SocketRole must be Server to use listen()\n");
+            }
+            
+            const struct sockaddr* raw_address = (struct sockaddr *)&this->address;
+            if(::bind(this->file_descriptor, raw_address, sizeof(Address))) {
+                throw std::runtime_error(this->errorPrefix + "failed to bind socket port\n");
+            }
+
+            if(::listen(this->file_descriptor, backlog)) {
+                throw std::runtime_error(this->errorPrefix + "failed to listen on socket\n");
+            }
+        }
+
+        bool accept() {
+            sockaddr* raw_address { this->get_raw_address(this->client_address) };
+            this->client_file_descriptor = ::accept(this->file_descriptor, raw_address, &this->client_address_length);
+        
+            return this->client_file_descriptor != -1;
+        }
+
+        inline virtual ssize_t read(char* rawBuffer, const int size) const override {
+            return ::read(this->client_file_descriptor, rawBuffer, size);
+        }
+
+        inline virtual ssize_t write(const std::string_view& message) const override {
+            return ::write(this->client_file_descriptor, message.data(), message.size()) ;
+        }
+        
+        Server(const int domain, const int type, const int protocol = 0, const SocketRole& _role = SocketRole::SERVER) 
+            : Socket<Address>(domain, type, protocol, _role) {}
+    };
+
+    template <class Address>
+    class Client : public Socket<Address> {
+    public:
+        inline int connect() const {
+            return ::connect(this->file_descriptor, (struct sockaddr *)&this->address, sizeof(Address));
+        }
+
+        Client(const int domain, const int type, const int protocol = 0, const SocketRole& _role = SocketRole::CLIENT) 
+            : Socket<Address>(domain, type, protocol, _role) {}
+    };
+
+    class UnixSocket {
+    private:
+        Socket<sockaddr_un>* socket;  
+        void initializeAddress(const char* socketPath);
+    public:
+        UnixSocket(const SocketRole& role, const int type, const char* socketPath, const int protocol = 0);
+        
+        int connect() const;
+        ssize_t write(const std::string_view& message) const;
+        ssize_t read(char* rawBuffer, const int size) const;
+        bool accept();
+        void start(const int& backlog) const;
+
+        ~UnixSocket();
+    }; 
+};
+
+// Attempt 4
+namespace L6 {
+
+    template <class Address>
+    class Socket {
+    static_assert( 
+        std::is_same_v<Address, struct sockaddr_un>
+        || std::is_same_v<Address, struct sockaddr_in>,
+        "\033[31m[ERROR]\033[0m: L6::Socket Struct only accepts [ sockaddr_un ] currently" 
+    );
+
+    protected:    
+        const std::string errorPrefix { "\033[31m[ERROR]\033[0m: " };    
+        int type;
+        int fd;
+        
+
+        inline void printError(const char* message) const {
+            std::cerr << this->errorPrefix << message << "\n";
+        }
+
+        sockaddr* raw_address() {
+            return reinterpret_cast<sockaddr*>(&this->address);
+        }
+
+        const sockaddr* raw_address() const {
+            return reinterpret_cast<const sockaddr*>(&this->address);
+        }
+    
+        Socket(const int domain, const int _type, const int protocol)
+            : type(_type), fd(::socket(domain, _type, protocol)) {
+            if(this->fd == -1) throw std::runtime_error(this->errorPrefix + "Failed to create Socket()");
+        }
+
+        Socket(const int existingfd, const int _type) {
+            this->fd = existingfd;
+            this->type = _type;
+        }
+    public:
+        Address address;
+        virtual ~Socket() {
+            if(this->fd != -1) {
+                ::close(this->fd);
+            }
+        }
+
+        virtual ssize_t read(char* buffer, const int size) {
+            return ::read(this->fd, buffer, size);
+        }
+
+        virtual ssize_t write(const std::string_view& message) {
+            return ::write(this->fd, message.data(), message.size());
+        }
+
+        virtual void setAddress(Address&&) { throw std::logic_error("Not a server socket, use setRemoteAddress()"); } 
+        virtual void setRemoteAddress(Address&&) { throw std::logic_error("Not a client socket, use setAddress()"); }
+
+        virtual std::unique_ptr<Socket<Address>> accept () { throw std::logic_error("Not a server socket"); }
+        virtual void start(const int) { throw std::logic_error("Not a server socket"); }
+        virtual int connect() { throw std::logic_error("Not a client socket"); }
+    };
+
+    template <class Address>
+    class ConnectedSocket : public Socket<Address> {
+    private:
+        const Address client_address;
+        const socklen_t client_address_length;
+    public:
+        ConnectedSocket(const int _fd, const int _type, const Address& addr, const socklen_t& len) 
+            : Socket<Address>(_fd, _type), client_address(addr), client_address_length(len) {}        
+    };
+
+    template <class Address>
+    class Server : public Socket<Address> {
+    private:
+        Address client_address;
+        socklen_t client_address_length { sizeof(Address) };
+    public:
+        Server(const int domain, const int _type, const int protocol)
+            : Socket<Address>(domain, _type, protocol)
+        {}
+
+        void start(const int backlog = 5) override {
+            if(::bind(this->fd, this->raw_address(), sizeof(Address)) == -1) {
+                throw std::runtime_error("bind()");
+            }
+
+            std::cout << "Successfully bound port\nNow listening for connections\n";
+            if(this->type == SOCK_STREAM) if(::listen(this->fd, backlog) == -1) throw std::runtime_error("listen()");
+        }
+
+        std::unique_ptr<Socket<Address>> accept() override {
+            if(this->type == SOCK_DGRAM) throw std::logic_error("UDP Sockets don't accept()");
+
+            Address peer;
+            socklen_t len = sizeof(Address);
+            sockaddr* rawAddress { reinterpret_cast<sockaddr*>(&peer) };
+            
+            const int client_fd { ::accept(this->fd, rawAddress, &len) };
+            return std::make_unique<ConnectedSocket<Address>>(client_fd, this->type, peer, len);
+        }
+
+        void setAddress(Address&& addr) override { 
+            this->address = std::move(addr); 
+        }
+    };
+
+    template <class Address>
+    class Client : public Socket<Address> {
+    public:
+        Client(const int domain, const int _type, const int protocol) 
+            : Socket<Address>(domain, _type, protocol) {}
+        
+        int connect() {
+            std::cout << "About to connect to server\n";
+            return ::connect(this->fd, this->raw_address(), sizeof(Address));
+        }
+
+        void setRemoteAddress(Address&& addr) override {
+            this->address = std::move(addr);
+        }
+    };
+
+    using UnixServer = Server<sockaddr_un>;
+    using UnixClient = Client<sockaddr_un>;
+
+    sockaddr_un unixSocket(const std::string_view& socketPath);
+};
+
+
+// Attempt 5:
+namespace L6 {
+
+    class Socket {
+    protected:
+        int fileDescriptor;
+
+        Socket(const int domain, const int type, const int protocol)
+            : fileDescriptor(::socket(domain, type, protocol)) {
+            if(this->fileDescriptor == -1) {
+                throw std::runtime_error("socket()");
+            }
+        }
+
+        explicit Socket(const int existingFileDescriptor)
+            : fileDescriptor(existingFileDescriptor) {}
+
+    public:
+        Socket(const Socket&) = delete;
+        Socket& operator=(const Socket&) = delete;
+
+        Socket(Socket&& other)
+            : fileDescriptor(other.fileDescriptor) {
+            other.fileDescriptor = -1;
+        }
+
+        Socket& operator=(Socket&& other) {
+            if(this != &other) {
+                if(this->fileDescriptor != -1) ::close(this->fileDescriptor);
+
+                this->fileDescriptor = other.fileDescriptor;
+                other.fileDescriptor = -1;
+            }
+
+            return *this;
+        }
+
+        virtual ~Socket() {
+            if(this->fileDescriptor != -1) {
+                ::close(this->fileDescriptor);
+            }
+        }
+
+        ssize_t read(void* buffer, const size_t& size) {
+            return ::read(this->fileDescriptor, buffer, size);
+        }
+
+        ssize_t write(const std::string_view& message) {
+            return ::write(this->fileDescriptor, message.data(), message.size());
+        }
+    };
+    
+    template <class Address>
+    class Connection : public Socket {
+    public:
+        Address clientAddress;
+        Connection(const int fd, const Address& clientAddr)
+            : Socket(fd), clientAddress(clientAddr) {}   
+    };
+
+    template <class Address>
+    class Client : public Connection<Address> {
+    public:
+        Client(const int domain, const int type, const int protocol = 0)
+            : Connection<Address>(::socket(domain, type, protocol), {}) {}
+        
+        void connect(const Address& address) {
+            if(::connect(this->fileDescriptor, reinterpret_cast<const sockaddr*>(&address), sizeof(Address)) == -1) {
+                throw std::runtime_error("connect()");
+            }
+
+            this->clientAddress = address;
+        }
+    };
+
+    template <class Address>
+    class Server : public Socket {
+    private:
+        Address local{};
+    public:
+        Server(const int domain, const int type, const int protocol = 0)
+            : Socket(domain, type, protocol) {}
+
+        void bind(const Address& address) {
+            if(::bind(this->fileDescriptor, reinterpret_cast<const sockaddr*>(&address), sizeof(Address)) == -1) {
+                throw std::runtime_error("bind()");
+            }
+        }
+
+        void listen(const int backlog = 5) {
+            if(::listen(this->fileDescriptor, backlog) == -1) {
+                throw std::runtime_error("listen()");
+            }
+        }
+
+        Connection<Address> accept() {
+            Address peer;
+            socklen_t len = sizeof(Address);
+
+            const int connection { ::accept(this->fileDescriptor, reinterpret_cast<sockaddr*>(&peer), &len) };
+            if(connection == -1) {
+                throw std::runtime_error("accept()");
+            }
+
+            return Connection<Address>(connection, peer);
+        }
+    };
+
+    using UnixServer = Server<sockaddr_un>;
+    using UnixClient = Client<sockaddr_un>;
+
+    sockaddr_un unixSocket(const std::string_view& socketPath);
+};
+
+
+// ATTEMPT 6
+    struct Request {
+        int fd;
+        void* buffer;
+        size_t size;
+        int flags;
+        std::optional<sockaddr*> address;
+        std::optional<socklen_t*> len;
+
+    };
+    
+    class SocketCommunicationStrategy {
+    public:
+        virtual ssize_t write(const Request& req) = 0;
+        virtual ssize_t read(const Request& req) = 0;
+    };
+
+    class StreamCommunicationStrategy : public SocketCommunicationStrategy {
+    public:
+        ssize_t write(const Request& req) override {
+            return ::send(req.fd, req.buffer, req.size, req.flags);
+        }
+
+        ssize_t read(const Request& req) override {
+            return ::recv(req.fd, req.buffer, req.size, req.flags);            
+        }
+    };
+
+    class DgramCommunicationStrategy : public SocketCommunicationStrategy {
+        ssize_t write(const Request& req) override {
+            return ::sendto(req.fd, req.buffer, req.size, req.flags, *req.address, *(*req.len));
+        }
+
+        ssize_t read(const Request& req) override {
+            return ::recvfrom(req.fd, req.buffer, req.size, req.flags, *req.address, *req.len);            
+        }
+    };
+
+    class Socket {
+    protected:
+        int fd;
+        int type;
+        std::unique_ptr<SocketCommunicationStrategy> communication;
+        
+        Socket(const int domain, const int _type, const int prototype)
+            : fd(::socket(domain, _type, prototype)), type(_type) {
+            if(this->fd == -1) {
+                throw std::runtime_error("socket()");
+            }
+
+            this->setStrategy(_type);
+        }
+
+        explicit Socket(const int _fd, const int _type) : fd(_fd), type(_type) {
+            this->setStrategy(_type);
+        }
+    public:
+
+        void setStrategy(const int _type) {
+            if(_type == SOCK_DGRAM) {
+                this->communication = std::make_unique<DgramCommunicationStrategy>();
+            } else {
+                this->communication = std::make_unique<StreamCommunicationStrategy>();
+            }
+        }
+
+        ssize_t read(const Request& request) {
+            return this->communication->read(request);
+        }
+
+        ssize_t write(const Request& request) {
+            return this->communication->write(request);
+        }
+        
+        // Remove copy operations
+        // - we remove it since if original is closed, 
+        //   the copy is then referencing a dead fd
+        Socket(const Socket&) = delete;
+        Socket& operator=(const Socket&) = delete;
+
+        Socket(Socket&& other) {
+            *this = std::move(other);
+        }
+
+        Socket& operator=(Socket&& other) {
+            if(this != &other) {
+                if(this->fd == -1) ::close(this->fd);
+                this->fd = other.fd;
+                other.fd = -1;
+            }
+
+            return *this;
+        }
+
+        // All sockets should be able to read and write
+        virtual ~Socket() {
+            if(this->fd != -1) {
+                ::close(this->fd);
+            }
+        }
+    };
+
+    template <class Address>
+    class Server : public Socket {
+    protected:
+        const std::string socketPath;
+        Server(const int _domain, const int _type, const int _protocol, const std::string_view& sockPath)
+            : Socket(_domain, _type, _protocol), socketPath(std::string(sockPath)) {} 
+    public:
+        void bind(const Address& address) {
+            ::unlink(this->socketPath.data());
+
+            if (::bind(
+                this->fd, 
+                reinterpret_cast<const sockaddr*>(&address), 
+                sizeof(Address)
+            )) {
+                ::unlink(this->socketPath.data());
+                throw std::runtime_error("bind()");
+            }
+        }
+
+        virtual void start() = 0;
+
+        ~Server() {
+            ::unlink(this->socketPath.data());
+        }
+    };
+
+    template <class Address>
+    class ConnectionNode : public Socket {
+    protected:
+        Address peer;
+    public:
+        ConnectionNode(const int _fd, const int _type, const Address& _peer)
+            : Socket(_fd, _type), peer(_peer) {}
+    };
+
+    template <class Address>
+    class StreamServer : public Server<Address> {
+    public:
+        const Address localAddress;
+        StreamServer(const int _domain, const std::string_view& sockPath, const Address& address)
+            : Server<Address>(_domain, SOCK_STREAM, 0, sockPath), localAddress(address) {}
+
+        void listen(const int backlog = 5) {
+            if(::listen(this->fd, backlog) == -1) {
+                ::close(this->fd);
+                throw std::runtime_error("listen()");
+            }            
+        }
+
+        ConnectionNode<Address> accept() {
+            Address peer {};
+            socklen_t len { sizeof(Address) };
+
+            const int newfd { ::accept(this->fd, reinterpret_cast<sockaddr*>(&peer), &len) };
+            if(newfd == -1) {
+                std::cerr << "accept()\n";
+                return {-1, -1, {}};
+            }
+
+            return ConnectionNode(newfd, this->type, peer);
+        }
+
+        void start() override {
+            std::cout << "Binding\n";
+            this->bind(this->localAddress);
+            
+            std::cout << "Listening\n";
+            this->listen();   
+        }
+    };
+
+    template <class Address>
+    class StreamClient : public ConnectionNode<Address> {
+    public:
+        StreamClient(const int _domain)
+            : ConnectionNode<Address>(::socket(_domain, SOCK_STREAM, 0), SOCK_STREAM, {}) {}
+
+        void connect(const Address& address) {
+            if(::connect(this->fd, reinterpret_cast<const sockaddr*>(&address), sizeof(Address)) == -1) {
+                throw std::runtime_error("connect()");
+            }
+        }
+    };
+
+
+
+// Attempt 6
+
+    class Socket {
+    public:
+        int fd;
+
+        Socket() = default;
+        explicit Socket(const int fd_) : fd(fd_) {}
+
+        Socket(const Socket&) = delete;
+        Socket& operator=(const Socket&) = delete;
+        
+        Socket(Socket&& other) {
+            *this = std::move(other);
+        }
+
+        Socket& operator=(Socket&& other) {
+            if(this != &other) {
+                if(this->fd != -1) ::close(this->fd);
+
+                this->fd = other.fd;
+                other.fd = -1;
+            }
+
+            return *this;
+        }
+
+        virtual ~Socket() {
+            if(this->fd != -1) ::close(this->fd);
+        }
+    };
+
+    class StreamSocket : public Socket {
+    public:
+        StreamSocket(const int domain, const int protocol) {
+            this->fd = ::socket(domain, SOCK_STREAM, protocol);
+            if(this->fd == -1) throw std::runtime_error("socket()");
+        }
+
+        explicit StreamSocket(int existing_fd) 
+            : Socket(existing_fd) {}
+
+        ssize_t write(const std::string_view& message) {
+            return ::write(this->fd, message.data(), message.size());
+        }
+
+        ssize_t read(void* buf, size_t len) {
+            return ::read(this->fd, buf, len);
+        }
+
+        void connect(const sockaddr* addr, socklen_t len) {
+            if(::connect(this->fd, addr, len) == -1) throw std::runtime_error("connect()");
+        }
+    };
+
+    template <class Address>
+    class DatagramSocket : public Socket {
+    private:
+        SocketAddress<Address> socketAddress;
+        
+        std::optional<Address> peer {std::nullopt};
+        std::optional<socklen_t> len {std::nullopt};
+
+        // Address peer { NULL };
+        // socklen_t len { NULL };
+    public:
+        DatagramSocket(
+            const int domain, 
+            const SocketAddress<Address>& addr, 
+            int protocol = 0
+        ) : socketAddress(addr) {
+            this->fd = ::socket(domain, SOCK_DGRAM, protocol);
+         
+            if(this->fd == -1) throw std::runtime_error("socket()");
+        }
+
+        explicit DatagramSocket(const int existingfd, Address _peer)
+            : Socket(existingfd) {
+            *this->peer = _peer;
+            *this->len = sizeof(Address);
+        }
+
+        ssize_t write(const std::string_view& message, int flags = 0) {
+            const sockaddr* address { reinterpret_cast<const sockaddr*>(&(*this->peer)) };
+
+            return ::sendto(
+                this->fd, 
+                message.data(), 
+                message.size(), 
+                flags, 
+                address,
+                *this->len
+            );
+        }
+
+        ssize_t read(void* buf, const size_t size, int flags = 0) {
+            // sockaddr* address = reinterpret_cast<sockaddr*>(&(*this->peer));
+            // std::cout << "address: " << (address != nullptr ? address->sa_data : "BOO") << "\n";
+
+            return ::recvfrom(
+                this->fd, 
+                buf, 
+                size, 
+                flags, reinterpret_cast<sockaddr*>(&(*this->peer)), 
+                &(*this->len)
+            );
+        }
+
+        void bind() {
+            std::cout << "Unlinking: " << this->socketAddress.sockPath << "\n"; 
+            ::unlink(this->socketAddress.sockPath.data());
+
+            std::cout << "Binding: " << this->socketAddress.sockPath << "\n";
+            if(::bind(
+                this->fd,
+                reinterpret_cast<const sockaddr*>(&this->socketAddress.address),
+                sizeof(Address)
+            ) == -1) {
+                throw std::runtime_error("bind()");
+            }
+        }
+
+        ~DatagramSocket() {
+            std::cout << "Unlinking: " << this->socketAddress.sockPath << "\n"; 
+            ::unlink(this->socketAddress.sockPath.data());
+        }
+    };
+
+    template <class Address>
+    class DatagramServer {
+    private:
+        DatagramSocket<Address> socket;
+    public:
+        explicit DatagramServer(const int domain, const SocketAddress<Address>& addr, const int protocol = 0)
+            : socket(domain, addr, protocol) {}
+        
+        DatagramSocket<Address> connect(const Address& _peer = {}) {
+            std::cout << "Connecting to peer\n";
+            Address peer = _peer;
+            return DatagramSocket<Address>(this->socket.fd, peer);
+        }
+
+        void bind() {
+            this->socket.bind();
+        }
+    };
+
+   template <class Address>
+    class StreamServer {
+    private:
+        StreamSocket socket;
+        SocketAddress<Address> sockAddr;
+
+    public:
+        explicit StreamServer(const int domain, const SocketAddress<Address>& addr, const int protocol = 0) 
+            : socket(domain, protocol), sockAddr(addr) {}
+        
+        void bind() {
+            if(::bind(this->socket.fd, 
+                reinterpret_cast<const sockaddr*>(&this->sockAddr.address), 
+                sizeof(Address)
+            ) == -1) {
+                throw std::runtime_error("bind()");
+            }
+        }
+
+        void listen(const int backlog = 5) {
+            if(::listen(this->socket.fd, backlog) == -1) {
+                throw std::runtime_error("listen()");
+            }
+        }
+
+        std::optional<StreamSocket> accept() {
+            socklen_t len { sizeof(Address) };
+            sockaddr* addr { reinterpret_cast<sockaddr*>(&this->sockAddr.address) };
+
+            const int newfd { ::accept(this->socket.fd, addr, &len) };
+            if(newfd == -1) {
+                return std::nullopt;
+                // throw std::runtime_error("accept()");
+            }
+
+            return std::optional(StreamSocket(newfd));
+        }
+
+        void start() {
+            std::cout << "Unlinking " << this->sockAddr.sockPath << "\n";
+            ::unlink(this->sockAddr.sockPath.data());
+
+            std::cout << "Binding Server on: " << this->sockAddr.sockPath << "\n";
+            this->bind();
+
+            std::cout << "Server Listening\n";
+            this->listen();
+        }
+
+        ~StreamServer() {
+            std::cout << "Unlinking " << this->sockAddr.sockPath << "\n";
+            ::unlink(this->sockAddr.sockPath.data());
+        }
+    };
+
+    template <class Address>
+    class StreamClient : public StreamSocket {
+    private:
+        SocketAddress<Address> sockAddress;
+    public:
+        explicit StreamClient(const int domain, const SocketAddress<Address>& addr, const int protocol = 0)
+            : StreamSocket(domain, protocol), sockAddress(addr) {}
+        
+        void connect() {
+            StreamSocket::connect(
+                reinterpret_cast<const sockaddr*>(&this->sockAddress.address), 
+                sizeof(Address)
+            );
+        }
+    };
+
+
+
+/**
+* CORE/SOCKET.cpp
+*/
+
+namespace MISC {
+    void UnixSocket::initializeAddress(const char* socketPath) {
+        if(this->socket->role == SocketRole::SERVER) {
+            ::unlink(socketPath);
+        }
+
+        memset(&this->socket->address, 0, sizeof(struct sockaddr_un));
+        this->socket->address.sun_family = AF_UNIX;
+        strncpy(this->socket->address.sun_path, socketPath, sizeof(this->socket->address.sun_path) - 1);
+    }
+
+    UnixSocket::UnixSocket(const SocketRole &role, const int type, const char* socketPath, const int protocol)
+        : socket(role == SocketRole::CLIENT ? 
+            static_cast<Socket<sockaddr_un>*>(new Client<sockaddr_un>(AF_UNIX, type, protocol, role)) : 
+            static_cast<Socket<sockaddr_un>*>(new Server<sockaddr_un>(AF_UNIX, type, protocol, role))) {
+        this->initializeAddress(socketPath);
+    }
+
+    int UnixSocket::connect() const {
+        const int connection = reinterpret_cast<Client<sockaddr_un>*>(this->socket)->connect();
+        return connection;
+    }
+
+    ssize_t UnixSocket::write(const std::string_view &message) const {
+        
+        if(this->socket->role == SocketRole::SERVER) {
+            return reinterpret_cast<Server<sockaddr_un>*>(this->socket)->write(message);
+        } 
+
+        std::cout << "[Client Socket Write]\n";
+        return this->socket->write(message);
+    }
+
+    ssize_t UnixSocket::read(char *rawBuffer, const int size) const {
+        if(this->socket->role == SocketRole::SERVER) {
+            return reinterpret_cast<Server<sockaddr_un>*>(this->socket)->read(rawBuffer, size);
+        } 
+
+        return this->socket->read(rawBuffer, size);
+    }
+
+    bool UnixSocket::accept() {
+        return reinterpret_cast<Server<sockaddr_un>*>(this->socket)->accept();
+    }
+
+    void UnixSocket::start(const int &backlog) const {
+        reinterpret_cast<Server<sockaddr_un>*>(this->socket)->start(backlog);
+    }
+
+    UnixSocket::~UnixSocket() {
+        ::close(this->socket->file_descriptor);
+        if(this->socket->role == SocketRole::SERVER) {
+            ::close(reinterpret_cast<Server<sockaddr_un>*>(this->socket)->client_file_descriptor);
+            ::unlink(this->socket->address.sun_path);
+        }
+
+        if(this->socket != nullptr) delete this->socket;
+    }
+};
+
+namespace MISC {
+    SocketAddress<sockaddr_un> unixSocket(const std::string_view& socketPath) {
+        sockaddr_un address{};
+
+        address.sun_family = AF_UNIX;
+        strncpy(address.sun_path, socketPath.data(), sizeof(address.sun_path) - 1);
+        address.sun_path[sizeof(address.sun_path) - 1] = '\0';
+
+        return {address, socketPath};
+    }
+}
+
+
+
+/**
+ * src/Server.cpp
+ */
+
+int serverTest() {
+
+
+// * UnixSocketServer server {};
+// * server.listenForConnections();
+// * server.write(fd, "message");
+// * server.read();
+
+
+// server
+//     -> init()
+//     -> listen()
+//     -> accept()
+//     -> request client PID
+//         -> write()
+//         -> read()
+//     -> print message
+//     -> request client to sleep
+//         -> write()
+//     -> request client to quit
+//         -> write()
+
+
+   std::array<char, MAX_BUFFER_SIZE> buffer;
+
+    UnixSocket server { SocketRole::SERVER, SOCK_STREAM, "/tmp/server" };
+    server.start(5);
+
+    const auto writeAndRead = [&](const std::string_view& message) {
+        server.write(message);
+        const ssize_t n = server.read(buffer.data(), buffer.size() - 1);
+        if(n > 0) {
+            buffer[n] = '\0';
+            std::cout << "read: " << buffer.data() << "\n";
+        }
+    };
+    
+    // normally would be in loop, but assignment wants 1 conn try
+    if(!server.accept()) { 
+        std::cerr << "\033[31m[ERROR]\033[0m: Failed to accept client socket\n";
+    }
+
+    writeAndRead("Pid");
+    writeAndRead("Sleep");
+    writeAndRead("Quit");
+ 
+
+
+ 
+ 
+ UnixServer server { AF_UNIX, SOCK_STREAM, 0 };
+    ::unlink("/tmp/server");
+
+    server.setAddress(unixSocket("/tmp/server"));
+    server.start();
+    
+    const auto client = server.accept();
+    std::array<char, MAX_BUFFER_SIZE> buffer;
+
+    const auto sendAndRecieveMessage = [&buffer, &client] (const std::string_view& message) {
+        client->write(message);
+        const ssize_t n = client->read(buffer.data(), buffer.size() - 1);
+        if(n > 0) {
+            buffer[n] = '\0';
+            std::cout << "read: " << buffer.data() << "\n";
+        }
+        // while(true) {
+        //     std::cout << "Reading from client\n";
+        //     const ssize_t bytes { client->read(buffer.data(), buffer.size() - 1) };
+        //     if(bytes == -1) {
+        //         std::cerr << "[ERROR] reading client's message\n";
+        //         continue;
+        //     } else if (bytes == 0) {
+        //         std::cout << "Finished Reading client's message\n";
+        //         break;
+        //     } else {
+        //         buffer[bytes] = '\0';
+        //         std::cout << "read: " << buffer.data() << "\n";
+        //     }
+        // }
+    };
+
+    std::cout << "Requesting Client PID\n";
+    sendAndRecieveMessage("Pid");
+
+    std::cout << "Requesting Client to Sleep\n";
+    sendAndRecieveMessage("Sleep");
+
+    std::cout << "Requesting Client to Quit\n";
+    sendAndRecieveMessage("Quit");
+
+    ::unlink("/tmp/server");
+    return 0;
+
+
+
+     UnixServer server { AF_UNIX, SOCK_STREAM };
+    ::unlink("/tmp/server");
+    server.bind(unixSocket("/tmp/server"));
+    server.listen();
+
+    
+
+    while(true) {
+        Connection conn = server.accept();
+        std::cout << "Client Connected\n";
+
+        std::array<char, MAX_BUFFER_SIZE> buffer;
+        while(true) {
+            ssize_t bytes_read { conn.read(buffer.data(), buffer.size() - 1) };
+            
+            if (bytes_read == -1) {
+                perror("read");
+                break;
+            }
+            if (bytes_read == 0) {
+                printf("Client disconnected.\n\n");
+                break;
+            }
+
+            buffer[bytes_read] = '\0';
+            std::cout << "Client says: " << buffer.data() << "\n";
+
+            if (strncmp(buffer.data(), "quit", 4) == 0) {
+                break;
+            }
+        }
+    }
+
+
+
+    ::unlink("/tmp/server");
+    return 0;
+
+
+
+const std::string_view serverAddress { "/tmp/server" };
+    // StreamServer<sockaddr_un> server { AF_UNIX, unixSocket(serverAddress) };
+
+    // server.start();
+
+    // std::optional<StreamSocket> connection = server.accept();
+    // connection->write("Hello World");
+    
+    DatagramServer<sockaddr_un> server2 { AF_UNIX, unixSocket(serverAddress) };
+    server2.bind();
+
+    DatagramSocket<sockaddr_un> conn = server2.connect();
+    
+    std::array<char, MAX_BUFFER_SIZE> buffer;
+    const ssize_t n = conn.read(buffer.data(), buffer.size() - 1);
+    buffer[n] = '\0';
+    
+    std::cout << "read -> " << buffer.data() << "\n";
+    
+    conn.write(serverAddress);
+    while(1) {}
+    return 0;
+
+}
+
+
+/**
+ * src/Client.cpp
+ */
+
+int clientTest() {
+
+
+    UnixSocket client { SocketRole::CLIENT, SOCK_STREAM, "/tmp/server" };    
+    if(client.connect() == -1) {
+        std::cerr << "[ERROR]: Failed to connect client\n";
+    }
+
+    std::array<char, MAX_BUFFER_SIZE> buffer;    
+    while( ssize_t bytesRead = client.read(buffer.data(), buffer.size() - 1) ) {
+        buffer[bytesRead] = '\0';
+
+        if(strcmp(buffer.data(), "Pid") == 0) {
+            client.write("This client has pid <" + std::to_string(getpid()) + ">");
+        } else if (strcmp(buffer.data(), "Sleep") == 0) {
+            std::this_thread::sleep_for(std::chrono::seconds(5));
+            client.write("Done");
+        } else if(strcmp(buffer.data(), "Quit") == 0) {
+            break;
+        }
+
+        if(bytesRead == -1) std::cerr << "[ERROR]\n";
+    }
+
+
+
+
+
+    UnixClient client { AF_UNIX, SOCK_STREAM, 0 };
+    client.setRemoteAddress(unixSocket("/tmp/server"));
+    if(client.connect() == -1) {
+        throw std::runtime_error("connect()");
+    }
+    
+    std::cout << "Connected to server\nWaiting for Command from Server\n";
+    std::array<char, MAX_BUFFER_SIZE> buffer;
+    
+    bool end { false };
+    while(!end) {
+        while(true) {
+            std::cout << "reading from server\n";
+            const ssize_t bytes { client.read(buffer.data(), buffer.size() - 1) };
+            if(bytes == -1) {
+                std::cerr << "[ERROR] reading client's message\n";
+                continue;
+            } else if (bytes == 0) {
+                std::cout << "Finished Reading client's message\n";
+                break;
+            } else {
+                std::cout << "Read from server\n";
+                buffer[bytes] = '\0';
+                if(strcmp(buffer.data(), "Pid") == 0) {
+                    client.write("This client has pid <" + std::to_string(getpid()) + ">");
+                } else if (strcmp(buffer.data(), "Sleep") == 0) {
+                    std::this_thread::sleep_for(std::chrono::seconds(5));
+                    client.write("Done");
+                } else if(strcmp(buffer.data(), "Quit") == 0) {
+                    end = true;
+                    break;
+                }
+            }
+        }
+    }
+
+    return 0;
+
+
+
+    UnixClient client { AF_UNIX, SOCK_STREAM };
+    client.connect(unixSocket("/tmp/server"));
+
+    client.write("dfsfsdfsdfsdfsdfsdfsdfsdfsfsdfsfsd");
+    client.write("quit");
+
+
+
+
+
+    const std::string_view serverAddress { "/tmp/server" };
+    // StreamClient<sockaddr_un> client { AF_UNIX, unixSocket(serverAddress) };    
+
+    // client.connect();
+    std::array<char, MAX_BUFFER_SIZE> buffer;
+    
+    // const ssize_t bytesRead = client.read(buffer.data(), buffer.size() - 1);
+    // if(bytesRead > 0) {
+    //     buffer[bytesRead] = '\0';
+    //     std::cout << "recieved -> " << buffer.data() << "\n";
+    // }
+
+    SocketAddress server { unixSocket("/tmp/server") };
+    DatagramServer<sockaddr_un> client2{AF_UNIX, unixSocket("/tmp/client")};
+    
+    
+    DatagramSocket<sockaddr_un> conn = client2.connect(server.address);
+    std::cout << "Connected\n";
+    conn.write("Ello Govna");
+
+    const ssize_t bytesRead = conn.read(buffer.data(), buffer.size() - 1);
+    if(bytesRead > 0) {
+        buffer[bytesRead] = '\0';
+        std::cout << "recieved -> " << buffer.data() << "\n";
+    }
+
+    
+
+    return 0;
+}

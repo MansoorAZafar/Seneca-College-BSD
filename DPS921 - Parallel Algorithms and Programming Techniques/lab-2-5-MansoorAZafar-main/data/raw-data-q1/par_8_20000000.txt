@@ -1,0 +1,114 @@
+
+
+**************  RUNNING N = 8 THREADS WITH n = 20000000  **************
+
+Process 1: Worker Time:  took  0.2300 seconds
+Process 4: Worker Time:  took  0.2534 seconds
+Process 2: Worker Time:  took  0.2446 seconds
+Process 3: Worker Time:  took  0.2397 seconds
+Process 5: Worker Time:  took  0.2397 seconds
+Process 0: Allocation   took  0.0649 seconds
+Process 0: Conversion   took  0.1875 seconds
+Process 1: Conversion   took  0.2300 seconds
+Process 2: Conversion   took  0.2446 seconds
+Process 3: Conversion   took  0.2397 seconds
+Process 4: Conversion   took  0.2534 seconds
+Process 5: Conversion   took  0.2397 seconds
+Process 6: Conversion   took  0.2446 seconds
+Process 7: Conversion   took  0.2378 seconds
+Process 0: Sum of All   took  1.6899 seconds
+Process 0: Conversion Time - Wall clock took  0.3408 seconds
+Process 0: Deallocation took  0.0039 seconds
+Result: 20000000 = 8639162 (0s) + 11360838 (1s)
+Process 7: Worker Time:  took  0.2378 seconds
+Process 6: Worker Time:  took  0.2446 seconds
+
+
+Process 2: Worker Time:  took  0.2383 seconds
+Process 4: Worker Time:  took  0.2607 seconds
+Process 3: Worker Time:  took  0.2334 seconds
+Process 1: Worker Time:  took  0.2339 seconds
+Process 0: Allocation   took  0.0649 seconds
+Process 0: Conversion   took  0.1953 seconds
+Process 1: Conversion   took  0.2339 seconds
+Process 2: Conversion   took  0.2383 seconds
+Process 3: Conversion   took  0.2334 seconds
+Process 4: Conversion   took  0.2607 seconds
+Process 5: Conversion   took  0.2480 seconds
+Process 6: Conversion   took  0.2524 seconds
+Process 7: Conversion   took  0.2397 seconds
+Process 0: Sum of All   took  1.7065 seconds
+Process 0: Conversion Time - Wall clock took  0.3486 seconds
+Process 0: Deallocation took  0.0034 seconds
+Result: 20000000 = 8639162 (0s) + 11360838 (1s)
+Process 5: Worker Time:  took  0.2480 seconds
+Process 6: Worker Time:  took  0.2524 seconds
+Process 7: Worker Time:  took  0.2397 seconds
+
+
+Process 1: Worker Time:  took  0.2329 seconds
+Process 2: Worker Time:  took  0.2480 seconds
+Process 3: Worker Time:  took  0.2437 seconds
+Process 4: Worker Time:  took  0.2563 seconds
+Process 6: Worker Time:  took  0.2480 seconds
+Process 7: Worker Time:  took  0.2437 seconds
+Process 5: Worker Time:  took  0.2344 seconds
+Process 0: Allocation   took  0.0654 seconds
+Process 0: Conversion   took  0.1899 seconds
+Process 1: Conversion   took  0.2329 seconds
+Process 2: Conversion   took  0.2480 seconds
+Process 3: Conversion   took  0.2437 seconds
+Process 4: Conversion   took  0.2563 seconds
+Process 5: Conversion   took  0.2344 seconds
+Process 6: Conversion   took  0.2480 seconds
+Process 7: Conversion   took  0.2437 seconds
+Process 0: Sum of All   took  1.7070 seconds
+Process 0: Conversion Time - Wall clock took  0.3442 seconds
+Process 0: Deallocation took  0.0039 seconds
+Result: 20000000 = 8639162 (0s) + 11360838 (1s)
+
+
+Process 2: Worker Time:  took  0.2480 seconds
+Process 4: Worker Time:  took  0.2588 seconds
+Process 1: Worker Time:  took  0.2378 seconds
+Process 3: Worker Time:  took  0.2427 seconds
+Process 6: Worker Time:  took  0.2500 seconds
+Process 7: Worker Time:  took  0.2441 seconds
+Process 5: Worker Time:  took  0.2451 seconds
+Process 0: Allocation   took  0.0669 seconds
+Process 0: Conversion   took  0.1914 seconds
+Process 1: Conversion   took  0.2378 seconds
+Process 2: Conversion   took  0.2480 seconds
+Process 3: Conversion   took  0.2427 seconds
+Process 4: Conversion   took  0.2588 seconds
+Process 5: Conversion   took  0.2451 seconds
+Process 6: Conversion   took  0.2500 seconds
+Process 7: Conversion   took  0.2441 seconds
+Process 0: Sum of All   took  1.7266 seconds
+Process 0: Conversion Time - Wall clock took  0.3467 seconds
+Process 0: Deallocation took  0.0039 seconds
+Result: 20000000 = 8639162 (0s) + 11360838 (1s)
+
+
+Process 4: Worker Time:  took  0.2612 seconds
+Process 2: Worker Time:  took  0.2354 seconds
+Process 5: Worker Time:  took  0.2393 seconds
+Process 6: Worker Time:  took  0.2524 seconds
+Process 1: Worker Time:  took  0.2310 seconds
+Process 7: Worker Time:  took  0.2480 seconds
+Process 0: Allocation   took  0.0659 seconds
+Process 0: Conversion   took  0.1948 seconds
+Process 1: Conversion   took  0.2310 seconds
+Process 2: Conversion   took  0.2354 seconds
+Process 3: Conversion   took  0.2300 seconds
+Process 4: Conversion   took  0.2612 seconds
+Process 5: Conversion   took  0.2393 seconds
+Process 6: Conversion   took  0.2524 seconds
+Process 7: Conversion   took  0.2480 seconds
+Process 0: Sum of All   took  1.6973 seconds
+Process 0: Conversion Time - Wall clock took  0.3496 seconds
+Process 0: Deallocation took  0.0039 seconds
+Result: 20000000 = 8639162 (0s) + 11360838 (1s)
+Process 3: Worker Time:  took  0.2300 seconds
+
+

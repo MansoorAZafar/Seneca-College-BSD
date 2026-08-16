@@ -1,0 +1,24 @@
+PS C:\Users\mzafar15\Downloads\lab-2-5-MansoorAZafar-main\lab-2-5-MansoorAZafar-main> .\q2_seq.exe 1600   
+allocation and initialization - took - 12 millisecs
+matrix-matrix multiplication - took - 7093 millisecs
+done
+
+PS C:\Users\mzafar15\Downloads\lab-2-5-MansoorAZafar-main\lab-2-5-MansoorAZafar-main> .\q2_seq.exe 1600
+allocation and initialization - took - 85 millisecs
+matrix-matrix multiplication - took - 7576 millisecs
+done
+
+PS C:\Users\mzafar15\Downloads\lab-2-5-MansoorAZafar-main\lab-2-5-MansoorAZafar-main> .\q2_seq.exe 1600
+allocation and initialization - took - 17 millisecs
+matrix-matrix multiplication - took - 7088 millisecs
+done
+
+PS C:\Users\mzafar15\Downloads\lab-2-5-MansoorAZafar-main\lab-2-5-MansoorAZafar-main> .\q2_seq.exe 1600
+allocation and initialization - took - 12 millisecs
+matrix-matrix multiplication - took - 7072 millisecs
+done
+
+PS C:\Users\mzafar15\Downloads\lab-2-5-MansoorAZafar-main\lab-2-5-MansoorAZafar-main> .\q2_seq.exe 1600
+allocation and initialization - took - 12 millisecs
+matrix-matrix multiplication - took - 10196 millisecs
+done

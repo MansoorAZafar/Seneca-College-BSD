@@ -1,0 +1,29 @@
+
+
+**************  RUNNING WITH n = 10000000  **************
+
+Initialization took  0.0320 seconds
+Conversion     took  0.6120 seconds
+10000000 = 4321373 0s + 5678627 1s
+
+
+Initialization took  0.0330 seconds
+Conversion     took  0.6170 seconds
+10000000 = 4321373 0s + 5678627 1s
+
+
+Initialization took  0.0320 seconds
+Conversion     took  0.6150 seconds
+10000000 = 4321373 0s + 5678627 1s
+
+
+Initialization took  0.0330 seconds
+Conversion     took  0.6080 seconds
+10000000 = 4321373 0s + 5678627 1s
+
+
+Initialization took  0.0320 seconds
+Conversion     took  0.6130 seconds
+10000000 = 4321373 0s + 5678627 1s
+
+

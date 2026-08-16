@@ -1,0 +1,29 @@
+
+
+**************  RUNNING WITH n = 20000000  **************
+
+Initialization took  0.0650 seconds
+Conversion     took  1.2180 seconds
+20000000 = 8639162 0s + 11360838 1s
+
+
+Initialization took  0.0650 seconds
+Conversion     took  1.2160 seconds
+20000000 = 8639162 0s + 11360838 1s
+
+
+Initialization took  0.0650 seconds
+Conversion     took  1.2190 seconds
+20000000 = 8639162 0s + 11360838 1s
+
+
+Initialization took  0.0660 seconds
+Conversion     took  1.2260 seconds
+20000000 = 8639162 0s + 11360838 1s
+
+
+Initialization took  0.0660 seconds
+Conversion     took  1.2120 seconds
+20000000 = 8639162 0s + 11360838 1s
+
+

@@ -1,0 +1,25 @@
+[INFO] 
+************************
+Thu Jul  9 14:33:36 2026
+************************
+
+[INFO] Using AF_UNIX Sock
+[INFO] 
+************************
+Thu Jul  9 14:33:56 2026
+************************
+
+[INFO] Using AF_INET TCP
+[INFO] 
+************************
+Thu Jul  9 14:34:16 2026
+************************
+
+[INFO] Using AF_UNIX UDP
+[INFO] 
+************************
+Thu Jul  9 14:34:38 2026
+************************
+
+[INFO] Using AF_UNIX DGRAM
+[INFO] [Socket] Binding Socket

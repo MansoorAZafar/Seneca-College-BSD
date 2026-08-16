@@ -1,0 +1,1 @@
+cl /EHsc /I"C:\Program Files (x86)\Microsoft SDKs\MPI\Include" q1parallel.c /Feq1_parallel.exe /link /LIBPATH:"C:\Program Files (x86)\Microsoft SDKs\MPI\Lib\x64" msmpi.lib 

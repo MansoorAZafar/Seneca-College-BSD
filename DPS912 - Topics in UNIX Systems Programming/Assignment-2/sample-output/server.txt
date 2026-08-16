@@ -1,0 +1,11 @@
+Starting Server
+TCP server listening at 127.0.0.1:8080
+waiting for client connection
+Accepting client...
+Received: submit|foo|network|high|no wifi access
+Successfully Wrote to FIFO
+Successfully Added Ticket
+Received: 
+Client disconnected
+^Cselect()
+Cleaning up Server
