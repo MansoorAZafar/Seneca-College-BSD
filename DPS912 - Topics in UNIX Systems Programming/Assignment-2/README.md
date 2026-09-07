@@ -3,6 +3,7 @@
 TCP. I chose TCP as the socket choice as for a ticketing system that is meant to be used from numerous different teachers and students, it is unreasonable to have them all work on the same machine. Rather, it makes sense that many different teachers and students should be able to use the client from anywhere to make a ticket, not limited a specific machine. As such, the entire AF_UNIX domain is ruled out, as a ticketing system made for numerous students and teachers should not be limited to a specific machine rather, should be available across multiple machines. For example, matrix is not limited to a specific machine, rather, we use some software to access matrix on our own devices, not needing to use 1 specific device. Then the decision for TCP vs UDP, I chose TCP as UDP is needed when performance is critical, the loss of packets is acceptable and not needed in order however, for a ticketing system, we want to ensure we get all tickets and requests. We don't want to drop tickets or have them corrupted and want to ensure we get processes in order. We cannot have something like, cancel ticket 2 before ticket 2 is even made. As such, I went for a TCP socket.
 
 ## Project Structure
+```
 ├── Makefile
 ├── README.md
 ├── core
@@ -36,6 +37,7 @@ TCP. I chose TCP as the socket choice as for a ticketing system that is meant to
 │   ├── ticketMonitor.cpp
 │   └── ticketServer.cpp
 └── tickets.db
+```
 
 ### Dependencies/logger
 A header only logger file made by me. It's a thread-safe Queue based logger using the producer consumer pattern.
